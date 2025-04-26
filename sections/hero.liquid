@@ -1,20 +1,90 @@
-<section class="soltex-hero-full-bg">
-  <div class="soltex-hero-content">
-    <h1>Soluciones Reales para la Industria Textil</h1>
-    <p class="soltex-hero-subtitle">
-      Con más de <span id="years-experience"></span> años de experiencia y más de 4500 ítems en stock
-    </p>
-    <a href="/collections/all" class="soltex-hero-button">Ver Productos</a>
+{% schema %}
+{
+  "name": "Hero Principal",
+  "tag": "section",
+  "class": "soltex-hero-full-bg",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Imagen de fondo"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título principal",
+      "default": "BIENVENIDO A SOLTEX"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subtítulo",
+      "default": "Innovamos la industria textil, contigo en cada paso."
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del botón"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Texto del botón",
+      "default": "Conócenos"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Principal"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="hero-main" style="background-image: url({{ section.settings.background_image | image_url: width: 1800 }}); background-size: cover; background-position: center;">
+  <div class="hero-content">
+    <h1>{{ section.settings.heading | escape }}</h1>
+    <p>{{ section.settings.subheading | escape }}</p>
+    {% if section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="hero-button">{{ section.settings.button_text }}</a>
+    {% endif %}
   </div>
 </section>
 
-<script>
-  const foundingDate = new Date(2004, 3, 5);
-  const today = new Date();
-  let yearsExperience = today.getFullYear() - foundingDate.getFullYear();
-  const anniversary = new Date(today.getFullYear(), foundingDate.getMonth(), foundingDate.getDate());
-  if (today < anniversary) {
-    yearsExperience--;
-  }
-  document.getElementById('years-experience').innerText = yearsExperience;
-</script>
+<style>
+.hero-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
+  position: relative;
+  text-align: center;
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 40px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.hero-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.hero-button {
+  background-color: #ffffff;
+  color: #0077c0;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+}
+</style>

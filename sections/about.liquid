@@ -1,11 +1,57 @@
-<section class="soltex-about-section">
-  <div class="soltex-about-container">
-    <h2>¿Quiénes somos?</h2>
-    <p>
-      Fundada en 2004, SOLTEX se ha consolidado como un aliado estratégico para la industria textil en México y Centroamérica. Con más de 20 años de experiencia, proveemos maquinaria, refacciones y soluciones técnicas que impulsan la eficiencia, la productividad y el crecimiento de nuestros clientes. Más que proveedores, somos parte de su éxito.
-    </p>
-    <p class="soltex-about-quote">
-      Comprometidos con la excelencia en cada detalle.
-    </p>
+{% schema %}
+{
+  "name": "Sobre Nosotros",
+  "tag": "section",
+  "class": "soltex-about-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "about_heading",
+      "label": "Título principal",
+      "default": "¿QUIÉNES SOMOS?"
+    },
+    {
+      "type": "textarea",
+      "id": "about_text",
+      "label": "Texto de descripción",
+      "default": "Somos líderes en el sector textil, ofreciendo máquinas, refacciones y soluciones de calidad para tu industria."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sobre Nosotros"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="about-us">
+  <div class="about-container">
+    <h2>{{ section.settings.about_heading | escape }}</h2>
+    <p>{{ section.settings.about_text | escape }}</p>
   </div>
 </section>
+
+<style>
+.about-us {
+  background-color: #F2F2F2;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-container h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.about-container p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+</style>

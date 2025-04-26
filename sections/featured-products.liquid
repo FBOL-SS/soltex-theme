@@ -1,0 +1,111 @@
+{% schema %}
+{
+  "name": "Productos Destacados",
+  "tag": "section",
+  "class": "soltex-featured-products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "featured_heading",
+      "label": "Título principal",
+      "default": "PRODUCTOS DESTACADOS"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Colección de productos"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Cantidad de productos a mostrar",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Productos Destacados",
+      "category": "Productos"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="featured-products">
+  <div class="featured-products-container">
+    <h2>{{ section.settings.featured_heading | escape }}</h2>
+    <div class="products-grid">
+      {% if section.settings.collection != blank %}
+        {% assign collection = collections[section.settings.collection] %}
+        {% for product in collection.products limit: section.settings.products_limit %}
+          <div class="product-card">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+              <h3>{{ product.title }}</h3>
+              <p>{{ product.price | money }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No hay productos seleccionados.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+.featured-products {
+  background-color: #ffffff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.featured-products-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featured-products-container h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  background: #F9F9F9;
+  padding: 20px;
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.product-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.product-card p {
+  font-size: 18px;
+  font-weight: bold;
+}
+</style>
