@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-main"
+    },
+    "about": {
+      "type": "about-us"
+    },
+    "footer": {
+      "type": "soltex-footer"
+    }
+  },
+  "order": ["hero", "about", "footer"]
+}
