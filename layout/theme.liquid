@@ -1,15 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page_title }}</title>
-    
     {{ content_for_header }}
+    <title>{{ page_title }}</title>
 
-    <link href="{{ 'base.css' | asset_url }}" rel="stylesheet" type="text/css">
+    {{ 'base.css' | asset_url | stylesheet_tag }}
   </head>
   <body>
+
+    {% section 'header' %} {# 🔥 Aquí insertamos el HEADER 🔥 #}
+
     {{ content_for_layout }}
+
+    {% section 'soltex-footer' %} {# 🔥 Aquí insertamos el FOOTER 🔥 #}
+
   </body>
 </html>
