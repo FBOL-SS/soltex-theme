@@ -1,0 +1,20 @@
+<section class="soltex-hero-full-bg">
+  <div class="soltex-hero-content">
+    <h1>Soluciones Reales para la Industria Textil</h1>
+    <p class="soltex-hero-subtitle">
+      Con más de <span id="years-experience"></span> años de experiencia y más de 4500 ítems en stock
+    </p>
+    <a href="/collections/all" class="soltex-hero-button">Ver Productos</a>
+  </div>
+</section>
+
+<script>
+  const foundingDate = new Date(2004, 3, 5);
+  const today = new Date();
+  let yearsExperience = today.getFullYear() - foundingDate.getFullYear();
+  const anniversary = new Date(today.getFullYear(), foundingDate.getMonth(), foundingDate.getDate());
+  if (today < anniversary) {
+    yearsExperience--;
+  }
+  document.getElementById('years-experience').innerText = yearsExperience;
+</script>

@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  h1, h2 {
+    margin: 0 0 20px;
+    font-weight: bold;
+  }
+  
+  .soltex-hero-full-bg {
+    width: 100%;
+    height: 600px;
+    background-image: url('https://cdn.shopify.com/s/files/1/0674/8985/7688/t/2/assets/IMAGEMACHINE.jpeg?v=1745690257');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .soltex-hero-content {
+    background: rgba(0,0,0,0.5);
+    padding: 40px;
+    border-radius: 10px;
+  }
+  
+  .soltex-about-section {
+    width: 100%;
+    background-color: #F2F2F2;
+    padding: 80px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .soltex-about-container {
+    max-width: 800px;
+  }
+  
