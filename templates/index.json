@@ -1,26 +1,27 @@
 {
-  "sections": {
-    "hero": {
-      "type": "hero"
+    "sections": {
+      "hero": {
+        "type": "hero"
+      },
+      "about": {
+        "type": "about"
+      },
+      "services": {
+        "type": "services"
+      },
+      "featured-products": {
+        "type": "featured-products"
+      },
+      "footer": {
+        "type": "footer"
+      }
     },
-    "about": {
-      "type": "about"
-    },
-    "services": {
-      "type": "services"
-    },
-    "featured-products": {
-      "type": "featured-products"
-    },
-    "footer": {
-      "type": "footer"
-    }
-  },
-  "order": [
-    "hero",
-    "about",
-    "services",
-    "featured-products",
-    "footer"
-  ]
-}
+    "order": [
+      "hero",
+      "about",
+      "services",
+      "featured-products",
+      "footer"
+    ]
+  }
+  
