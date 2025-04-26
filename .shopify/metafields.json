@@ -1,0 +1,45 @@
+{
+  "article": [],
+  "blog": [],
+  "collection": [],
+  "company": [],
+  "company_location": [],
+  "location": [],
+  "market": [],
+  "order": [],
+  "page": [],
+  "product": [
+    {
+      "key": "handle-material",
+      "namespace": "shopify",
+      "name": "Material del mango",
+      "description": "Especifica el material utilizado en el mango del producto, como el bambú o el plástico.",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "blade-material",
+      "namespace": "shopify",
+      "name": "Material de la cuchilla",
+      "description": "Especifica el material que se usa para la fabricación de una hoja, como el acero o el aluminio.",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "craft-knife-design",
+      "namespace": "shopify",
+      "name": "Diseño de cúter para manualidades",
+      "description": "Describe el estilo específico de un cúter, como recto o de precisión.",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    }
+  ],
+  "variant": [],
+  "shop": []
+}

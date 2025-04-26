@@ -1,46 +1,104 @@
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  h1, h2 {
-    margin: 0 0 20px;
-    font-weight: bold;
-  }
-  
-  .soltex-hero-full-bg {
-    width: 100%;
-    height: 600px;
-    background-image: url('https://cdn.shopify.com/s/files/1/0674/8985/7688/t/2/assets/IMAGEMACHINE.jpeg?v=1745690257');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: transparent !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .soltex-hero-content {
-    background: rgba(0,0,0,0.5);
-    padding: 40px;
-    border-radius: 10px;
-  }
-  
-  .soltex-about-section {
-    width: 100%;
-    background-color: #F2F2F2;
-    padding: 80px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .soltex-about-container {
-    max-width: 800px;
-  }
-  
+/* HERO */
+.soltex-hero {
+  width: 100%;
+  height: 600px;
+  background: linear-gradient(135deg, #0057b8, #00c3ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.soltex-hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.soltex-hero-content p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.soltex-button {
+  padding: 12px 24px;
+  background-color: #ffffff;
+  color: #0057b8;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 25px;
+  transition: background 0.3s ease;
+}
+
+.soltex-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* BLOQUES DE BENEFICIOS */
+.soltex-benefits {
+  display: flex;
+  justify-content: space-around;
+  padding: 60px 20px;
+  background-color: #f7f7f7;
+}
+
+.benefit {
+  text-align: center;
+  max-width: 250px;
+}
+
+.benefit img {
+  margin-bottom: 20px;
+}
+
+/* PRODUCTOS DESTACADOS */
+.soltex-featured {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.products-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.product-card {
+  width: 200px;
+  height: 200px;
+  background-color: #eeeeee;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* SOBRE NOSOTROS */
+.soltex-about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  gap: 40px;
+  background-color: #ffffff;
+}
+
+.about-text {
+  max-width: 500px;
+}
+
+.about-image img {
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+.soltex-footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
