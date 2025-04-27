@@ -9,17 +9,17 @@
  */
 {
   "sections": {
-    "main-collection-banner": {
-      "type": "main-collection-banner",
+    "main-product": {
+      "type": "main-product",
       "settings": {}
     },
-    "product-grid": {
-      "type": "product-grid",
+    "product-recommendations": {
+      "type": "product-recommendations",
       "settings": {}
     }
   },
   "order": [
-    "main-collection-banner",
-    "product-grid"
+    "main-product",
+    "product-recommendations"
   ]
 }
