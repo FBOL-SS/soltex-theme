@@ -1,5 +1,9 @@
 {
   "sections": {
+    "header": {
+      "type": "header",
+      "settings": {}
+    },
     "hero-main": {
       "type": "hero-main",
       "settings": {}
@@ -20,17 +24,18 @@
       "type": "service-description",
       "settings": {}
     },
-    "soltex-footer": {
+    "footer": {
       "type": "footer",
       "settings": {}
     }
   },
   "order": [
+    "header",
     "hero-main",
     "about-us",
     "feature-icons",
     "our-services",
     "service-description",
-    "soltex-footer"
+    "footer"
   ]
 }

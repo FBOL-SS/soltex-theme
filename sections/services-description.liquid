@@ -1,98 +1,58 @@
+<section class="services-description">
+  <div class="services-container">
+    <h2>{{ section.settings.title | escape }}</h2>
+    <p>{{ section.settings.description | escape }}</p>
+  </div>
+</section>
+
+<style>
+.services-description {
+  padding: 60px 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.services-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.services-container h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.services-container p {
+  font-size: 18px;
+  color: #666;
+}
+</style>
+
 {% schema %}
 {
-  "name": "Servicios",
+  "name": "Descripción de Servicios",
   "tag": "section",
-  "class": "soltex-services-section",
+  "class": "services-description",
   "settings": [
     {
       "type": "text",
-      "id": "services_heading",
-      "label": "Título principal",
-      "default": "NUESTROS SERVICIOS"
-    }
-  ],
-  "blocks": [
+      "id": "title",
+      "label": "Título Principal",
+      "default": "¿QUÉ HACEMOS?"
+    },
     {
-      "type": "service",
-      "name": "Servicio",
-      "settings": [
-        {
-          "type": "text",
-          "id": "service_title",
-          "label": "Título del servicio",
-          "default": "CALIDAD GARANTIZADA"
-        },
-        {
-          "type": "textarea",
-          "id": "service_description",
-          "label": "Descripción del servicio",
-          "default": "Ofrecemos productos de alta calidad para el sector textil."
-        }
-      ]
+      "type": "textarea",
+      "id": "description",
+      "label": "Descripción",
+      "default": "En SOLTEX ofrecemos soluciones completas para la industria textil: venta de partes, venta de máquinas, reparaciones electrónicas y renta de máquinas industriales."
     }
   ],
   "presets": [
     {
-      "name": "Servicios",
+      "name": "Descripción de Servicios",
       "category": "Secciones"
     }
   ]
 }
 {% endschema %}
-
-<section class="services">
-  <div class="services-container">
-    <h2>{{ section.settings.services_heading | escape }}</h2>
-    <div class="services-grid">
-      {% for block in section.blocks %}
-        <div class="service-card">
-          <h3>{{ block.settings.service_title | escape }}</h3>
-          <p>{{ block.settings.service_description | escape }}</p>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<style>
-.services {
-  background-color: #ffffff;
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.services-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.services-container h2 {
-  font-size: 36px;
-  margin-bottom: 40px;
-  text-transform: uppercase;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-
-.service-card {
-  background: #F9F9F9;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.05);
-}
-
-.service-card h3 {
-  font-size: 22px;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-}
-
-.service-card p {
-  font-size: 16px;
-  line-height: 1.5;
-}
-</style>
