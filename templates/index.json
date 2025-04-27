@@ -12,8 +12,12 @@
       "type": "feature-icons",
       "settings": {}
     },
-    "services-grid": {
-      "type": "services-grid",
+    "our-services": {
+      "type": "our-services",
+      "settings": {}
+    },
+    "service-description": {
+      "type": "service-description",
       "settings": {}
     },
     "soltex-footer": {
@@ -25,7 +29,8 @@
     "hero-main",
     "about-us",
     "feature-icons",
-    "services-grid",
+    "our-services",
+    "service-description",
     "soltex-footer"
   ]
 }
