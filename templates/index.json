@@ -1,41 +1,86 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "header": {
-      "type": "header",
-      "settings": {}
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "heading": "BIENVENIDO A SOLTEX",
+        "subheading": "Innovamos la industria textil, contigo en cada paso.",
+        "button_link": "",
+        "button_text": "Conócenos"
+      }
     },
-    "hero-main": {
-      "type": "hero-main",
-      "settings": {}
+    "about": {
+      "type": "about",
+      "settings": {
+        "about_heading": "¿QUIÉNES SOMOS?",
+        "about_text": "Somos líderes en el sector textil, ofreciendo máquinas, refacciones y soluciones de calidad para tu industria."
+      }
     },
-    "about-us": {
-      "type": "about-us",
-      "settings": {}
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {
+        "featured_heading": "PRODUCTOS DESTACADOS",
+        "collection": "",
+        "products_limit": 4
+      }
     },
-    "feature-icons": {
-      "type": "feature-icons",
-      "settings": {}
-    },
-    "our-services": {
+    "our_services_46mhgG": {
       "type": "our-services",
-      "settings": {}
-    },
-    "service-description": {
-      "type": "service-description",
-      "settings": {}
-    },
-    "footer": {
-      "type": "footer",
-      "settings": {}
+      "blocks": {
+        "service_txjyKp": {
+          "type": "service",
+          "settings": {
+            "title": "Título del servicio",
+            "description": "Descripción breve del servicio."
+          }
+        },
+        "service_aN33a4": {
+          "type": "service",
+          "settings": {
+            "title": "Título del servicio",
+            "description": "Descripción breve del servicio."
+          }
+        },
+        "service_L4hULh": {
+          "type": "service",
+          "settings": {
+            "title": "Título del servicio",
+            "description": "Descripción breve del servicio."
+          }
+        },
+        "service_GYza7D": {
+          "type": "service",
+          "settings": {
+            "title": "Título del servicio",
+            "description": "Descripción breve del servicio."
+          }
+        }
+      },
+      "block_order": [
+        "service_txjyKp",
+        "service_aN33a4",
+        "service_L4hULh",
+        "service_GYza7D"
+      ],
+      "name": "Nuestros Servicios",
+      "settings": {
+        "heading": "Nuestros Servicios"
+      }
     }
   },
   "order": [
-    "header",
-    "hero-main",
-    "about-us",
-    "feature-icons",
-    "our-services",
-    "service-description",
-    "footer"
+    "hero",
+    "about",
+    "featured-products",
+    "our_services_46mhgG"
   ]
 }
