@@ -1,0 +1,31 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<div class="product-page">
+  <div class="product-container">
+    <div class="product-image">
+      <img src="{{ current_variant.featured_image | img_url: '800x' }}" alt="{{ product.title }}">
+    </div>
+    <div class="product-details">
+      <h1 class="product-title">{{ product.title }}</h1>
+      <p class="product-price">{{ current_variant.price | money }}</p>
+
+      <form method="post" action="/cart/add">
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+        <button type="submit" class="add-to-cart-button">Añadir al carrito</button>
+      </form>
+
+      <div class="product-description">
+        {{ product.description }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product",
+  "tag": "section",
+  "class": "soltex-product-page",
+  "settings": []
+}
+{% endschema %}
