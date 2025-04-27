@@ -1,0 +1,57 @@
+<section class="collection-filters">
+  <div class="filters-container">
+    <h2 class="filters-title">Filtrar productos</h2>
+    
+    <form id="collection-filter-form" method="get" action="">
+      
+      <div class="filter-group">
+        <h3>Marca</h3>
+        <select name="marca">
+          <option value="">Todas</option>
+          <option value="juki">Juki</option>
+          <option value="brother">Brother</option>
+          <option value="yamato">Yamato</option>
+          <option value="durkopp-adler">Durkopp Adler</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <h3>Categoría</h3>
+        <select name="categoria">
+          <option value="">Todas</option>
+          <option value="maquinas">Máquinas</option>
+          <option value="refacciones">Refacciones</option>
+          <option value="accesorios">Accesorios</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <h3>Tipo</h3>
+        <select name="tipo">
+          <option value="">Todos</option>
+          <option value="original">Original</option>
+          <option value="generico">Genérico</option>
+          <option value="strong-h">Strong H</option>
+        </select>
+      </div>
+
+      <button type="submit" class="filter-button">Aplicar filtros</button>
+    </form>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Filtros de colección",
+  "tag": "section",
+  "class": "collection-filters",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection Filters",
+      "category": "Collection Pages"
+    }
+  ]
+}
+{% endschema %}
