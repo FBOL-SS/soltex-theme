@@ -3,11 +3,11 @@
     <div class="product-gallery">
       {% if product.images.size > 0 %}
         <div class="main-image">
-          <img id="main-product-image" src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title }}">
+          <img id="main-product-image" src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}">
         </div>
         <div class="thumbnail-gallery">
           {% for image in product.images %}
-            <img src="{{ image | image_url: width: 100 }}" alt="Thumbnail {{ forloop.index }}" onclick="document.getElementById('main-product-image').src='{{ image | image_url: width: 500 }}'">
+            <img src="{{ image | image_url: width: 100 }}" alt="Thumbnail {{ forloop.index }}" onclick="document.getElementById('main-product-image').src='{{ image | image_url: width: 600 }}'">
           {% endfor %}
         </div>
       {% endif %}
@@ -23,12 +23,11 @@
       </form>
 
       <div class="product-description">
-        <h2>Descripción</h2>
         {{ product.description }}
       </div>
 
       <div class="product-specs">
-        <h2>Especificaciones</h2>
+        <h3>Especificaciones</h3>
         <ul>
           <li><strong>Modelo Compatible:</strong> {{ product.metafields.custom.modelo_compatible }}</li>
           <li><strong>País de Origen:</strong> {{ product.metafields.custom.pais_origen }}</li>
