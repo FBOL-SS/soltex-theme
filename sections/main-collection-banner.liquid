@@ -1,17 +1,6 @@
 <section class="collection-banner">
-  <div class="collection-banner-content">
-    <h1>{{ collection.title }}</h1>
-    {% if collection.description != blank %}
-      <p>{{ collection.description }}</p>
-    {% endif %}
-  </div>
+  <h1>{{ collection.title }}</h1>
+  {% if collection.description != blank %}
+    <p>{{ collection.description }}</p>
+  {% endif %}
 </section>
-
-{% schema %}
-{
-  "name": "Main Collection Banner",
-  "tag": "section",
-  "class": "collection-banner-section",
-  "settings": []
-}
-{% endschema %}
