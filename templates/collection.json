@@ -1,16 +1,15 @@
 {
-    "sections": {
-      "main-collection-banner": {
-        "type": "main-collection-banner",
-        "settings": {}
-      },
-      "product-grid": {
-        "type": "product-grid",
-        "settings": {}
-      }
+  "name": "Colección",
+  "sections": {
+    "main-collection-banner": {
+      "type": "main-collection-banner"
     },
-    "order": [
-      "main-collection-banner",
-      "product-grid"
-    ]
-  }
+    "product-grid": {
+      "type": "product-grid"
+    }
+  },
+  "order": [
+    "main-collection-banner",
+    "product-grid"
+  ]
+}
