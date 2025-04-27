@@ -1,0 +1,12 @@
+{
+  "name": "Página de Catálogo",
+  "sections": {
+    "main-collection": {
+      "type": "main-collection",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main-collection"
+  ]
+}
