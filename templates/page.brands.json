@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-brands",
+      "settings": {
+        "title": "NUESTRAS MARCAS",
+        "description": "Contamos con la distribución oficial de las mejores marcas del mercado."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

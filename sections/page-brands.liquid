@@ -1,0 +1,123 @@
+<section class="brands-page">
+  <div class="brands-banner">
+    <h1>{{ section.settings.title | escape }}</h1>
+    <p>{{ section.settings.description | escape }}</p>
+  </div>
+
+  <div class="brands-grid">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.brand_link }}" class="brand-card" target="_blank">
+        <img src="{{ block.settings.brand_image | image_url: width: 300 }}" alt="{{ block.settings.brand_name | escape }}">
+        <h3>{{ block.settings.brand_name | escape }}</h3>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+.brands-page {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.brands-banner h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.brands-banner p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.brands-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.brand-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  width: 220px;
+}
+
+.brand-card:hover {
+  transform: translateY(-5px);
+}
+
+.brand-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.brand-card h3 {
+  font-size: 20px;
+  color: #333;
+  margin-top: 10px;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Brands Grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título principal",
+      "default": "NUESTRAS MARCAS"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Descripción",
+      "default": "Contamos con la distribución oficial de las mejores marcas del mercado."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Marca",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "brand_image",
+          "label": "Imagen de la marca"
+        },
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Nombre de la marca"
+        },
+        {
+          "type": "url",
+          "id": "brand_link",
+          "label": "Link de la marca (opcional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brands Grid",
+      "category": "Páginas"
+    }
+  ]
+}
+{% endschema %}
