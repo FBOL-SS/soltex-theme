@@ -12,6 +12,7 @@
     "hero": {
       "type": "hero",
       "settings": {
+        "background_image": "shopify://shop_images/IMAGEMACHINE.jpg",
         "heading": "BIENVENIDO A SOLTEX",
         "subheading": "Innovamos la industria textil, contigo en cada paso.",
         "button_link": "",
