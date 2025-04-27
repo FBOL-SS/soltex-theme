@@ -1,0 +1,36 @@
+<div class="product-page">
+    <div class="product-container">
+      <div class="product-image">
+        {% if product.featured_image %}
+          <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title }}">
+        {% endif %}
+      </div>
+      <div class="product-details">
+        <h1 class="product-title">{{ product.title }}</h1>
+  
+        <div class="product-price">
+          {{ product.price | money }}
+        </div>
+  
+        <form method="post" action="/cart/add">
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+          <button type="submit" class="add-to-cart-button">Agregar al carrito</button>
+        </form>
+  
+        <div class="product-description">
+          {{ product.description }}
+        </div>
+  
+        <div class="product-specs">
+          <h3>Especificaciones</h3>
+          <ul>
+            <li><strong>Modelo Compatible:</strong> {{ product.metafields.custom.modelo_compatible }}</li>
+            <li><strong>País de Origen:</strong> {{ product.metafields.custom.pais_origen }}</li>
+            <li><strong>Marca:</strong> {{ product.vendor }}</li>
+            <li><strong>Calidad:</strong> {{ product.metafields.custom.calidad }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
