@@ -134,4 +134,23 @@
   .add-to-cart-button {
     width: 100%;
   }
+  .product-page .product-container {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  
+  .product-page .product-gallery,
+  .product-page .product-details {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+  
+  @media (max-width: 768px) {
+    .product-page .product-gallery,
+    .product-page .product-details {
+      max-width: 100%;
+    }
+  }  
 }
