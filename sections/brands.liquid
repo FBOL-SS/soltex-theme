@@ -1,0 +1,20 @@
+<section class="brands-page">
+  <div class="brands-header">
+    <h1>Nuestras Marcas</h1>
+    <p>Contamos con la distribución oficial de estas marcas reconocidas a nivel mundial.</p>
+  </div>
+
+  <div class="brands-grid">
+    {% assign marcas = 
+      "YAMATO,STRONG H,BROTHER,JUKI,DURKOPP ADLER,PEGASUS,SIRUBA,KANSAI SPECIAL,UNION SPECIAL" | split: "," 
+    %}
+
+    {% for marca in marcas %}
+      <div class="brand-item">
+        <a href="/collections/all?filter.p.marca={{ marca | url_encode }}">
+          <img src="{{ 'logo-' | append: marca | append: '.png' | asset_url }}" alt="{{ marca }}">
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</section>

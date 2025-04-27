@@ -3,20 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{ content_for_header }}
+
     <title>{{ page_title }}</title>
+    
+    {{ content_for_header }}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'product.css' | asset_url | stylesheet_tag }}
-    {{ 'collection.css' | asset_url | stylesheet_tag }}
+    {{ 'brands.css' | asset_url | stylesheet_tag }}
   </head>
-
+  
   <body>
+
     {% section 'header' %}
-    
+
     {{ content_for_layout }}
-    
+
     {% section 'footer' %}
+
   </body>
 
   <script>
@@ -27,19 +31,6 @@
       if (menuButton && navMenu) {
         menuButton.addEventListener('click', function() {
           navMenu.classList.toggle('active');
-        });
-      }
-
-      const thumbnails = document.querySelectorAll('.thumbnail-gallery img');
-      const mainImage = document.getElementById('main-product-image');
-
-      if (thumbnails.length > 0 && mainImage) {
-        thumbnails.forEach(thumb => {
-          thumb.addEventListener('click', function() {
-            mainImage.src = this.src;
-            thumbnails.forEach(t => t.classList.remove('active-thumbnail'));
-            this.classList.add('active-thumbnail');
-          });
         });
       }
     });
