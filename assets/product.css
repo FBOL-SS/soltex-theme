@@ -20,6 +20,8 @@
   width: 100%;
   height: auto;
   border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
 }
 
 .thumbnail-gallery {
@@ -33,13 +35,18 @@
   width: 80px;
   height: auto;
   cursor: pointer;
-  border: 1px solid #ccc;
+  border: 2px solid transparent;
   border-radius: 4px;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
 .thumbnail-gallery img:hover {
   border-color: #0056b3;
+}
+
+.thumbnail-gallery img.active-thumbnail {
+  border-color: #0056b3;
+  box-shadow: 0 0 8px rgba(0, 86, 179, 0.6);
 }
 
 .product-details {
@@ -56,13 +63,6 @@
   font-weight: bold;
   color: #0056b3;
   margin-bottom: 10px;
-}
-
-.product-benefits {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  color: #4CAF50;
-  font-size: 16px;
 }
 
 .add-to-cart-button {
@@ -134,23 +134,4 @@
   .add-to-cart-button {
     width: 100%;
   }
-  .product-page .product-container {
-    display: flex !important;
-    flex-wrap: wrap;
-    gap: 40px;
-    align-items: flex-start;
-  }
-  
-  .product-page .product-gallery,
-  .product-page .product-details {
-    flex: 1 1 50%;
-    max-width: 50%;
-  }
-  
-  @media (max-width: 768px) {
-    .product-page .product-gallery,
-    .product-page .product-details {
-      max-width: 100%;
-    }
-  }  
 }

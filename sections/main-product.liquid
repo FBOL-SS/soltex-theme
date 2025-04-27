@@ -17,12 +17,6 @@
       <h1 class="product-title">{{ product.title }}</h1>
       <div class="product-price">{{ product.price | money }}</div>
 
-      <div class="product-benefits">
-        ✔️ Envío a todo México<br>
-        ✔️ Garantía de fábrica<br>
-        ✔️ Asesoría técnica gratuita
-      </div>
-
       <form method="post" action="/cart/add">
         <input type="hidden" name="id" value="{{ product.variants.first.id }}">
         <button type="submit" class="add-to-cart-button">Agregar al carrito</button>
@@ -44,3 +38,28 @@
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const thumbnails = document.querySelectorAll('.thumbnail-gallery img');
+    const mainImage = document.getElementById('main-product-image');
+
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        mainImage.style.opacity = '0';
+        setTimeout(() => {
+          mainImage.src = thumb.src.replace('width=100', 'width=500');
+          mainImage.style.opacity = '1';
+        }, 200);
+
+        thumbnails.forEach(t => t.classList.remove('active-thumbnail'));
+        thumb.classList.add('active-thumbnail');
+      });
+    });
+
+    // Activar la primera imagen como activa al cargar
+    if (thumbnails.length > 0) {
+      thumbnails[0].classList.add('active-thumbnail');
+    }
+  });
+</script>
