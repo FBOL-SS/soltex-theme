@@ -16,7 +16,7 @@
       "type": "services-grid",
       "settings": {}
     },
-    "footer": {
+    "soltex-footer": {
       "type": "footer",
       "settings": {}
     }
@@ -26,6 +26,6 @@
     "about-us",
     "feature-icons",
     "services-grid",
-    "footer"
+    "soltex-footer"
   ]
 }
