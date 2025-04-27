@@ -3,11 +3,11 @@
     <div class="product-gallery">
       {% if product.images.size > 0 %}
         <div class="main-image">
-          <img id="main-product-image" src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}">
+          <img id="main-product-image" src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title }}">
         </div>
         <div class="thumbnail-gallery">
           {% for image in product.images %}
-            <img src="{{ image | image_url: width: 100 }}" alt="Thumbnail {{ forloop.index }}" onclick="document.getElementById('main-product-image').src='{{ image | image_url: width: 600 }}'">
+            <img src="{{ image | image_url: width: 100 }}" alt="Thumbnail {{ forloop.index }}" onclick="document.getElementById('main-product-image').src='{{ image | image_url: width: 500 }}'">
           {% endfor %}
         </div>
       {% endif %}
@@ -16,6 +16,12 @@
     <div class="product-details">
       <h1 class="product-title">{{ product.title }}</h1>
       <div class="product-price">{{ product.price | money }}</div>
+
+      <div class="product-benefits">
+        ✔️ Envío a todo México<br>
+        ✔️ Garantía de fábrica<br>
+        ✔️ Asesoría técnica gratuita
+      </div>
 
       <form method="post" action="/cart/add">
         <input type="hidden" name="id" value="{{ product.variants.first.id }}">
