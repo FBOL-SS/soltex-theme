@@ -134,4 +134,48 @@
   .add-to-cart-button {
     width: 100%;
   }
+  .recently-viewed {
+    margin-top: 60px;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+  }
+  
+  .recently-title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    color: #333;
+  }
+  
+  .recently-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .recently-product-card {
+    width: 180px;
+    text-align: center;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s;
+  }
+  
+  .recently-product-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .recently-product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }  
 }

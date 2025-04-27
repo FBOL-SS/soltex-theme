@@ -1,0 +1,41 @@
+<section class="recently-viewed">
+  <h2 class="recently-title">Productos vistos recientemente</h2>
+  <div class="recently-products" id="recently-products">
+    <!-- Aquí se inyectarán los productos -->
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const recentlyContainer = document.getElementById('recently-products');
+  let recentlyViewed = JSON.parse(localStorage.getItem('recently_viewed_products')) || [];
+
+  // Guardar el producto actual si no está
+  const currentProduct = {
+    title: "{{ product.title | escape }}",
+    url: "{{ product.url }}",
+    image: "{{ product.featured_image | image_url: width: 300 }}"
+  };
+
+  // Evitar duplicados
+  recentlyViewed = recentlyViewed.filter(p => p.url !== currentProduct.url);
+  recentlyViewed.unshift(currentProduct);
+
+  // Mantener máximo 4 productos
+  recentlyViewed = recentlyViewed.slice(0, 4);
+
+  localStorage.setItem('recently_viewed_products', JSON.stringify(recentlyViewed));
+
+  // Mostrar productos
+  recentlyViewed.forEach(product => {
+    const card = document.createElement('a');
+    card.href = product.url;
+    card.className = 'recently-product-card';
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.title}">
+      <p>${product.title}</p>
+    `;
+    recentlyContainer.appendChild(card);
+  });
+});
+</script>
