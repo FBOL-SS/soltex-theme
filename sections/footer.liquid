@@ -1,15 +1,17 @@
 <footer class="footer">
   <div class="footer-container">
-    <div class="footer-column footer-logo">
-      <img src="{{ 'logo_soltex.svg' | asset_url }}" alt="SOLTEX Logo" />
+    <div class="footer-top">
+      <div class="footer-logo">
+        <img src="{{ 'logo_soltex.svg' | asset_url }}" alt="Soltex Laguna">
+      </div>
+      <div class="footer-info">
+        <h2>{{ section.settings.company_name | escape }}</h2>
+        <p>{{ section.settings.address | escape }}</p>
+        <p><a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a></p>
+        <p><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></p>
+      </div>
     </div>
-    <div class="footer-column footer-info">
-      <h2>{{ section.settings.company_name | escape }}</h2>
-      <p>{{ section.settings.address | escape }}</p>
-      <p><a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a></p>
-      <p><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></p>
-    </div>
-    <div class="footer-column footer-socials">
+    <div class="footer-socials">
       {% if section.settings.facebook_url %}
         <a href="{{ section.settings.facebook_url }}" target="_blank" aria-label="Facebook">
           <img src="{{ 'icon-facebook.png' | asset_url }}" alt="Facebook" />
@@ -29,77 +31,57 @@
   </div>
 </footer>
 
-<style>
-.footer {
-  background-color: #001F3F;
-  color: #FFFFFF;
-  padding: 40px 20px;
+{% schema %}
+{
+  "name": "Pie de Página",
+  "tag": "section",
+  "class": "soltex-footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "company_name",
+      "label": "Nombre de la empresa",
+      "default": "SOLTEX"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Dirección",
+      "default": "Calle Ficticia #123, Torreón, Coahuila"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Teléfono",
+      "default": "+52 871 123 4567"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Correo electrónico",
+      "default": "info@soltex.com"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Link a Facebook"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Link a Instagram"
+    },
+    {
+      "type": "url",
+      "id": "linkedin_url",
+      "label": "Link a LinkedIn"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "category": "Pie de página"
+    }
+  ]
 }
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-column {
-  flex: 1;
-  text-align: center;
-  margin: 10px 0;
-}
-
-.footer-logo img {
-  max-width: 120px;
-  height: auto;
-}
-
-.footer-info h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.footer-info p {
-  margin: 4px 0;
-  font-size: 14px;
-}
-
-.footer-info a {
-  color: #FFFFFF;
-  text-decoration: none;
-}
-
-.footer-info a:hover {
-  text-decoration: underline;
-}
-
-.footer-socials a {
-  display: inline-block;
-  margin: 0 8px;
-}
-
-.footer-socials img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1);
-  transition: transform 0.2s;
-}
-
-.footer-socials img:hover {
-  transform: scale(1.2);
-}
-
-/* Responsive móvil */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-  }
-
-  .footer-column {
-    text-align: center;
-  }
-}
-</style>
+{% endschema %}
