@@ -7,22 +7,8 @@
     <title>{{ page_title }}</title>
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'product.css' | asset_url | stylesheet_tag }}
+    {{ 'product.css' | asset_url | stylesheet_tag }} {# <-- NUEVO ENLACE PARA PRODUCTOS #}
   </head>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const menuButton = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if (menuButton && navMenu) {
-      menuButton.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-      });
-    }
-  });
-  </script>
-
   <body>
 
     {% section 'header' %}
