@@ -1,0 +1,25 @@
+<section class="main-product">
+  <div class="main-product-container">
+    <h1>{{ product.title }}</h1>
+    <img src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.title }}">
+    <div class="product-price">
+      <p>{{ product.price | money }}</p>
+    </div>
+    <div class="product-description">
+      {{ product.description }}
+    </div>
+    <form method="post" action="/cart/add">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+      <button type="submit">Agregar al carrito</button>
+    </form>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main Product",
+  "tag": "section",
+  "class": "main-product-section",
+  "settings": []
+}
+{% endschema %}

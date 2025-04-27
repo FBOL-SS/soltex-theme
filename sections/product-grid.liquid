@@ -1,0 +1,24 @@
+<section class="product-grid">
+  <div class="product-grid-container">
+    {% for product in collection.products %}
+      <div class="product-item">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          <h3>{{ product.title }}</h3>
+          <p>{{ product.price | money }}</p>
+        </a>
+      </div>
+    {% else %}
+      <p>No hay productos disponibles.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "tag": "section",
+  "class": "product-grid-section",
+  "settings": []
+}
+{% endschema %}

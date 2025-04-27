@@ -1,0 +1,24 @@
+<section class="product-recommendations">
+  <h2>Te podría interesar</h2>
+  <div class="recommendations-grid">
+    {% for product in recommendations.products %}
+      <div class="recommended-product">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          <p>{{ product.title }}</p>
+        </a>
+      </div>
+    {% else %}
+      <p>No hay recomendaciones disponibles.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Recommendations",
+  "tag": "section",
+  "class": "product-recommendations-section",
+  "settings": []
+}
+{% endschema %}
