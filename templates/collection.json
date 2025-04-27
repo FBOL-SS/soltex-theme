@@ -1,12 +1,16 @@
 {
-  "name": "Página de Catálogo",
-  "sections": {
-    "main-collection": {
-      "type": "main-collection",
-      "settings": {}
-    }
-  },
-  "order": [
-    "main-collection"
-  ]
-}
+    "sections": {
+      "main-collection-banner": {
+        "type": "main-collection-banner",
+        "settings": {}
+      },
+      "product-grid": {
+        "type": "product-grid",
+        "settings": {}
+      }
+    },
+    "order": [
+      "main-collection-banner",
+      "product-grid"
+    ]
+  }
