@@ -1,27 +1,31 @@
 {
-    "sections": {
-      "hero": {
-        "type": "hero"
-      },
-      "about": {
-        "type": "about"
-      },
-      "services": {
-        "type": "services"
-      },
-      "featured-products": {
-        "type": "featured-products"
-      },
-      "footer": {
-        "type": "footer"
-      }
+  "sections": {
+    "hero-main": {
+      "type": "hero-main",
+      "settings": {}
     },
-    "order": [
-      "hero",
-      "about",
-      "services",
-      "featured-products",
-      "footer"
-    ]
-  }
-  
+    "about-us": {
+      "type": "about-us",
+      "settings": {}
+    },
+    "feature-icons": {
+      "type": "feature-icons",
+      "settings": {}
+    },
+    "services-grid": {
+      "type": "services-grid",
+      "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero-main",
+    "about-us",
+    "feature-icons",
+    "services-grid",
+    "footer"
+  ]
+}
