@@ -1,25 +1,40 @@
-<section class="main-product">
-  <div class="main-product-container">
-    <h1>{{ product.title }}</h1>
-    <img src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.title }}">
-    <div class="product-price">
-      <p>{{ product.price | money }}</p>
+<section class="product-page">
+  <div class="product-container">
+    <div class="product-gallery">
+      {% if product.images.size > 0 %}
+        <div class="main-image">
+          <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title }}">
+        </div>
+        <div class="thumbnail-gallery">
+          {% for image in product.images %}
+            <img src="{{ image | image_url: width: 150 }}" alt="{{ product.title }} thumbnail" onclick="document.querySelector('.main-image img').src='{{ image | image_url: width: 800 }}'">
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
-    <div class="product-description">
-      {{ product.description }}
+
+    <div class="product-details">
+      <h1 class="product-title">{{ product.title }}</h1>
+      <div class="product-price">{{ product.price | money }}</div>
+
+      <form method="post" action="/cart/add">
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+        <button type="submit" class="add-to-cart-button">Agregar al carrito</button>
+      </form>
+
+      <div class="product-description">
+        {{ product.description }}
+      </div>
+
+      <div class="product-specs">
+        <h3>Especificaciones</h3>
+        <ul>
+          <li><strong>Modelo Compatible:</strong> {{ product.metafields.custom.modelo_compatible }}</li>
+          <li><strong>País de Origen:</strong> {{ product.metafields.custom.pais_origen }}</li>
+          <li><strong>Marca:</strong> {{ product.vendor }}</li>
+          <li><strong>Calidad:</strong> {{ product.metafields.custom.calidad }}</li>
+        </ul>
+      </div>
     </div>
-    <form method="post" action="/cart/add">
-      <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-      <button type="submit">Agregar al carrito</button>
-    </form>
   </div>
 </section>
-
-{% schema %}
-{
-  "name": "Main Product",
-  "tag": "section",
-  "class": "main-product-section",
-  "settings": []
-}
-{% endschema %}

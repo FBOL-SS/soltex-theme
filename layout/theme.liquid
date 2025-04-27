@@ -3,11 +3,25 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ content_for_header }}
     <title>{{ page_title }}</title>
 
-    {{ content_for_header }}
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'product.css' | asset_url | stylesheet_tag }}
   </head>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuButton = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (menuButton && navMenu) {
+      menuButton.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+      });
+    }
+  });
+  </script>
 
   <body>
 
@@ -17,18 +31,5 @@
 
     {% section 'footer' %}
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const menuButton = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-
-        if (menuButton && navMenu) {
-          menuButton.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-          });
-        }
-      });
-    </script>
-    
   </body>
 </html>
