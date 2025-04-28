@@ -1,21 +1,23 @@
 <section class="brands-section">
-  <div class="container">
+  <div class="brands-banner">
     <h2 class="brands-title">{{ section.settings.heading }}</h2>
     <p class="brands-subtext">{{ section.settings.subtext }}</p>
+  </div>
 
-    <div class="brands-grid">
-      {% for block in section.blocks %}
-        <a href="{{ block.settings.link | default: '#' }}" class="brand-logo-link">
-          <img src="{{ block.settings.image | image_url: width: 300 }}" alt="{{ block.settings.name | escape }}">
+  <div class="brands-grid">
+    {% for block in section.blocks %}
+      {% if block.settings.logo != blank %}
+        <a href="{{ block.settings.link | default: '#' }}" class="brand-logo-card">
+          <img src="{{ block.settings.logo | img_url: '300x' }}" alt="{{ block.settings.name }}" loading="lazy">
         </a>
-      {% endfor %}
-    </div>
+      {% endif %}
+    {% endfor %}
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Brands Grid",
+  "name": "Marcas",
   "settings": [
     {
       "type": "text",
@@ -32,18 +34,13 @@
   ],
   "blocks": [
     {
-      "type": "brand",
+      "type": "logo",
       "name": "Marca",
       "settings": [
         {
           "type": "image_picker",
-          "id": "image",
+          "id": "logo",
           "label": "Logo de la marca"
-        },
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Nombre de la marca"
         },
         {
           "type": "url",
@@ -55,8 +52,8 @@
   ],
   "presets": [
     {
-      "name": "Brands Grid",
-      "category": "Secciones personalizadas"
+      "name": "Marcas",
+      "category": "Banners"
     }
   ]
 }
