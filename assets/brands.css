@@ -1,74 +1,61 @@
-/* Banner de marcas */
-.brands-banner {
-  background: linear-gradient(135deg, #001f3f, #003366);
-  color: white;
+.brands-section {
   padding: 60px 20px;
+  background-color: #f9f9f9;
   text-align: center;
-  border-radius: 10px;
-  margin-bottom: 50px;
 }
 
-.brands-banner-container {
-  max-width: 1000px;
+.brands-container {
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.brands-banner-title {
-  font-size: 36px;
-  margin-bottom: 20px;
+.brands-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #002147;
+  margin-bottom: 10px;
   text-transform: uppercase;
-  letter-spacing: 2px;
 }
 
-.brands-banner-text {
+.brands-subtitle {
   font-size: 18px;
-  line-height: 1.6;
-  opacity: 0.9;
+  color: #555;
+  margin-bottom: 40px;
 }
 
-/* Grid de logos */
-.brands-grid {
+.brands-logos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
 }
 
-.brand-item {
-  width: 150px;
-  height: 150px;
+.brand-logo {
+  display: block;
+  width: 160px;
+  height: 100px;
   background: white;
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 10px;
 }
 
-.brand-item img {
-  max-width: 80%;
-  max-height: 80%;
+.brand-logo img {
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
-.brand-item:hover {
+.brand-logo:hover {
   transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .brands-banner-title {
-    font-size: 28px;
-  }
-
-  .brands-banner-text {
-    font-size: 16px;
-  }
-
-  .brand-item {
+  .brand-logo {
     width: 120px;
-    height: 120px;
+    height: 80px;
   }
 }

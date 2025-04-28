@@ -1,112 +1,62 @@
 <section class="brands-section">
   <div class="brands-container">
-    {% if section.settings.brands_heading != blank %}
-      <h2 class="brands-heading">{{ section.settings.brands_heading }}</h2>
-    {% endif %}
-    
-    <div class="brands-grid">
+    <h2 class="brands-title">{{ section.settings.title }}</h2>
+    <p class="brands-subtitle">{{ section.settings.subtitle }}</p>
+
+    <div class="brands-logos">
       {% for block in section.blocks %}
-        <a href="{{ block.settings.brand_link }}" class="brand-logo" {% if block.settings.brand_link == blank %}style="pointer-events: none;"{% endif %}>
-          {% if block.settings.brand_logo %}
-            <img src="{{ block.settings.brand_logo | image_url: width: 300 }}" alt="Logo {{ block.settings.brand_logo.alt | escape }}">
-          {% endif %}
+        <a href="{{ block.settings.link }}" class="brand-logo">
+          <img src="{{ block.settings.logo | image_url: width: 300 }}" alt="{{ block.settings.name }}">
         </a>
       {% endfor %}
     </div>
   </div>
 </section>
 
-<style>
-  .brands-section {
-    padding: 60px 20px;
-    background-color: #ffffff;
-    text-align: center;
-  }
-
-  .brands-heading {
-    font-size: 32px;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #002f6c;
-  }
-
-  .brands-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .brand-logo {
-    width: 150px;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-  }
-
-  .brand-logo img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    filter: grayscale(0%);
-    transition: filter 0.3s ease;
-  }
-
-  .brand-logo:hover img {
-    filter: grayscale(0%) brightness(1.2);
-    transform: scale(1.05);
-  }
-
-  @media (max-width: 768px) {
-    .brands-grid {
-      gap: 20px;
-    }
-
-    .brand-logo {
-      width: 100px;
-    }
-  }
-</style>
-
 {% schema %}
 {
-  "name": "Brands Grid",
+  "name": "Marcas",
   "settings": [
     {
       "type": "text",
-      "id": "brands_heading",
-      "label": "Título de sección",
-      "default": "Distribuimos las mejores marcas"
+      "id": "title",
+      "label": "Título",
+      "default": "NUESTRAS MARCAS"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "En Soltex nos enorgullece distribuir las marcas más confiables de la industria textil. Garantizamos calidad, respaldo y la mejor atención para cada uno de nuestros clientes."
     }
   ],
   "blocks": [
-    { "type": "brand", "name": "Yamato", "settings": { "brand_logo": "logo_yamato.png", "brand_link": "/collections/all?filter.v.marca=Yamato" } },
-    { "type": "brand", "name": "Juki", "settings": { "brand_logo": "logo_juki.png", "brand_link": "/collections/all?filter.v.marca=Juki" } },
-    { "type": "brand", "name": "Durkopp Adler", "settings": { "brand_logo": "logo_durkopp_adler.png", "brand_link": "/collections/all?filter.v.marca=Durkopp-Adler" } },
-    { "type": "brand", "name": "Brother", "settings": { "brand_logo": "logo_brother.png", "brand_link": "/collections/all?filter.v.marca=Brother" } },
-    { "type": "brand", "name": "Pegasus", "settings": { "brand_logo": "logo_pegasus.png", "brand_link": "/collections/all?filter.v.marca=Pegasus" } },
-    { "type": "brand", "name": "Kansai", "settings": { "brand_logo": "logo_kansai.png", "brand_link": "/collections/all?filter.v.marca=Kansai" } },
-    { "type": "brand", "name": "Siruba", "settings": { "brand_logo": "logo_siruba.png", "brand_link": "/collections/all?filter.v.marca=Siruba" } },
-    { "type": "brand", "name": "Sunstar", "settings": { "brand_logo": "logo_sunstar.png", "brand_link": "/collections/all?filter.v.marca=Sunstar" } },
-    { "type": "brand", "name": "Singer", "settings": { "brand_logo": "logo_singer.png", "brand_link": "/collections/all?filter.v.marca=Singer" } },
-    { "type": "brand", "name": "Union Special", "settings": { "brand_logo": "logo_union_special.png", "brand_link": "/collections/all?filter.v.marca=Union-Special" } },
-    { "type": "brand", "name": "Mitsubishi", "settings": { "brand_logo": "logo_mitsubishi.png", "brand_link": "/collections/all?filter.v.marca=Mitsubishi" } },
-    { "type": "brand", "name": "Seiko", "settings": { "brand_logo": "logo_seiko.png", "brand_link": "/collections/all?filter.v.marca=Seiko" } },
-    { "type": "brand", "name": "Avery Dennison", "settings": { "brand_logo": "logo_avery_dennison.png", "brand_link": "/collections/all?filter.v.marca=Avery-Dennison" } },
-    { "type": "brand", "name": "Feedrail", "settings": { "brand_logo": "logo_feedrail.png", "brand_link": "/collections/all?filter.v.marca=Feedrail" } },
-    { "type": "brand", "name": "Pfaff", "settings": { "brand_logo": "logo_pfaff.png", "brand_link": "/collections/all?filter.v.marca=Pfaff" } },
-    { "type": "brand", "name": "Jack", "settings": { "brand_logo": "logo_jack.png", "brand_link": "/collections/all?filter.v.marca=Jack" } },
-    { "type": "brand", "name": "Hirose", "settings": { "brand_logo": "logo_hirose.png", "brand_link": "/collections/all?filter.v.marca=Hirose" } },
-    { "type": "brand", "name": "CM Cerliani", "settings": { "brand_logo": "logo_cm_cerliani.png", "brand_link": "/collections/all?filter.v.marca=CM-Cerliani" } },
-    { "type": "brand", "name": "Koban", "settings": { "brand_logo": "logo_koban.png", "brand_link": "/collections/all?filter.v.marca=Koban" } },
-    { "type": "brand", "name": "Universal", "settings": { "brand_logo": "logo_mundial.png", "brand_link": "/collections/all?filter.v.tipo=Universal" } }
+    {
+      "type": "brand",
+      "name": "Marca",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo de la marca"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nombre de la marca"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace de la marca"
+        }
+      ]
+    }
   ],
+  "max_blocks": 50,
   "presets": [
     {
-      "name": "Brands Grid",
-      "category": "Custom"
+      "name": "Marcas"
     }
   ]
 }
