@@ -1,39 +1,14 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main-collection-banner": {
-      "type": "main-collection-banner",
-      "settings": {}
+      "type": "main-collection-banner"
     },
-    "product-grid": {
-      "type": "product-grid",
-      "disabled": true,
-      "settings": {}
-    },
-    "collection_filters_xqg9bU": {
-      "type": "collection-filters",
-      "disabled": true,
-      "name": "Collection Filters",
-      "settings": {}
-    },
-    "brands_JGkeRF": {
-      "type": "brands",
-      "name": "Brands Grid",
-      "settings": {}
+    "brands-grid": {
+      "type": "brands"
     }
   },
   "order": [
     "main-collection-banner",
-    "product-grid",
-    "collection_filters_xqg9bU",
-    "brands_JGkeRF"
+    "brands-grid"
   ]
 }
