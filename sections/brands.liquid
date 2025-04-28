@@ -1,20 +1,34 @@
-<section class="brands-page">
-  <div class="brands-header">
-    <h1>Nuestras Marcas</h1>
-    <p>Contamos con la distribución oficial de estas marcas reconocidas a nivel mundial.</p>
-  </div>
+<section class="brands-grid">
+  <div class="brands-container">
 
-  <div class="brands-grid">
-    {% assign marcas = 
-      "YAMATO,STRONG H,BROTHER,JUKI,DURKOPP ADLER,PEGASUS,SIRUBA,KANSAI SPECIAL,UNION SPECIAL" | split: "," 
-    %}
+    {% assign brands = 
+      "yamato,juki,durkopp_adler,brother,pegasus,kansai_special,siruba,sunstar,singer,union_special,mitsubishi,seiko,avery_dennison,feedrail,pfaff,jack,hirose,cm_cerliani,koban,universal"
+      | split: "," %}
 
-    {% for marca in marcas %}
+    {% for brand in brands %}
       <div class="brand-item">
-        <a href="/collections/all?filter.p.marca={{ marca | url_encode }}">
-          <img src="{{ 'logo-' | append: marca | append: '.png' | asset_url }}" alt="{{ marca }}">
+        <a href="#" title="{{ brand | replace: '_', ' ' | capitalize }}">
+          <img 
+            src="{{ brand | prepend: 'logo_' | append: '.png' | asset_url }}" 
+            alt="{{ brand | replace: '_', ' ' | capitalize }} logo">
         </a>
       </div>
     {% endfor %}
+
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Brands Grid",
+  "tag": "section",
+  "class": "brands-grid-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Brands Grid",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
