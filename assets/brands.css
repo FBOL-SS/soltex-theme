@@ -34,9 +34,10 @@
 }
 
 .brand-logo-link img {
-  max-height: 100px;
-  height: auto;
+  height: 80px;
   width: auto;
+  object-fit: contain;
   display: block;
   margin: 0 auto;
 }
+
