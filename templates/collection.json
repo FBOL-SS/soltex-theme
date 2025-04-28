@@ -9,19 +9,179 @@
  */
 {
   "sections": {
-    "collection_filters_NdJFqj": {
-      "type": "collection-filters",
-      "name": "Collection Filters",
-      "settings": {}
-    },
-    "main_collection_mGMqTA": {
-      "type": "main_collection",
-      "name": "Productos del Catálogo",
-      "settings": {}
+    "brands-grid": {
+      "type": "brands",
+      "blocks": {
+        "logo_DwjmiK": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_jack.png",
+            "link": ""
+          }
+        },
+        "logo_AMyHYz": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_yamato.png",
+            "link": ""
+          }
+        },
+        "logo_QJmrTt": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_juki.png",
+            "link": ""
+          }
+        },
+        "logo_L7Xrzz": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_pegasus.png",
+            "link": ""
+          }
+        },
+        "logo_AAHW3Q": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_brother.png",
+            "link": ""
+          }
+        },
+        "logo_CMALrb": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_durkopp_adler.png",
+            "link": ""
+          }
+        },
+        "logo_3eYFGc": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_kansai_special.png",
+            "link": ""
+          }
+        },
+        "logo_LRCVXT": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_union_special.png",
+            "link": ""
+          }
+        },
+        "logo_JdCjFc": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_siruba.png",
+            "link": ""
+          }
+        },
+        "logo_xbr4KX": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_singer.png",
+            "link": ""
+          }
+        },
+        "logo_iRHJyx": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_seiko.png",
+            "link": ""
+          }
+        },
+        "logo_AdytEc": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_sunstar.png",
+            "link": ""
+          }
+        },
+        "logo_AePBmU": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_feedrail.png",
+            "link": ""
+          }
+        },
+        "logo_9r7Arb": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_mundial.png",
+            "link": ""
+          }
+        },
+        "logo_JpnwtK": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_koban.png",
+            "link": ""
+          }
+        },
+        "logo_qTYXUK": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_hirose.png",
+            "link": ""
+          }
+        },
+        "logo_MjqWQq": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_mitsubishi.png",
+            "link": ""
+          }
+        },
+        "logo_mV6bL3": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_pfaff.png",
+            "link": ""
+          }
+        },
+        "logo_xLCJAT": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_avery_dennison_79ac361c-1d66-4197-bfa6-2f1f604f3ade.png",
+            "link": ""
+          }
+        },
+        "logo_TAtDT9": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_cm_cerliani.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_DwjmiK",
+        "logo_AMyHYz",
+        "logo_QJmrTt",
+        "logo_L7Xrzz",
+        "logo_AAHW3Q",
+        "logo_CMALrb",
+        "logo_3eYFGc",
+        "logo_LRCVXT",
+        "logo_JdCjFc",
+        "logo_xbr4KX",
+        "logo_iRHJyx",
+        "logo_AdytEc",
+        "logo_AePBmU",
+        "logo_9r7Arb",
+        "logo_JpnwtK",
+        "logo_qTYXUK",
+        "logo_MjqWQq",
+        "logo_mV6bL3",
+        "logo_xLCJAT",
+        "logo_TAtDT9"
+      ],
+      "settings": {
+        "heading": "NUESTRAS MARCAS",
+        "subtext": "En Soltex nos enorgullece distribuir las marcas más confiables de la industria textil. Garantizamos calidad, respaldo y la mejor atención para cada uno de nuestros clientes."
+      }
     }
   },
   "order": [
-    "collection_filters_NdJFqj",
-    "main_collection_mGMqTA"
+    "brands-grid"
   ]
 }
