@@ -1,12 +1,12 @@
 <section class="brands-section">
-  <div class="brands-container">
-    <h2 class="brands-title">{{ section.settings.title }}</h2>
-    <p class="brands-subtitle">{{ section.settings.subtitle }}</p>
+  <div class="container">
+    <h2 class="brands-title">{{ section.settings.heading }}</h2>
+    <p class="brands-subtext">{{ section.settings.subtext }}</p>
 
-    <div class="brands-logos">
+    <div class="brands-grid">
       {% for block in section.blocks %}
-        <a href="{{ block.settings.link }}" class="brand-logo">
-          <img src="{{ block.settings.logo | image_url: width: 300 }}" alt="{{ block.settings.name }}">
+        <a href="{{ block.settings.link | default: '#' }}" class="brand-logo-link">
+          <img src="{{ block.settings.image | image_url: width: 300 }}" alt="{{ block.settings.name | escape }}">
         </a>
       {% endfor %}
     </div>
@@ -15,18 +15,18 @@
 
 {% schema %}
 {
-  "name": "Marcas",
+  "name": "Brands Grid",
   "settings": [
     {
       "type": "text",
-      "id": "title",
+      "id": "heading",
       "label": "Título",
       "default": "NUESTRAS MARCAS"
     },
     {
       "type": "textarea",
-      "id": "subtitle",
-      "label": "Subtítulo",
+      "id": "subtext",
+      "label": "Subtexto",
       "default": "En Soltex nos enorgullece distribuir las marcas más confiables de la industria textil. Garantizamos calidad, respaldo y la mejor atención para cada uno de nuestros clientes."
     }
   ],
@@ -37,7 +37,7 @@
       "settings": [
         {
           "type": "image_picker",
-          "id": "logo",
+          "id": "image",
           "label": "Logo de la marca"
         },
         {
@@ -53,10 +53,10 @@
       ]
     }
   ],
-  "max_blocks": 50,
   "presets": [
     {
-      "name": "Marcas"
+      "name": "Brands Grid",
+      "category": "Secciones personalizadas"
     }
   ]
 }
