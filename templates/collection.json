@@ -20,6 +20,7 @@
     },
     "collection_filters_xqg9bU": {
       "type": "collection-filters",
+      "disabled": true,
       "name": "Collection Filters",
       "settings": {}
     },
