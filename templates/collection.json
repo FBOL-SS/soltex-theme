@@ -43,13 +43,31 @@
             "name": "",
             "link": ""
           }
+        },
+        "brand_9xxa8T": {
+          "type": "brand",
+          "settings": {
+            "image": "shopify://shop_images/logo_brother.png",
+            "name": "",
+            "link": ""
+          }
+        },
+        "brand_YwAq87": {
+          "type": "brand",
+          "settings": {
+            "image": "shopify://shop_images/logo_kansai_special.png",
+            "name": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
         "brand_8QJXdD",
         "brand_afEeYw",
         "brand_UrhVDY",
-        "brand_wagAdK"
+        "brand_wagAdK",
+        "brand_9xxa8T",
+        "brand_YwAq87"
       ],
       "settings": {
         "heading": "NUESTRAS MARCAS",
