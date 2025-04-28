@@ -52,4 +52,25 @@
   height: auto;
   object-fit: contain;
 }
+.view-all-button {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.view-all-link {
+  display: inline-block;
+  background-color: #0056b3;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.view-all-link:hover {
+  background-color: #003e80;
+  transform: translateY(-3px);
+}
 
