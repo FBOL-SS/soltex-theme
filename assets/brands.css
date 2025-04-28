@@ -1,25 +1,74 @@
-.brands-grid {
+/* Banner de marcas */
+.brands-banner {
+  background: linear-gradient(135deg, #001f3f, #003366);
+  color: white;
   padding: 60px 20px;
-  background-color: #ffffff;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 50px;
 }
 
-.brands-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 40px;
-  justify-items: center;
-  align-items: center;
-  max-width: 1200px;
+.brands-banner-container {
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-.brand-item img {
-  width: 100%;
-  max-width: 150px;
-  height: auto;
-  transition: transform 0.3s ease;
+.brands-banner-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.brand-item img:hover {
-  transform: scale(1.05);
+.brands-banner-text {
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Grid de logos */
+.brands-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.brand-item {
+  width: 150px;
+  height: 150px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.brand-item img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.brand-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .brands-banner-title {
+    font-size: 28px;
+  }
+
+  .brands-banner-text {
+    font-size: 16px;
+  }
+
+  .brand-item {
+    width: 120px;
+    height: 120px;
+  }
 }

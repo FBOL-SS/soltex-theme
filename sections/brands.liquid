@@ -1,33 +1,73 @@
-<section class="brands-grid">
-  <div class="brands-container">
+<section class="brands-page">
+  
+  <!-- Banner superior -->
+  <div class="brands-banner">
+    <div class="brands-banner-container">
+      <h1 class="brands-banner-title">{{ section.settings.banner_title }}</h1>
+      <p class="brands-banner-text">
+        {{ section.settings.banner_text }}
+      </p>
+    </div>
+  </div>
 
-    {% assign brands = 
-      "yamato,juki,durkopp_adler,brother,pegasus,kansai_special,siruba,sunstar,singer,union_special,mitsubishi,seiko,avery_dennison,feedrail,pfaff,jack,hirose,cm_cerliani,koban,universal"
-      | split: "," %}
-
-    {% for brand in brands %}
+  <!-- Grid de logos -->
+  <div class="brands-grid">
+    {% for brand in section.blocks %}
       <div class="brand-item">
-        <a href="#" title="{{ brand | replace: '_', ' ' | capitalize }}">
-          <img 
-            src="{{ brand | prepend: 'logo_' | append: '.png' | asset_url }}" 
-            alt="{{ brand | replace: '_', ' ' | capitalize }} logo">
+        <a href="{{ brand.settings.brand_link }}">
+          <img src="{{ brand.settings.brand_logo | asset_url }}" alt="{{ brand.settings.brand_name }}">
         </a>
       </div>
     {% endfor %}
-
   </div>
+
 </section>
 
 {% schema %}
 {
-  "name": "Brands Grid",
-  "tag": "section",
-  "class": "brands-grid-section",
-  "settings": [],
+  "name": "Marcas",
+  "settings": [
+    {
+      "type": "text",
+      "id": "banner_title",
+      "label": "Título del Banner",
+      "default": "NUESTRAS MARCAS"
+    },
+    {
+      "type": "textarea",
+      "id": "banner_text",
+      "label": "Texto del Banner",
+      "default": "En Soltex nos enorgullece distribuir las marcas más confiables de la industria textil. Garantizamos calidad, respaldo y la mejor atención para cada uno de nuestros clientes."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Marca",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "brand_logo",
+          "label": "Logo de la marca"
+        },
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Nombre de la marca",
+          "default": "Marca"
+        },
+        {
+          "type": "url",
+          "id": "brand_link",
+          "label": "Link hacia colección filtrada"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Brands Grid",
-      "category": "Custom"
+      "name": "Marcas - Página",
+      "category": "Página personalizada"
     }
   ]
 }
