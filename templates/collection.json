@@ -15,17 +15,24 @@
     },
     "product-grid": {
       "type": "product-grid",
+      "disabled": true,
       "settings": {}
     },
     "collection_filters_xqg9bU": {
       "type": "collection-filters",
       "name": "Collection Filters",
       "settings": {}
+    },
+    "brands_JGkeRF": {
+      "type": "brands",
+      "name": "Brands Grid",
+      "settings": {}
     }
   },
   "order": [
     "main-collection-banner",
     "product-grid",
-    "collection_filters_xqg9bU"
+    "collection_filters_xqg9bU",
+    "brands_JGkeRF"
   ]
 }
