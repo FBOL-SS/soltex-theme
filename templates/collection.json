@@ -15,17 +15,45 @@
         "brand_8QJXdD": {
           "type": "brand",
           "settings": {
+            "image": "shopify://shop_images/logo_jack.png",
             "name": "{{ collection.metafields.custom.marcas.value }}",
+            "link": ""
+          }
+        },
+        "brand_afEeYw": {
+          "type": "brand",
+          "settings": {
+            "image": "shopify://shop_images/logo_yamato.png",
+            "name": "",
+            "link": ""
+          }
+        },
+        "brand_UrhVDY": {
+          "type": "brand",
+          "settings": {
+            "image": "shopify://shop_images/logo_juki.png",
+            "name": "",
+            "link": ""
+          }
+        },
+        "brand_wagAdK": {
+          "type": "brand",
+          "settings": {
+            "image": "shopify://shop_images/logo_pegasus.png",
+            "name": "",
             "link": ""
           }
         }
       },
       "block_order": [
-        "brand_8QJXdD"
+        "brand_8QJXdD",
+        "brand_afEeYw",
+        "brand_UrhVDY",
+        "brand_wagAdK"
       ],
       "settings": {
-        "title": "NUESTRAS MARCAS",
-        "subtitle": "En Soltex nos enorgullece distribuir las marcas más confiables de la industria textil. Garantizamos calidad, respaldo y la mejor atención para cada uno de nuestros clientes."
+        "heading": "NUESTRAS MARCAS",
+        "subtext": "En Soltex nos enorgullece distribuir las marcas más confiables de la industria textil. Garantizamos calidad, respaldo y la mejor atención para cada uno de nuestros clientes."
       }
     }
   },
