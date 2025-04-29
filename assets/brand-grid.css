@@ -1,0 +1,49 @@
+.brand-grid {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.brand-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.brand-card img {
+  max-width: 150px;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.brand-card img:hover {
+  transform: scale(1.05);
+}
+
+.brand-grid-button {
+  text-align: center;
+}
+
+.brand-view-all-button {
+  background-color: #0056b3;
+  color: white;
+  padding: 12px 30px;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 6px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.brand-view-all-button:hover {
+  background-color: #003e80;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .brand-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

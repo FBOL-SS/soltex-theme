@@ -1,59 +1,94 @@
+/* Archivo: assets/brands-page.css */
+
 .brands-page {
   max-width: 1200px;
-  margin: 60px auto;
+  margin: 40px auto;
   padding: 0 20px;
+}
+
+.brand-banner {
   text-align: center;
-}
-
-.brands-title {
-  font-size: 36px;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  color: #001F3F;
-}
-
-.brands-description {
-  font-size: 18px;
   margin-bottom: 40px;
-  color: #555;
 }
 
-.brand-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-}
-
-.brand-card {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  width: 180px;
-  padding: 20px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  text-decoration: none;
-  color: #333;
-}
-
-.brand-card img {
-  max-width: 100%;
-  height: auto;
+.brand-banner h1 {
+  font-size: 36px;
   margin-bottom: 10px;
-  transition: transform 0.3s;
-}
-
-.brand-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.brand-card:hover img {
-  transform: scale(1.05);
-}
-
-.brand-name {
-  font-size: 16px;
-  font-weight: bold;
   text-transform: uppercase;
+  color: #002147;
+}
+
+.brand-banner p {
+  font-size: 18px;
+  color: #555;
+  margin-top: 0;
+}
+
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  justify-items: center;
+  margin-bottom: 50px;
+}
+
+.brand-item {
+  width: 100%;
+  max-width: 220px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.3s;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.brand-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.brand-item img {
+  width: 100%;
+  max-width: 140px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.view-all-button {
+  display: block;
+  margin: 40px auto 0;
+  padding: 15px 40px;
+  background-color: #002147;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.view-all-button:hover {
+  background-color: #003366;
+}
+
+/* Responsive para celular */
+@media (max-width: 768px) {
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .brand-item {
+    padding: 15px;
+  }
+  
+  .brand-banner h1 {
+    font-size: 28px;
+  }
+  
+  .brand-banner p {
+    font-size: 16px;
+  }
 }

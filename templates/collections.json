@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "main": {
+      "type": "brands-page"
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
