@@ -1,65 +1,119 @@
-<section class="product-grid">
-  <div class="product-layout">
-    <aside class="filters">
-      <h3>Filtrar por</h3>
-      <h4>Marca</h4>
-      <!-- Espacio reservado para futuras marcas -->
-      <h4>Categoría</h4>
-      <!-- Espacio reservado para futuras categorías -->
-      <h4>Tipo</h4>
-      <ul>
-        <li><a href="#">Original</a></li>
-        <li><a href="#">Genérico</a></li>
-        <li><a href="#">Strong H</a></li>
-      </ul>
-    </aside>
+section class="product-grid-wrapper">
+  <div class="brands-header">
+    <h2>NUESTRAS MARCAS</h2>
+    <p>Contamos con la distribución oficial de las mejores marcas textiles.</p>
+  </div>
 
-    <div class="products-container">
-      {% if collection.products.size > 0 %}
-        <div class="products-grid">
-          {% for product in collection.products %}
-            <a href="{{ product.url }}" class="product-card">
-              <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}">
-              <h3>{{ product.title }}</h3>
-              {% if section.settings.show_vendor %}
-                <p class="vendor">{{ product.vendor }}</p>
-              {% endif %}
-              <p class="price">{{ product.price | money }}</p>
-            </a>
-          {% endfor %}
-        </div>
-      {% else %}
-        <p>No hay productos en esta colección todavía.</p>
-      {% endif %}
-    </div>
+  <div class="brands-button-container">
+    <a href="/collections/all" class="brands-view-all">Ver Todos los Productos</a>
+  </div>
+
+  <div class="brands-container">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.brand_link }}" class="brand-card">
+        <img src="{{ block.settings.brand_logo | img_url: 'medium' }}" alt="{{ block.settings.brand_name }}">
+      </a>
+    {% endfor %}
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Product Grid",
-  "settings": [
+  "name": "Página de Marcas",
+  "settings": [],
+  "blocks": [
     {
-      "type": "checkbox",
-      "id": "show_vendor",
-      "label": "Mostrar marca del producto",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "products_per_page",
-      "min": 4,
-      "max": 48,
-      "step": 4,
-      "label": "Productos por página",
-      "default": 24
+      "type": "brand",
+      "name": "Marca",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "brand_logo",
+          "label": "Logo de la marca"
+        },
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Nombre de la marca"
+        },
+        {
+          "type": "url",
+          "id": "brand_link",
+          "label": "Enlace de la marca"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Product Grid",
-      "category": "Productos"
+      "name": "Página de Marcas",
+      "category": "Marcas"
     }
   ]
 }
 {% endschema %}
+
+<style>
+  .brands-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .brands-button-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .brands-view-all {
+    background-color: #002F5F;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  .brands-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0 20px 40px;
+    justify-items: center;
+  }
+
+  .brand-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 150px;
+    height: 100px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+  }
+
+  .brand-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .brand-card img {
+    max-width: 100%;
+    max-height: 60px;
+    object-fit: contain;
+  }
+
+  @media screen and (max-width: 768px) {
+    .brands-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .brands-view-all {
+      font-size: 13px;
+      padding: 8px 18px;
+    }
+  }
+</style>
