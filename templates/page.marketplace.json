@@ -1,0 +1,23 @@
+{
+  "name": "Marketplace",
+  "sections": {
+    "main-collection-banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "heading": "Catálogo General",
+        "subtext": "Explora toda nuestra línea de productos disponibles para la industria textil."
+      }
+    },
+    "product-grid": {
+      "type": "product-grid",
+      "settings": {
+        "show_vendor": true,
+        "products_per_page": 24
+      }
+    }
+  },
+  "order": [
+    "main-collection-banner",
+    "product-grid"
+  ]
+}
