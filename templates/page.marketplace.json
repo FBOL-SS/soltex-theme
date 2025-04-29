@@ -11,8 +11,11 @@
   "sections": {
     "main-collection-banner": {
       "type": "main-collection-banner",
+      "custom_css": [
+        "h2 {font-size: 35}"
+      ],
       "settings": {
-        "heading": "Catálogo General",
+        "title": "CATÁLOGO GENERAL",
         "subtext": "Explora toda nuestra línea de productos disponibles para la industria textil."
       }
     },
