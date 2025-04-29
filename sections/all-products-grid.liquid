@@ -1,0 +1,43 @@
+<!-- Archivo: sections/all-products-grid.liquid -->
+<section class="all-products-grid">
+  <div class="container">
+    <h1 class="main-title">Catálogo Completo de Productos</h1>
+
+    <div class="products-grid">
+      {% paginate collections.all.products by 24 %}
+        {% for product in collections.all.products %}
+          <div class="product-card">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}">
+              <h2 class="product-title">{{ product.title }}</h2>
+              <p class="product-price">{{ product.price | money }}</p>
+            </a>
+          </div>
+        {% endfor %}
+        
+        <div class="pagination">
+          {% if paginate.previous %}
+            <a href="{{ paginate.previous.url }}" class="prev">← Anterior</a>
+          {% endif %}
+          {% for part in paginate.parts %}
+            {% if part.is_link %}
+              <a href="{{ part.url }}">{{ part.title }}</a>
+            {% else %}
+              <span class="current">{{ part.title }}</span>
+            {% endif %}
+          {% endfor %}
+          {% if paginate.next %}
+            <a href="{{ paginate.next.url }}" class="next">Siguiente →</a>
+          {% endif %}
+        </div>
+      {% endpaginate %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "All Products Grid",
+  "settings": []
+}
+{% endschema %}
