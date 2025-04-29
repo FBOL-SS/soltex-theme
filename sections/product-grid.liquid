@@ -1,7 +1,6 @@
-{% assign all_products = collections.all.products %}
-
 <section class="product-grid">
   <div class="products-container">
+    {% assign all_products = collections.all.products %}
     {% paginate all_products by section.settings.products_per_page %}
       {% if all_products.size > 0 %}
         <div class="products-grid">
@@ -17,9 +16,38 @@
           {% endfor %}
         </div>
       {% else %}
-        <p>No hay productos disponibles.</p>
+        <p>No hay productos en esta página todavía.</p>
       {% endif %}
       {{ paginate | default_pagination }}
     {% endpaginate %}
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Mostrar marca del producto",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 4,
+      "max": 48,
+      "step": 4,
+      "label": "Productos por página",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid",
+      "category": "Productos"
+    }
+  ]
+}
+{% endschema %}
