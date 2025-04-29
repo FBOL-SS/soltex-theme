@@ -32,76 +32,121 @@
     .filter-option {
       display: block;
       margin: 5px 0;
-      color: #004080;
-      text-decoration: none;
-      transition: all 0.2s ease;
       font-size: 0.95rem;
+      color: #004080;
     }
   
-    .filter-option:hover {
-      text-decoration: underline;
-      color: #001f4d;
+    .filter-option input {
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+  
+    .filter-apply-btn {
+      background-color: #002147;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      margin-top: 20px;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: 600;
+    }
+  
+    .filter-apply-btn:hover {
+      background-color: #003366;
     }
   </style>
   
   <div class="filter-sidebar">
     <h3 class="filter-title">Filtrar por</h3>
   
-    {% assign marca_tags = '' %}
-    {% assign categoria_tags = '' %}
-    {% assign tipo_tags = '' %}
+    <form id="filter-form" action="{{ collection.url }}" method="get">
+      {% assign marca_tags = '' %}
+      {% assign categoria_tags = '' %}
+      {% assign tipo_tags = '' %}
   
-    {% for tag in collection.all_tags %}
-      {% if tag contains 'Marca_' %}
-        {% assign marca_tags = marca_tags | append: tag | append: ',' %}
-      {% elsif tag contains 'Categoria_' %}
-        {% assign categoria_tags = categoria_tags | append: tag | append: ',' %}
-      {% elsif tag contains 'Tipo_' %}
-        {% assign tipo_tags = tipo_tags | append: tag | append: ',' %}
+      {% for tag in collection.all_tags %}
+        {% if tag contains 'Marca_' %}
+          {% assign marca_tags = marca_tags | append: tag | append: ',' %}
+        {% elsif tag contains 'Categoria_' %}
+          {% assign categoria_tags = categoria_tags | append: tag | append: ',' %}
+        {% elsif tag contains 'Tipo_' %}
+          {% assign tipo_tags = tipo_tags | append: tag | append: ',' %}
+        {% endif %}
+      {% endfor %}
+  
+      {% assign marca_array = marca_tags | split: ',' | uniq %}
+      {% assign categoria_array = categoria_tags | split: ',' | uniq %}
+      {% assign tipo_array = tipo_tags | split: ',' | uniq %}
+  
+      {% if marca_array.size > 1 %}
+        <div class="filter-group">
+          <h4>Marca</h4>
+          {% for tag in marca_array %}
+            {% unless tag == '' %}
+              <label class="filter-option">
+                <input type="checkbox" name="filter" value="{{ tag }}">
+                {{ tag | remove: 'Marca_' | replace: '-', ' ' | capitalize }}
+              </label>
+            {% endunless %}
+          {% endfor %}
+        </div>
       {% endif %}
-    {% endfor %}
   
-    {% assign marca_array = marca_tags | split: ',' | uniq %}
-    {% assign categoria_array = categoria_tags | split: ',' | uniq %}
-    {% assign tipo_array = tipo_tags | split: ',' | uniq %}
+      {% if categoria_array.size > 1 %}
+        <div class="filter-group">
+          <h4>Categoría</h4>
+          {% for tag in categoria_array %}
+            {% unless tag == '' %}
+              <label class="filter-option">
+                <input type="checkbox" name="filter" value="{{ tag }}">
+                {{ tag | remove: 'Categoria_' | replace: '-', ' ' | capitalize }}
+              </label>
+            {% endunless %}
+          {% endfor %}
+        </div>
+      {% endif %}
   
-    {% if marca_array.size > 1 %}
-      <div class="filter-group">
-        <h4>Marca</h4>
-        {% for tag in marca_array %}
-          {% unless tag == '' %}
-            <a href="{{ collection.url | append: '?constraint=' | append: tag }}" class="filter-option">
-              {{ tag | remove: 'Marca_' | replace: '-', ' ' | capitalize }}
-            </a>
-          {% endunless %}
-        {% endfor %}
-      </div>
-    {% endif %}
+      {% if tipo_array.size > 1 %}
+        <div class="filter-group">
+          <h4>Tipo</h4>
+          {% for tag in tipo_array %}
+            {% unless tag == '' %}
+              <label class="filter-option">
+                <input type="checkbox" name="filter" value="{{ tag }}">
+                {{ tag | remove: 'Tipo_' | replace: '-', ' ' | capitalize }}
+              </label>
+            {% endunless %}
+          {% endfor %}
+        </div>
+      {% endif %}
   
-    {% if categoria_array.size > 1 %}
-      <div class="filter-group">
-        <h4>Categoría</h4>
-        {% for tag in categoria_array %}
-          {% unless tag == '' %}
-            <a href="{{ collection.url | append: '?constraint=' | append: tag }}" class="filter-option">
-              {{ tag | remove: 'Categoria_' | replace: '-', ' ' | capitalize }}
-            </a>
-          {% endunless %}
-        {% endfor %}
-      </div>
-    {% endif %}
-  
-    {% if tipo_array.size > 1 %}
-      <div class="filter-group">
-        <h4>Tipo</h4>
-        {% for tag in tipo_array %}
-          {% unless tag == '' %}
-            <a href="{{ collection.url | append: '?constraint=' | append: tag }}" class="filter-option">
-              {{ tag | remove: 'Tipo_' | replace: '-', ' ' | capitalize }}
-            </a>
-          {% endunless %}
-        {% endfor %}
-      </div>
-    {% endif %}
+      <button type="submit" class="filter-apply-btn">Aplicar filtros</button>
+    </form>
   </div>
   
+  <script>
+    const filterForm = document.getElementById('filter-form');
+  
+    filterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const selectedFilters = [];
+      const checkboxes = filterForm.querySelectorAll('input[type="checkbox"]:checked');
+  
+      checkboxes.forEach((checkbox) => {
+        selectedFilters.push(checkbox.value);
+      });
+  
+      const baseUrl = "{{ collection.url }}";
+      const constraintString = selectedFilters.join('+');
+  
+      if (constraintString.length > 0) {
+        window.location.href = `${baseUrl}?constraint=${constraintString}`;
+      } else {
+        window.location.href = baseUrl;
+      }
+    });
+  </script>
+    
