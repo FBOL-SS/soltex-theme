@@ -94,3 +94,64 @@
     {% endfor %}
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Página de Marcas",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "NUESTRAS MARCAS"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtexto",
+      "default": "Contamos con la distribución oficial de las mejores marcas textiles."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto del botón",
+      "default": "Ver Todos los Productos"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link del botón",
+      "default": "/collections/all"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Marca",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "brand_logo",
+          "label": "Logo de la marca"
+        },
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Nombre de la marca"
+        },
+        {
+          "type": "url",
+          "id": "brand_link",
+          "label": "Enlace de la marca"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Página de Marcas",
+      "category": "Marcas"
+    }
+  ]
+}
+{% endschema %}
