@@ -1,70 +1,107 @@
 <style>
-  .filter-sidebar {
-    background-color: #f9f9f9;
-    padding: 25px 20px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    font-family: 'Helvetica Neue', sans-serif;
-    color: #222;
-  }
-
-  .filter-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #002147;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  .filter-group {
-    margin-bottom: 20px;
-  }
-
-  .filter-group h4 {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: #333;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 6px;
-  }
-
-  .filter-option {
-    display: block;
-    margin: 5px 0;
-    color: #004080;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    font-size: 0.95rem;
-  }
-
-  .filter-option:hover {
-    text-decoration: underline;
-    color: #001f4d;
-  }
-</style>
-
-<div class="filter-sidebar">
-  <h3 class="filter-title">Filtrar por</h3>
-
-  <div class="filter-group">
-    <h4>Marca</h4>
-    <a href="#" class="filter-option">Brother</a>
-    <a href="#" class="filter-option">Juki</a>
-    <a href="#" class="filter-option">Yamato</a>
+    .filter-sidebar {
+      background-color: #f9f9f9;
+      padding: 25px 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #222;
+    }
+  
+    .filter-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #002147;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  
+    .filter-group {
+      margin-bottom: 20px;
+    }
+  
+    .filter-group h4 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #333;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 6px;
+    }
+  
+    .filter-option {
+      display: block;
+      margin: 5px 0;
+      color: #004080;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+    }
+  
+    .filter-option:hover {
+      text-decoration: underline;
+      color: #001f4d;
+    }
+  </style>
+  
+  <div class="filter-sidebar">
+    <h3 class="filter-title">Filtrar por</h3>
+  
+    {% assign marca_tags = '' %}
+    {% assign categoria_tags = '' %}
+    {% assign tipo_tags = '' %}
+  
+    {% for tag in collection.all_tags %}
+      {% if tag contains 'Marca_' %}
+        {% assign marca_tags = marca_tags | append: tag | append: ',' %}
+      {% elsif tag contains 'Categoria_' %}
+        {% assign categoria_tags = categoria_tags | append: tag | append: ',' %}
+      {% elsif tag contains 'Tipo_' %}
+        {% assign tipo_tags = tipo_tags | append: tag | append: ',' %}
+      {% endif %}
+    {% endfor %}
+  
+    {% assign marca_array = marca_tags | split: ',' | uniq %}
+    {% assign categoria_array = categoria_tags | split: ',' | uniq %}
+    {% assign tipo_array = tipo_tags | split: ',' | uniq %}
+  
+    {% if marca_array.size > 1 %}
+      <div class="filter-group">
+        <h4>Marca</h4>
+        {% for tag in marca_array %}
+          {% unless tag == '' %}
+            <a href="{{ collection.url | append: '?constraint=' | append: tag }}" class="filter-option">
+              {{ tag | remove: 'Marca_' | replace: '-', ' ' | capitalize }}
+            </a>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  
+    {% if categoria_array.size > 1 %}
+      <div class="filter-group">
+        <h4>Categoría</h4>
+        {% for tag in categoria_array %}
+          {% unless tag == '' %}
+            <a href="{{ collection.url | append: '?constraint=' | append: tag }}" class="filter-option">
+              {{ tag | remove: 'Categoria_' | replace: '-', ' ' | capitalize }}
+            </a>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  
+    {% if tipo_array.size > 1 %}
+      <div class="filter-group">
+        <h4>Tipo</h4>
+        {% for tag in tipo_array %}
+          {% unless tag == '' %}
+            <a href="{{ collection.url | append: '?constraint=' | append: tag }}" class="filter-option">
+              {{ tag | remove: 'Tipo_' | replace: '-', ' ' | capitalize }}
+            </a>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
-
-  <div class="filter-group">
-    <h4>Categoría</h4>
-    <a href="#" class="filter-option">Cuchillas</a>
-    <a href="#" class="filter-option">Tensores</a>
-    <a href="#" class="filter-option">Motores</a>
-  </div>
-
-  <div class="filter-group">
-    <h4>Tipo</h4>
-    <a href="#" class="filter-option">Original</a>
-    <a href="#" class="filter-option">Genérico</a>
-    <a href="#" class="filter-option">Strong H</a>
-  </div>
-</div>
+  
