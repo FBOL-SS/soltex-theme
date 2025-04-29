@@ -1,18 +1,82 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "banner": {
-      "type": "main-collection-banner",
+    "main": {
+      "type": "brands",
+      "blocks": {
+        "logo_y8K9rE": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_avery_dennison_79ac361c-1d66-4197-bfa6-2f1f604f3ade.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_y8K9rE"
+      ],
       "settings": {
         "heading": "NUESTRAS MARCAS",
         "subtext": "En Soltex nos enorgullece distribuir las marcas más confiables de la industria textil. Garantizamos calidad, respaldo y la mejor atención para cada uno de nuestros clientes."
       }
     },
-    "brands": {
-      "type": "brand-grid"
+    "page_brands_Vyt97V": {
+      "type": "page-brands",
+      "blocks": {
+        "brand_kBxzE3": {
+          "type": "brand",
+          "settings": {
+            "brand_image": "shopify://shop_images/logo_avery_dennison_79ac361c-1d66-4197-bfa6-2f1f604f3ade.png",
+            "brand_name": "",
+            "brand_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "brand_kBxzE3"
+      ],
+      "name": "Brands Grid",
+      "settings": {
+        "title": "NUESTRAS MARCAS",
+        "description": "Contamos con la distribución oficial de las mejores marcas del mercado."
+      }
+    },
+    "brands_page_ig98jK": {
+      "type": "brands-page",
+      "blocks": {
+        "brand_hdTBgV": {
+          "type": "brand",
+          "settings": {
+            "name": "",
+            "image": "shopify://shop_images/logo_avery_dennison_79ac361c-1d66-4197-bfa6-2f1f604f3ade.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "brand_hdTBgV"
+      ],
+      "name": "Página de Marcas",
+      "settings": {
+        "heading": "Nuestras Marcas",
+        "subtext": "Contamos con la distribución oficial de las mejores marcas textiles.",
+        "show_button": true,
+        "button_text": "Ver Todos los Productos",
+        "button_link": "shopify://collections/all"
+      }
     }
   },
   "order": [
-    "banner",
-    "brands"
+    "main",
+    "page_brands_Vyt97V",
+    "brands_page_ig98jK"
   ]
 }
