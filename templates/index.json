@@ -40,28 +40,32 @@
         "service_txjyKp": {
           "type": "service",
           "settings": {
-            "title": "Título del servicio",
+            "icon": "shopify://shop_images/sewing-machine_1.png",
+            "title": "VENTA DE MAQUINAS",
             "description": "Descripción breve del servicio."
           }
         },
         "service_aN33a4": {
           "type": "service",
           "settings": {
-            "title": "Título del servicio",
+            "icon": "shopify://shop_images/sewing.png",
+            "title": "RENTA DE MAQUINARIA",
             "description": "Descripción breve del servicio."
           }
         },
         "service_L4hULh": {
           "type": "service",
           "settings": {
-            "title": "Título del servicio",
+            "icon": "shopify://shop_images/part.png",
+            "title": "VENTA DE REFACCIONES",
             "description": "Descripción breve del servicio."
           }
         },
         "service_GYza7D": {
           "type": "service",
           "settings": {
-            "title": "Título del servicio",
+            "icon": "shopify://shop_images/electrician.png",
+            "title": "SERVICIO ELECTRÓNICO",
             "description": "Descripción breve del servicio."
           }
         }
