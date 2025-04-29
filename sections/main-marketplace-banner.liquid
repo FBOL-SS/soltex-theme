@@ -1,0 +1,57 @@
+<section class="marketplace-banner">
+  <div class="banner-container">
+    <h1 class="banner-heading">{{ section.settings.title }}</h1>
+    <p class="banner-subtext">{{ section.settings.subtext }}</p>
+  </div>
+</section>
+
+<style>
+.marketplace-banner {
+  background-color: #001F3F;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.banner-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.banner-heading {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.banner-subtext {
+  font-size: 18px;
+  opacity: 0.8;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Banner Principal del Marketplace",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "CATÁLOGO GENERAL DE PRODUCTOS"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Descripción",
+      "default": "Descubre nuestra amplia variedad de repuestos, maquinaria, insumos y componentes de costura, clasificados por tipo, marca y compatibilidad."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner del Marketplace",
+      "category": "Marketplace"
+    }
+  ]
+}
+{% endschema %}
