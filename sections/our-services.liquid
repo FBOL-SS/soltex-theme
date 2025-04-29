@@ -1,70 +1,99 @@
-{% stylesheet %}
-.our-services-section {
-  background-color: #f9f9f9;
-  padding: 40px 20px;
-  text-align: center;
-}
+<style>
+  .services-section {
+    padding: 40px 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+  }
 
-.our-services-section h2 {
-  font-size: 2rem;
-  margin-bottom: 30px;
-  font-weight: 700;
-}
+  .services-section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  justify-content: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+    justify-items: center;
+  }
 
-.service-card {
-  background-color: white;
-  border-radius: 12px;
-  padding: 30px 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: transform 0.2s ease;
-}
+  .service-card {
+    background-color: #fff;
+    padding: 25px 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+    width: 100%;
+    max-width: 200px;
+  }
 
-.service-card:hover {
-  transform: translateY(-5px);
-}
+  .service-card:hover {
+    transform: translateY(-4px);
+  }
 
-.service-card img {
-  width: 60px;
-  height: auto;
-  margin-bottom: 20px;
-}
+  .service-card img {
+    height: 50px;
+    margin-bottom: 15px;
+    object-fit: contain;
+  }
 
-.service-card h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
+  .service-card h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
 
-.service-card p {
-  font-size: 0.9rem;
-  color: #555;
-}
-{% endstylesheet %}
+  .service-card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+  }
 
-<section class="our-services-section">
+  @media screen and (max-width: 768px) {
+    .services-section {
+      padding: 30px 15px;
+    }
+
+    .services-grid {
+      gap: 20px;
+    }
+
+    .service-card {
+      padding: 20px 15px;
+    }
+  }
+</style>
+
+<section class="services-section">
   <h2>{{ section.settings.title }}</h2>
+
   <div class="services-grid">
     {% for block in section.blocks %}
-      <div class="service-card">
-        {% if block.settings.icon %}
-          <img src="{{ block.settings.icon | img_url: '100x100' }}" alt="{{ block.settings.heading }}">
+      {% assign icon = block.settings.icon %}
+      {% assign title = block.settings.title %}
+      {% assign description = block.settings.description %}
+      {% assign link = block.settings.link %}
+
+      {% if link != blank %}
+        <a href="{{ link }}" class="service-card" {% if link contains 'http' %}target="_blank" rel="noopener"{% endif %}>
+      {% else %}
+        <div class="service-card">
+      {% endif %}
+
+        {% if icon != blank %}
+          <img src="{{ icon | img_url: '100x' }}" alt="{{ title }}">
         {% endif %}
-        <h3>{{ block.settings.heading }}</h3>
-        <p>{{ block.settings.text }}</p>
-      </div>
+        <h3>{{ title }}</h3>
+        <p>{{ description }}</p>
+
+      {% if link != blank %}
+        </a>
+      {% else %}
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
 </section>
@@ -92,15 +121,18 @@
         },
         {
           "type": "text",
-          "id": "heading",
-          "label": "Título",
-          "default": "Nombre del servicio"
+          "id": "title",
+          "label": "Título"
         },
         {
           "type": "textarea",
-          "id": "text",
-          "label": "Descripción",
-          "default": "Descripción breve del servicio."
+          "id": "description",
+          "label": "Descripción"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace del servicio (opcional)"
         }
       ]
     }
@@ -108,7 +140,7 @@
   "presets": [
     {
       "name": "Nuestros Servicios",
-      "category": "Secciones Personalizadas"
+      "category": "Custom"
     }
   ]
 }
