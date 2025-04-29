@@ -1,5 +1,13 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "name": "Marketplace",
   "sections": {
     "main-collection-banner": {
       "type": "main-collection-banner",
@@ -8,16 +16,20 @@
         "subtext": "Explora toda nuestra línea de productos disponibles para la industria textil."
       }
     },
-    "product-grid": {
-      "type": "product-grid",
-      "settings": {
-        "show_vendor": true,
-        "products_per_page": 24
-      }
+    "product_filter_sidebar_89QPQ9": {
+      "type": "product-filter-sidebar",
+      "name": "Filtros del Marketplace",
+      "settings": {}
+    },
+    "main_collection_VJmpN7": {
+      "type": "main_collection",
+      "name": "Productos del Catálogo",
+      "settings": {}
     }
   },
   "order": [
     "main-collection-banner",
-    "product-grid"
+    "product_filter_sidebar_89QPQ9",
+    "main_collection_VJmpN7"
   ]
 }
