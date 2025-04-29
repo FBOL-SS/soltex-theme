@@ -1,42 +1,29 @@
-<style>
-  .collection-banner {
+{% stylesheet %}
+.collection-banner {
+  background-color: #f8f8f8;
+  padding: 40px 20px;
   text-align: center;
-  padding: 50px 20px;
-}
-
-.collection-banner-content {
-  max-width: 800px;
-  margin: 0 auto;
 }
 
 .collection-banner h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
   margin-bottom: 10px;
+  color: #000;
 }
 
 .collection-banner p {
   font-size: 1rem;
   color: #333;
+  max-width: 600px;
+  margin: 0 auto;
 }
+{% endstylesheet %}
 
-@media (max-width: 768px) {
-  .collection-banner h2 {
-    font-size: 1.5rem;
-  }
-
-  .collection-banner p {
-    font-size: 0.95rem;
-    padding: 0 10px;
-  }
-}
-</style>
-
-<section class="collection-banner">
-  <div class="collection-banner-content">
-    <h2>{{ section.settings.heading }}</h2>
-    <p>{{ section.settings.subtext }}</p>
-  </div>
-</section>
+<div class="collection-banner">
+  <h2>{{ section.settings.heading }}</h2>
+  <p>{{ section.settings.subtext }}</p>
+</div>
 
 {% schema %}
 {
@@ -44,7 +31,7 @@
   "settings": [
     {
       "type": "text",
-      "id": "title",
+      "id": "heading",
       "label": "Título",
       "default": "CATÁLOGO GENERAL"
     },
@@ -57,8 +44,8 @@
   ],
   "presets": [
     {
-      "name": "Banner Principal",
-      "category": "Banner"
+      "name": "Main Collection Banner",
+      "category": "Banners"
     }
   ]
 }
