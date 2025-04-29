@@ -1,10 +1,23 @@
 <section class="product-grid">
-  <div class="products-container">
-    {% assign all_products = collections.all.products %}
-    {% paginate all_products by section.settings.products_per_page %}
-      {% if all_products.size > 0 %}
+  <div class="product-layout">
+    <aside class="filters">
+      <h3>Filtrar por</h3>
+      <h4>Marca</h4>
+      <!-- Espacio reservado para futuras marcas -->
+      <h4>Categoría</h4>
+      <!-- Espacio reservado para futuras categorías -->
+      <h4>Tipo</h4>
+      <ul>
+        <li><a href="#">Original</a></li>
+        <li><a href="#">Genérico</a></li>
+        <li><a href="#">Strong H</a></li>
+      </ul>
+    </aside>
+
+    <div class="products-container">
+      {% if collection.products.size > 0 %}
         <div class="products-grid">
-          {% for product in all_products %}
+          {% for product in collection.products %}
             <a href="{{ product.url }}" class="product-card">
               <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}">
               <h3>{{ product.title }}</h3>
@@ -16,10 +29,9 @@
           {% endfor %}
         </div>
       {% else %}
-        <p>No hay productos en esta página todavía.</p>
+        <p>No hay productos en esta colección todavía.</p>
       {% endif %}
-      {{ paginate | default_pagination }}
-    {% endpaginate %}
+    </div>
   </div>
 </section>
 
