@@ -9,46 +9,6 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "brands",
-      "blocks": {
-        "logo_y8K9rE": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/logo_avery_dennison_79ac361c-1d66-4197-bfa6-2f1f604f3ade.png",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "logo_y8K9rE"
-      ],
-      "settings": {
-        "heading": "NUESTRAS MARCAS",
-        "subtext": "En Soltex nos enorgullece distribuir las marcas más confiables de la industria textil. Garantizamos calidad, respaldo y la mejor atención para cada uno de nuestros clientes."
-      }
-    },
-    "page_brands_Vyt97V": {
-      "type": "page-brands",
-      "blocks": {
-        "brand_kBxzE3": {
-          "type": "brand",
-          "settings": {
-            "brand_image": "shopify://shop_images/logo_avery_dennison_79ac361c-1d66-4197-bfa6-2f1f604f3ade.png",
-            "brand_name": "",
-            "brand_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "brand_kBxzE3"
-      ],
-      "name": "Brands Grid",
-      "settings": {
-        "title": "NUESTRAS MARCAS",
-        "description": "Contamos con la distribución oficial de las mejores marcas del mercado."
-      }
-    },
     "brands_page_ig98jK": {
       "type": "brands-page",
       "blocks": {
@@ -70,13 +30,11 @@
         "subtext": "Contamos con la distribución oficial de las mejores marcas textiles.",
         "show_button": true,
         "button_text": "Ver Todos los Productos",
-        "button_link": "shopify://collections/all"
+        "button_link": "shopify://pages/tienda"
       }
     }
   },
   "order": [
-    "main",
-    "page_brands_Vyt97V",
     "brands_page_ig98jK"
   ]
 }

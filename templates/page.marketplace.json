@@ -16,25 +16,20 @@
         "subtext": "Explora toda nuestra línea de productos disponibles para la industria textil."
       }
     },
-    "product_grid_FFegDN": {
-      "type": "product-grid",
-      "name": "Product Grid",
-      "settings": {
-        "show_vendor": true,
-        "products_per_page": 24
-      }
+    "product_filter_sidebar_89QPQ9": {
+      "type": "product-filter-sidebar",
+      "name": "Filtros del Marketplace",
+      "settings": {}
     },
-    "product-grid": {
-      "type": "product-grid",
-      "settings": {
-        "show_vendor": true,
-        "products_per_page": 24
-      }
+    "main_collection_VJmpN7": {
+      "type": "main_collection",
+      "name": "Productos del Catálogo",
+      "settings": {}
     }
   },
   "order": [
     "main-collection-banner",
-    "product_grid_FFegDN",
-    "product-grid"
+    "product_filter_sidebar_89QPQ9",
+    "main_collection_VJmpN7"
   ]
 }
