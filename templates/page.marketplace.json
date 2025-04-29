@@ -25,11 +25,20 @@
       "type": "main_collection",
       "name": "Productos del Catálogo",
       "settings": {}
+    },
+    "product_grid_gbHcKK": {
+      "type": "product-grid",
+      "name": "Product Grid",
+      "settings": {
+        "show_vendor": true,
+        "products_per_page": 24
+      }
     }
   },
   "order": [
     "main-collection-banner",
     "product_filter_sidebar_89QPQ9",
-    "main_collection_VJmpN7"
+    "main_collection_VJmpN7",
+    "product_grid_gbHcKK"
   ]
 }
