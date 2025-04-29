@@ -1,9 +1,11 @@
+{% assign all_products = collections.all.products %}
+
 <section class="product-grid">
   <div class="products-container">
-    {% paginate collection.products by section.settings.products_per_page %}
-      {% if collection.products.size > 0 %}
+    {% paginate all_products by section.settings.products_per_page %}
+      {% if all_products.size > 0 %}
         <div class="products-grid">
-          {% for product in collection.products %}
+          {% for product in all_products %}
             <a href="{{ product.url }}" class="product-card">
               <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}">
               <h3>{{ product.title }}</h3>
@@ -21,32 +23,3 @@
     {% endpaginate %}
   </div>
 </section>
-
-{% schema %}
-{
-  "name": "Product Grid",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "show_vendor",
-      "label": "Mostrar marca del producto",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "products_per_page",
-      "min": 4,
-      "max": 48,
-      "step": 4,
-      "label": "Productos por página",
-      "default": 24
-    }
-  ],
-  "presets": [
-    {
-      "name": "Product Grid",
-      "category": "Productos"
-    }
-  ]
-}
-{% endschema %}
