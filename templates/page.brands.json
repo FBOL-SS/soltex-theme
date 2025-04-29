@@ -15,14 +15,129 @@
         "brand_hdTBgV": {
           "type": "brand",
           "settings": {
+            "name": "JACK",
+            "image": "shopify://shop_images/logo_jack.png",
+            "link": ""
+          }
+        },
+        "brand_tzHA8X": {
+          "type": "brand",
+          "settings": {
+            "name": "Yamato",
+            "image": "shopify://shop_images/logo_yamato.png",
+            "link": ""
+          }
+        },
+        "brand_Bhr6tT": {
+          "type": "brand",
+          "settings": {
             "name": "",
-            "image": "shopify://shop_images/logo_avery_dennison_79ac361c-1d66-4197-bfa6-2f1f604f3ade.png",
+            "image": "shopify://shop_images/logo_pegasus.png",
+            "link": ""
+          }
+        },
+        "brand_RtTcga": {
+          "type": "brand",
+          "settings": {
+            "name": "",
+            "image": "shopify://shop_images/logo_juki.png",
+            "link": ""
+          }
+        },
+        "brand_t8C9dc": {
+          "type": "brand",
+          "settings": {
+            "name": "",
+            "link": ""
+          }
+        },
+        "brand_F8Cwye": {
+          "type": "brand",
+          "settings": {
+            "name": "",
+            "link": ""
+          }
+        },
+        "brand_wCnbMK": {
+          "type": "brand",
+          "settings": {
+            "name": "",
+            "link": ""
+          }
+        },
+        "brand_XCactV": {
+          "type": "brand",
+          "settings": {
+            "name": "",
+            "link": ""
+          }
+        },
+        "brand_N44fxq": {
+          "type": "brand",
+          "settings": {
+            "name": "",
+            "link": ""
+          }
+        },
+        "brand_ULCptF": {
+          "type": "brand",
+          "settings": {
+            "name": "",
+            "link": ""
+          }
+        },
+        "brand_TqUGKM": {
+          "type": "brand",
+          "settings": {
+            "name": "",
+            "link": ""
+          }
+        },
+        "brand_e3ehJk": {
+          "type": "brand",
+          "settings": {
+            "name": "",
+            "link": ""
+          }
+        },
+        "brand_6ay8VB": {
+          "type": "brand",
+          "settings": {
+            "name": "",
+            "link": ""
+          }
+        },
+        "brand_cmd4cY": {
+          "type": "brand",
+          "settings": {
+            "name": "",
+            "link": ""
+          }
+        },
+        "brand_4dgqdf": {
+          "type": "brand",
+          "settings": {
+            "name": "",
             "link": ""
           }
         }
       },
       "block_order": [
-        "brand_hdTBgV"
+        "brand_hdTBgV",
+        "brand_tzHA8X",
+        "brand_Bhr6tT",
+        "brand_RtTcga",
+        "brand_t8C9dc",
+        "brand_F8Cwye",
+        "brand_wCnbMK",
+        "brand_XCactV",
+        "brand_N44fxq",
+        "brand_ULCptF",
+        "brand_TqUGKM",
+        "brand_e3ehJk",
+        "brand_6ay8VB",
+        "brand_cmd4cY",
+        "brand_4dgqdf"
       ],
       "name": "Página de Marcas",
       "settings": {
