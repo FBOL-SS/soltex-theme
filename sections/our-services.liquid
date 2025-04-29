@@ -1,63 +1,81 @@
-<section class="our-services">
-  <div class="page-width">
-    <h2>{{ section.settings.heading | escape }}</h2>
-    <div class="services-grid">
-      {% for block in section.blocks %}
-        <div class="service-item">
-          {% if block.settings.icon %}
-            <img src="{{ block.settings.icon | img_url: 'medium' }}" alt="{{ block.settings.title }}">
-          {% endif %}
-          <h3>{{ block.settings.title | escape }}</h3>
-          <p>{{ block.settings.description | escape }}</p>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<style>
-.our-services {
-  padding: 80px 20px;
-  background-color: #f2f2f2;
+{% stylesheet %}
+.our-services-section {
+  background-color: #f9f9f9;
+  padding: 40px 20px;
   text-align: center;
+}
+
+.our-services-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: 700;
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 🔥 2 columnas */
-  gap: 40px;
-  max-width: 800px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.service-item img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
+.service-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card img {
+  width: 60px;
+  height: auto;
   margin-bottom: 20px;
 }
 
-.service-item h3 {
-  font-size: 22px;
+.service-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
   margin-bottom: 10px;
-  text-transform: uppercase;
 }
 
-.service-item p {
-  font-size: 16px;
+.service-card p {
+  font-size: 0.9rem;
   color: #555;
 }
-</style>
+{% endstylesheet %}
+
+<section class="our-services-section">
+  <h2>{{ section.settings.title }}</h2>
+  <div class="services-grid">
+    {% for block in section.blocks %}
+      <div class="service-card">
+        {% if block.settings.icon %}
+          <img src="{{ block.settings.icon | img_url: '100x100' }}" alt="{{ block.settings.heading }}">
+        {% endif %}
+        <h3>{{ block.settings.heading }}</h3>
+        <p>{{ block.settings.text }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
 
 {% schema %}
 {
   "name": "Nuestros Servicios",
-  "tag": "section",
-  "class": "our-services",
   "settings": [
     {
       "type": "text",
-      "id": "heading",
+      "id": "title",
       "label": "Título",
       "default": "Nuestros Servicios"
     }
@@ -70,33 +88,27 @@
         {
           "type": "image_picker",
           "id": "icon",
-          "label": "Icono"
+          "label": "Ícono"
         },
         {
           "type": "text",
-          "id": "title",
+          "id": "heading",
           "label": "Título",
-          "default": "Título del servicio"
+          "default": "Nombre del servicio"
         },
         {
-          "type": "text",
-          "id": "description",
+          "type": "textarea",
+          "id": "text",
           "label": "Descripción",
           "default": "Descripción breve del servicio."
         }
       ]
     }
   ],
-  "max_blocks": 4,
   "presets": [
     {
       "name": "Nuestros Servicios",
-      "blocks": [
-        { "type": "service" },
-        { "type": "service" },
-        { "type": "service" },
-        { "type": "service" }
-      ]
+      "category": "Secciones Personalizadas"
     }
   ]
 }
