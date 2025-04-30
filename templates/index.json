@@ -23,8 +23,8 @@
       "type": "about",
       "custom_css": [],
       "settings": {
-        "about_heading": "¿QUIÉNES SOMOS?",
-        "about_text": "Soltex nace en el norte del país, impulsada por más de 30 años de experiencia en la industria textil. Somos una empresa con raíces fuertes y visión clara: no venimos solo a vender, venimos a dar soluciones reales.\n\nEntendemos los desafíos de las fábricas porque hemos estado dentro de ellas. Por eso, nuestro enfoque no es solo transaccional, es relacional. Caminamos contigo para resolver problemas, optimizar procesos y asegurar que tu producción nunca se detenga.\n\nSoltex. Donde la experiencia se convierte en respaldo."
+        "heading": "¿QUIÉNES SOMOS?",
+        "description": "SOLTEX nace en el norte del país, impulsada por más de 30 años de experiencia en la industria textil. Somos una empresa con raíces fuertes y visión clara: no venimos solo a vender, venimos a dar soluciones reales.\n\nEntendemos los desafíos de las fábricas porque hemos estado dentro de ellas. Por eso, nuestro enfoque no es ser transaccional, es relacional. Caminamos contigo para resolver problemas, optimizar procesos y asegurar que tu producción nunca se detenga.\n\nSOLTEX, donde la experiencia se convierte en respaldo."
       }
     },
     "featured-products": {
