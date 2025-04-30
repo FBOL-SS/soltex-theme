@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main-collection-banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "heading": "Catálogo General",
+        "subtext": "Explora toda nuestra línea de productos disponibles para la industria textil."
+      }
+    },
+    "main-collection": {
+      "type": "main_collection",
+      "settings": {
+        "collection": "general"
+      }
+    }
+  },
+  "order": [
+    "main-collection-banner",
+    "main-collection"
+  ]
+}
