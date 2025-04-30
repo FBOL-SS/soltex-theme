@@ -19,14 +19,39 @@
       },
       "footer": {
         "type": "footer",
+        "blocks": {
+          "social_38hbQ3": {
+            "type": "social",
+            "settings": {
+              "icon": "shopify://shop_images/icon-instagram.png",
+              "link": "https://www.instagram.com/soltexlaguna/"
+            }
+          },
+          "social_a7P6C3": {
+            "type": "social",
+            "settings": {
+              "icon": "shopify://shop_images/icon-facebook.png",
+              "link": ""
+            }
+          },
+          "social_6cpceE": {
+            "type": "social",
+            "settings": {
+              "icon": "shopify://shop_images/linkedin.png",
+              "link": "https://www.linkedin.com/company/soluciones-textiles-laguna/"
+            }
+          }
+        },
+        "block_order": [
+          "social_38hbQ3",
+          "social_a7P6C3",
+          "social_6cpceE"
+        ],
         "settings": {
           "company_name": "soluciones textiles laguna",
           "address": "",
           "phone": "+52 871 123 4567",
-          "email": "info@sewingsolution.com.mx",
-          "facebook_url": "",
-          "instagram_url": "https://www.instagram.com/soltexlaguna?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-          "linkedin_url": "https://www.linkedin.com/company/soluciones-textiles-laguna/"
+          "email": "info@sewingsolution.com.mx"
         }
       }
     },
