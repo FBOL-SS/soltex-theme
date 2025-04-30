@@ -60,7 +60,7 @@
           "type": "service",
           "settings": {
             "icon": "shopify://shop_images/part.png",
-            "title": "VENTA DR REFACCIONES",
+            "title": "VENTA DE REFACCIONES",
             "description": "",
             "link": "shopify://pages/tienda"
           }
