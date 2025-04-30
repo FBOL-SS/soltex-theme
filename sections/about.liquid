@@ -2,19 +2,19 @@
 {
   "name": "Sobre Nosotros",
   "tag": "section",
-  "class": "soltex-about-section",
+  "class": "about-section",
   "settings": [
     {
       "type": "text",
-      "id": "about_heading",
+      "id": "heading",
       "label": "Título principal",
       "default": "¿QUIÉNES SOMOS?"
     },
     {
       "type": "textarea",
-      "id": "about_text",
+      "id": "description",
       "label": "Texto de descripción",
-      "default": "Somos líderes en el sector textil, ofreciendo máquinas, refacciones y soluciones de calidad para tu industria."
+      "default": "Soltex nace en el norte del país, impulsada por más de 30 años de experiencia en la industria textil."
     }
   ],
   "presets": [
@@ -25,39 +25,32 @@
 }
 {% endschema %}
 
-<section class="about-us">
-  <div class="about-container">
-    <h2>{{ section.settings.about_heading | escape }}</h2>
-    <p>{{ section.settings.about_text | escape }}</p>
-  </div>
-</section>
-
-<style>
-  .about-text p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
-  white-space: pre-line;
-}
-
-.about-us {
-  background-color: #F2F2F2;
-  padding: 80px 20px;
+{% style %}
+.about-section {
+  padding: 40px 20px;
   text-align: center;
-}
-
-.about-container {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.about-container h2 {
-  font-size: 36px;
+.about-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
   margin-bottom: 20px;
-  text-transform: uppercase;
 }
 
-.about-container p {
-  font-size: 18px;
+.about-text p {
+  margin-bottom: 1rem;
   line-height: 1.6;
+  white-space: pre-line;
+  color: #333;
+  font-size: 1rem;
 }
-</style>
+{% endstyle %}
+
+<section class="about-section">
+  <h2>{{ section.settings.heading }}</h2>
+  <div class="about-text">
+    <p>{{ section.settings.description }}</p>
+  </div>
+</section>
