@@ -12,10 +12,10 @@
     "main-collection-banner": {
       "type": "main-collection-banner",
       "custom_css": [
-        "h2 {font-size: 35}"
+        "h2 {font-size: 35;}"
       ],
       "settings": {
-        "title": "CATÁLOGO GENERAL",
+        "heading": "CATÁLOGO GENERAL",
         "subtext": "Explora toda nuestra línea de productos disponibles para la industria textil."
       }
     },
@@ -27,7 +27,9 @@
     "main_collection_VJmpN7": {
       "type": "main_collection",
       "name": "Productos del Catálogo",
-      "settings": {}
+      "settings": {
+        "collection": "general"
+      }
     }
   },
   "order": [
