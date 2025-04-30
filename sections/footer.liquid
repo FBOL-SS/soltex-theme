@@ -1,47 +1,12 @@
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-top">
-      <div class="footer-logo">
-        <img src="{{ 'logo_soltex.svg' | asset_url }}" alt="Soltex Laguna">
-      </div>
-      <div class="footer-info">
-        <h2>{{ section.settings.company_name | escape }}</h2>
-        <p>{{ section.settings.address | escape }}</p>
-        <p><a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a></p>
-        <p><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></p>
-      </div>
-    </div>
-    <div class="footer-socials">
-      {% if section.settings.facebook_url %}
-        <a href="{{ section.settings.facebook_url }}" target="_blank" aria-label="Facebook">
-          <img src="{{ 'icon-facebook.png' | asset_url }}" alt="Facebook" />
-        </a>
-      {% endif %}
-      {% if section.settings.instagram_url %}
-        <a href="{{ section.settings.instagram_url }}" target="_blank" aria-label="Instagram">
-          <img src="{{ 'icon-instagram.png' | asset_url }}" alt="Instagram" />
-        </a>
-      {% endif %}
-      {% if section.settings.linkedin_url %}
-        <a href="{{ section.settings.linkedin_url }}" target="_blank" aria-label="LinkedIn">
-          <img src="{{ 'icon-linkedin.png' | asset_url }}" alt="LinkedIn" />
-        </a>
-      {% endif %}
-    </div>
-  </div>
-</footer>
-
 {% schema %}
 {
-  "name": "Pie de Página",
-  "tag": "section",
-  "class": "soltex-footer",
+  "name": "Footer",
   "settings": [
     {
       "type": "text",
       "id": "company_name",
       "label": "Nombre de la empresa",
-      "default": "SOLTEX"
+      "default": "Soltex"
     },
     {
       "type": "text",
@@ -60,23 +25,27 @@
       "id": "email",
       "label": "Correo electrónico",
       "default": "info@soltex.com"
-    },
-    {
-      "type": "url",
-      "id": "facebook_url",
-      "label": "Link a Facebook"
-    },
-    {
-      "type": "url",
-      "id": "instagram_url",
-      "label": "Link a Instagram"
-    },
-    {
-      "type": "url",
-      "id": "linkedin_url",
-      "label": "Link a LinkedIn"
     }
   ],
+  "blocks": [
+    {
+      "type": "social",
+      "name": "Red Social",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Ícono de red social"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
   "presets": [
     {
       "name": "Footer",
@@ -85,3 +54,79 @@
   ]
 }
 {% endschema %}
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-info">
+      <h2>{{ section.settings.company_name }}</h2>
+      <p>{{ section.settings.address }}</p>
+      <p><a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a></p>
+      <p><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></p>
+    </div>
+
+    <div class="footer-socials">
+      {% for block in section.blocks %}
+        {% if block.settings.icon != blank and block.settings.link != blank %}
+          <a href="{{ block.settings.link }}" target="_blank" class="social-icon">
+            <img src="{{ block.settings.icon | image_url: width: 60 }}" alt="Red social" />
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</footer>
+
+<style>
+.footer {
+  background-color: #001F3F;
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-info h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.footer-info p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.footer-info a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-info a:hover {
+  text-decoration: underline;
+}
+
+.footer-socials {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.social-icon img {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 4px;
+}
+
+.social-icon img:hover {
+  transform: scale(1.1);
+}
+</style>
