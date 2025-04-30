@@ -21,9 +21,10 @@
     },
     "about": {
       "type": "about",
+      "custom_css": [],
       "settings": {
         "about_heading": "¿QUIÉNES SOMOS?",
-        "about_text": "Somos líderes en el sector textil, ofreciendo máquinas, refacciones y soluciones de calidad para tu industria."
+        "about_text": "Todo comenzó en un pequeño taller, rodeados de agujas, engranes y el sonido constante de máquinas en marcha. Ahí entendimos que la industria textil no se detiene… y nosotros tampoco.\n\nSoltex Laguna nació de esa experiencia: de estar del lado del operario, del técnico, del empresario que necesita soluciones reales, rápidas y confiables. Hoy, conectamos fábricas de México y Centroamérica con lo mejor en maquinaria, refacciones y soporte técnico.\n\nNo somos una tienda. Somos el equipo que resuelve."
       }
     },
     "featured-products": {
@@ -40,25 +41,37 @@
         "service_txjyKp": {
           "type": "service",
           "settings": {
-            "icon": "shopify://shop_images/sewing-machine_1.png"
+            "icon": "shopify://shop_images/sewing-machine_1.png",
+            "title": "VENTA DE MAQUINARIA",
+            "description": "",
+            "link": ""
           }
         },
         "service_aN33a4": {
           "type": "service",
           "settings": {
-            "icon": "shopify://shop_images/sewing.png"
+            "icon": "shopify://shop_images/sewing.png",
+            "title": "RENTA DE MAQUINARIA",
+            "description": "",
+            "link": ""
           }
         },
         "service_L4hULh": {
           "type": "service",
           "settings": {
-            "icon": "shopify://shop_images/part.png"
+            "icon": "shopify://shop_images/part.png",
+            "title": "VENTA DR REFACCIONES",
+            "description": "",
+            "link": "shopify://pages/tienda"
           }
         },
         "service_GYza7D": {
           "type": "service",
           "settings": {
-            "icon": "shopify://shop_images/electrician.png"
+            "icon": "shopify://shop_images/electrician.png",
+            "title": "SERVICIO ELECTRONICO",
+            "description": "",
+            "link": ""
           }
         }
       },
