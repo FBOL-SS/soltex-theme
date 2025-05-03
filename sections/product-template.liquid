@@ -30,7 +30,7 @@
           <h3>ESPECIFICACIONES</h3>
         <ul>
           <li><strong>Modelo Compatible:</strong></li>
-          <li><strong>SKU:</strong> {{ product.sku }}</li>
+          <li><strong>SKU:</strong> {{ product.variants.first.sku }}</li>
           <li><strong>Marca:</strong> {{ product.vendor }}</li>
           <li><strong>Calidad:</strong> {{ product.tags[0] }}</li>
         </ul>
