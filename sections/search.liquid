@@ -1,93 +1,68 @@
-<div class="search-results-container">
-  <h1 class="search-title">Resultados de búsqueda para "{{ search.terms }}"</h1>
-
-  {% if search.results_count > 0 %}
+{% if search.results.size > 0 %}
+  <div class="search-results-container">
+    <h2>Resultados de búsqueda para: "{{ search.terms }}"</h2>
     <div class="products-grid">
       {% for item in search.results %}
         {% if item.object_type == 'product' %}
-          <div class="product-card">
+          <div class="product-item">
             <a href="{{ item.url }}">
               <img src="{{ item.featured_image | image_url: width: 400 }}" alt="{{ item.title }}" class="product-image" />
               <h3 class="product-title">{{ item.title }}</h3>
-              {% if item.price %}
-                <p class="product-price">{{ item.price | money }}</p>
-              {% endif %}
+              <p class="product-price">{{ item.price | money }}</p>
             </a>
-            <a href="{{ item.url }}" class="product-btn">Ver producto</a>
           </div>
         {% endif %}
       {% endfor %}
     </div>
-  {% else %}
-    <p>No se encontraron resultados para "{{ search.terms }}".</p>
-  {% endif %}
-</div>
+  </div>
+{% else %}
+  <div class="search-results-container">
+    <h2>No se encontraron resultados para: "{{ search.terms }}"</h2>
+  </div>
+{% endif %}
 
 <style>
 .search-results-container {
+  padding: 60px 20px;
   max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.search-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  text-align: center;
+  margin: 0 auto;
 }
 
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
+  margin-top: 30px;
 }
 
-.product-card {
+.product-item {
   background: #fff;
-  border-radius: 8px;
   padding: 20px;
+  border-radius: 10px;
   text-align: center;
-  transition: transform 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.product-card:hover {
+.product-item:hover {
   transform: translateY(-5px);
 }
 
 .product-image {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   margin-bottom: 15px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .product-title {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: bold;
   margin-bottom: 10px;
-  color: #222;
 }
 
 .product-price {
   font-size: 16px;
   color: #555;
-  margin-bottom: 15px;
-}
-
-.product-btn {
-  display: inline-block;
-  background-color: #0052a2;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.2s;
-}
-
-.product-btn:hover {
-  background-color: #003c7c;
 }
 </style>
