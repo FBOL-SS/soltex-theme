@@ -1,0 +1,93 @@
+<div class="search-results-container">
+  <h1 class="search-title">Resultados de búsqueda para "{{ search.terms }}"</h1>
+
+  {% if search.results_count > 0 %}
+    <div class="products-grid">
+      {% for item in search.results %}
+        {% if item.object_type == 'product' %}
+          <div class="product-card">
+            <a href="{{ item.url }}">
+              <img src="{{ item.featured_image | image_url: width: 400 }}" alt="{{ item.title }}" class="product-image" />
+              <h3 class="product-title">{{ item.title }}</h3>
+              {% if item.price %}
+                <p class="product-price">{{ item.price | money }}</p>
+              {% endif %}
+            </a>
+            <a href="{{ item.url }}" class="product-btn">Ver producto</a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No se encontraron resultados para "{{ search.terms }}".</p>
+  {% endif %}
+</div>
+
+<style>
+.search-results-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.search-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.product-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.product-price {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.product-btn {
+  display: inline-block;
+  background-color: #0052a2;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.product-btn:hover {
+  background-color: #003c7c;
+}
+</style>
