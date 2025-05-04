@@ -1,7 +1,16 @@
-<div class="product-page-container">
+<div class="product-container">
   <div class="product-media">
-    {% if product.featured_image %}
-      <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" class="product-image" />
+    {% if product.images.size > 1 %}
+      <div class="product-main-img">
+        <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}">
+      </div>
+      <div class="product-thumbnails">
+        {% for image in product.images %}
+          <img src="{{ image | image_url: width: 100 }}" alt="{{ product.title }}" class="thumb-img" onclick="document.querySelector('.product-main-img img').src = this.src;">
+        {% endfor %}
+      </div>
+    {% else %}
+      <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" class="product-single-img">
     {% endif %}
   </div>
 
@@ -9,13 +18,11 @@
     <h1 class="product-title">{{ product.title }}</h1>
     <p class="product-price">{{ product.price | money }}</p>
 
-    <!-- Botón Agregar al carrito -->
     <form method="post" action="/cart/add">
       <input type="hidden" name="id" value="{{ product.variants.first.id }}">
       <button type="submit" class="btn-product">Agregar al carrito</button>
     </form>
 
-    <!-- Botón de cotización por WhatsApp -->
     <a href="https://wa.me/5218711234567?text=Hola!%20Estoy%20interesado%20en%20cotizar%20el%20producto:%20{{ product.title | url_escape }}%20(SKU:%20{{ product.sku }})%20al%20mayoreo"
        target="_blank"
        class="btn-cotizar-whatsapp">
@@ -44,44 +51,69 @@
       </ul>
     </div>
 
-    <!-- Botón de regreso -->
     <a href="/pages/tienda" class="btn-volver-catalogo">← Volver al catálogo</a>
   </div>
 </div>
 
 <style>
-.product-page-container {
+.product-container {
   display: flex;
-  flex-direction: column;
-  gap: 30px;
-  padding: 40px 20px;
-  max-width: 900px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 40px 20px;
 }
 
 .product-media {
+  flex: 1 1 45%;
   text-align: center;
 }
 
-.product-image {
-  max-width: 100%;
+.product-main-img img,
+.product-single-img {
+  width: 100%;
+  max-width: 500px;
   border-radius: 8px;
 }
 
+.product-thumbnails {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.thumb-img {
+  width: 80px;
+  height: auto;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 4px;
+}
+
+.thumb-img:hover {
+  border-color: #0056b3;
+}
+
 .product-details {
-  text-align: center;
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
 }
 
 .product-title {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .product-price {
-  font-size: 22px;
+  font-size: 24px;
   color: #0071e3;
-  margin-bottom: 20px;
 }
 
 .btn-product {
@@ -99,15 +131,13 @@
 }
 
 .btn-cotizar-whatsapp {
-  display: inline-block;
-  margin-top: 15px;
   background-color: #25D366;
   color: white;
   padding: 12px 20px;
   border-radius: 6px;
   font-weight: bold;
+  text-align: center;
   text-decoration: none;
-  transition: background-color 0.3s ease;
 }
 
 .btn-cotizar-whatsapp:hover {
@@ -115,7 +145,6 @@
 }
 
 .product-description {
-  margin: 30px 0;
   color: #444;
 }
 
@@ -123,17 +152,12 @@
   background-color: #f4f4f4;
   padding: 20px;
   border-radius: 10px;
-  text-align: left;
-}
-
-.product-specs h3 {
-  margin-bottom: 15px;
-  font-weight: bold;
 }
 
 .product-specs ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .product-specs li {
@@ -142,9 +166,9 @@
 
 .btn-volver-catalogo {
   display: inline-block;
-  margin-top: 30px;
-  text-decoration: none;
+  margin-top: 20px;
   font-weight: bold;
+  text-decoration: none;
   color: #0056b3;
 }
 
