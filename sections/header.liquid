@@ -6,23 +6,19 @@
           <img src="{{ section.settings.logo | img_url: 'medium' }}" alt="{{ shop.name }}">
         </a>
       {% else %}
-        <a href="{{ routes.root_url }}">
-          {{ shop.name }}
-        </a>
+        <a href="{{ routes.root_url }}">{{ shop.name }}</a>
       {% endif %}
     </div>
 
-    <nav class="header-navigation" id="main-menu">
-      <ul class="menu">
+    <nav class="header-navigation">
+      <ul class="nav-menu">
         {% for link in linklists[section.settings.menu].links %}
           <li><a href="{{ link.url }}">{{ link.title }}</a></li>
         {% endfor %}
       </ul>
     </nav>
 
-    <button class="menu-toggle" aria-label="Abrir menú">
-      ☰
-    </button>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
   </div>
 </header>
 
@@ -56,8 +52,8 @@
   display: none;
 }
 
-/* Desktop menu */
-.menu {
+/* Desktop nav */
+.nav-menu {
   list-style: none;
   display: flex;
   gap: 20px;
@@ -65,7 +61,7 @@
   padding: 0;
 }
 
-.menu li a {
+.nav-menu li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -73,17 +69,17 @@
   transition: color 0.3s;
 }
 
-.menu li a:hover {
+.nav-menu li a:hover {
   color: #FFDD00;
 }
 
-/* Responsive menu */
+/* Responsive */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
   }
 
-  .menu {
+  .nav-menu {
     display: none;
     flex-direction: column;
     background-color: #001F3F;
@@ -95,24 +91,11 @@
     width: 200px;
   }
 
-  .menu.active {
+  .nav-menu.active {
     display: flex;
   }
 }
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const toggleBtn = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('.menu');
-
-    if (toggleBtn && menu) {
-      toggleBtn.addEventListener('click', () => {
-        menu.classList.toggle('active');
-      });
-    }
-  });
-</script>
 
 {% schema %}
 {

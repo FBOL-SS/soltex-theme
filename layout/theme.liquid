@@ -1,14 +1,17 @@
 <!doctype html>
-  <html lang="es">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% if page_title %}{{ page_title }} | {{ shop.name }}{% else %}{{ shop.name }}{% endif %}</title>
-    <meta name="description" content="{% if page_description %}{{ page_description }}{% else %}Refacciones, maquinaria y soluciones textiles industriales - {{ shop.name }}{% endif %}">
+    <title>
+      {% if page_title %}{{ page_title }} | {{ shop.name }}{% else %}{{ shop.name }}{% endif %}
+    </title>
 
+    <meta name="description" content="{% if page_description %}{{ page_description }}{% else %}Refacciones, maquinaria y soluciones textiles industriales - {{ shop.name }}{% endif %}">
     <link rel="canonical" href="{{ canonical_url }}">
 
+    <!-- SEO y Open Graph -->
     <meta property="og:title" content="{{ page_title }} | {{ shop.name }}">
     <meta property="og:description" content="{{ page_description | default: 'Refacciones y maquinaria para la industria textil' }}">
     <meta property="og:type" content="website">
@@ -22,23 +25,24 @@
 
     {{ content_for_header }}
 
+    <!-- Estilos -->
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'product.css' | asset_url | stylesheet_tag }}
     {{ 'brands-page.css' | asset_url | stylesheet_tag }}
   </head>
-  
+
   <body>
     {% section 'header' %}
     {{ content_for_layout }}
     {% section 'footer' %}
 
-    <!-- Script toggle menú responsivo -->
-    <script defer>
-      document.addEventListener('DOMContentLoaded', function() {
+    <!-- Script: menú responsive -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
         const menuButton = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
         if (menuButton && navMenu) {
-          menuButton.addEventListener('click', function() {
+          menuButton.addEventListener('click', function () {
             navMenu.classList.toggle('active');
           });
         }
