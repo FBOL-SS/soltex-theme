@@ -35,7 +35,7 @@
       <h3>ESPECIFICACIONES</h3>
       <ul>
         <li><strong>Modelo Compatible:</strong> {{ product.title }}</li>
-        <li><strong>SKU:</strong> {{ product.sku }}</li>
+        <li><strong>SKU:</strong> {{ product.selected_or_first_available_variant.sku }}</li>
         <li><strong>Marca:</strong> {{ product.vendor }}</li>
         <li><strong>Calidad:</strong> 
           {% if product.tags contains 'Original' %}
