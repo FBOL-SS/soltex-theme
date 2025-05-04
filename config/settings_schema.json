@@ -1,1 +1,14 @@
-[]
+[
+    {
+      "name": "General",
+      "settings": [
+        {
+          "type": "text",
+          "id": "store_message",
+          "label": "Mensaje de tienda",
+          "default": "Bienvenido a nuestra tienda"
+        }
+      ]
+    }
+  ]
+  
