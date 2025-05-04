@@ -1,0 +1,67 @@
+{% layout 'theme' %}
+
+<div class="cart-page">
+  <h1>Tu carrito</h1>
+
+  {% if cart.item_count > 0 %}
+    <form action="/cart" method="post">
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart.items %}
+            <tr>
+              <td>{{ item.product.title }}</td>
+              <td>
+                <input type="number" name="updates[]" value="{{ item.quantity }}" min="0">
+              </td>
+              <td>{{ item.line_price | money }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p><strong>Total: {{ cart.total_price | money }}</strong></p>
+      <input type="submit" name="update" value="Actualizar carrito">
+      <a href="/checkout" class="checkout-button">Proceder al pago</a>
+    </form>
+  {% else %}
+    <p>Tu carrito está vacío.</p>
+  {% endif %}
+</div>
+
+<style>
+  .cart-page {
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+  }
+
+  th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .checkout-button {
+    display: inline-block;
+    background: #002147;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 6px;
+  }
+
+  .checkout-button:hover {
+    background: #003366;
+  }
+</style>
