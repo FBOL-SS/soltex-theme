@@ -1,96 +1,102 @@
-<section class="contact-page">
-  <div class="contact-wrapper">
+<div class="contact-wrapper">
+  <div class="contact-grid">
     <div class="contact-info">
       <h2>{{ section.settings.heading }}</h2>
       <p>{{ section.settings.subtext }}</p>
       <ul class="info-list">
-        <li><strong>Teléfono:</strong> {{ section.settings.phone }}</li>
-        <li><strong>Email:</strong> <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></li>
-        <li><strong>Dirección:</strong> {{ section.settings.address }}</li>
+        <li><strong>📞 Teléfono:</strong> {{ section.settings.phone }}</li>
+        <li><strong>✉️ Email:</strong> <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></li>
+        <li><strong>📍 Dirección:</strong> {{ section.settings.address }}</li>
       </ul>
+      <div class="contact-map">
+        {{ section.settings.map_embed_code }}
+      </div>
     </div>
-
     <div class="contact-form">
-      {% form 'contact' %}
-        {% if form.posted_successfully? %}
-          <p class="success">Gracias por tu mensaje. Nos pondremos en contacto pronto.</p>
-        {% endif %}
-
-        <input type="text" name="contact[name]" placeholder="Tu nombre" required>
-        <input type="email" name="contact[email]" placeholder="Tu correo" required>
-        <textarea name="contact[body]" placeholder="Escribe tu mensaje" required></textarea>
+      <form method="post" action="/contact#contact_form" id="contact_form" accept-charset="UTF-8" class="form">
+        <input type="hidden" name="form_type" value="contact" />
+        <input type="hidden" name="utf8" value="✓" />
+        <input type="text" name="contact[name]" placeholder="Tu nombre" required />
+        <input type="email" name="contact[email]" placeholder="Tu correo" required />
+        <textarea name="contact[body]" rows="5" placeholder="Escribe tu mensaje" required></textarea>
         <button type="submit">Enviar</button>
-      {% endform %}
+      </form>
     </div>
   </div>
-
-  {% if section.settings.map_embed_code != blank %}
-    <div class="map-container">
-      {{ section.settings.map_embed_code }}
-    </div>
-  {% endif %}
-</section>
+</div>
 
 <style>
-  .contact-page {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+.contact-wrapper {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+  background: #fff;
+  border-radius: 12px;
+}
 
-  .contact-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-  }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
 
-  .contact-info,
-  .contact-form {
-    flex: 1 1 45%;
-  }
+.contact-info h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
 
-  .info-list {
-    list-style: none;
-    padding: 0;
-    line-height: 1.8;
-  }
+.contact-info p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
 
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 12px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-  }
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
 
-  .contact-form button {
-    background-color: #002147;
-    color: white;
-    border: none;
-    padding: 14px 24px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
+.info-list li {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
 
-  .map-container {
-    margin-top: 40px;
-    border-radius: 10px;
-    overflow: hidden;
-  }
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+}
 
-  @media screen and (max-width: 768px) {
-    .contact-wrapper {
-      flex-direction: column;
-    }
-  }
+.contact-form button {
+  background-color: #002855;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #00509e;
+}
+
+.contact-map iframe {
+  border: 0;
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+}
 </style>
 
 {% schema %}
 {
-  "name": "Página de Contacto",
+  "name": "Contacto",
   "settings": [
     {
       "type": "text",
@@ -99,21 +105,21 @@
       "default": "Contáctanos"
     },
     {
-      "type": "textarea",
+      "type": "text",
       "id": "subtext",
-      "label": "Texto introductorio",
-      "default": "¿Tienes alguna duda o necesitas ayuda? Llámanos o escríbenos."
+      "label": "Texto secundario",
+      "default": "¿Tienes dudas? Llámanos o escríbenos."
     },
     {
       "type": "text",
       "id": "phone",
       "label": "Teléfono",
-      "default": "+52 123 456 7890"
+      "default": "+52 871 123 4567"
     },
     {
       "type": "text",
       "id": "email",
-      "label": "Correo electrónico",
+      "label": "Email",
       "default": "info@sewingsolution.com.mx"
     },
     {
@@ -125,13 +131,13 @@
     {
       "type": "textarea",
       "id": "map_embed_code",
-      "label": "Código de Mapa (iframe de Google Maps)",
+      "label": "Código de mapa (iframe)",
       "default": "<iframe src='https://www.google.com/maps/embed?...' width='100%' height='300' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
     }
   ],
   "presets": [
     {
-      "name": "Sección de contacto"
+      "name": "Contacto"
     }
   ]
 }
