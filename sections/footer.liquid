@@ -1,4 +1,54 @@
-<footer class="site-footer">
+{% schema %}
+{
+  "name": "Pie de página",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Logo del footer"
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Texto del footer",
+      "default": "Gracias por visitar nuestro sitio web."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Acceso rápido",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Ícono"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Texto del enlace",
+          "default": "Instagram"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "URL del enlace"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Footer profesional",
+      "category": "Footer"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="site-footer">
   <div class="footer-container">
     <div class="footer-branding">
       {% if section.settings.footer_logo %}
@@ -22,7 +72,7 @@
   <div class="footer-bottom">
     <p>&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. Todos los derechos reservados.</p>
   </div>
-</footer>
+</section>
 
 <style>
 .site-footer {
@@ -89,53 +139,3 @@
   padding-top: 10px;
 }
 </style>
-
-{% schema %}
-{
-  "name": "Pie de página",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "footer_logo",
-      "label": "Logo del footer"
-    },
-    {
-      "type": "text",
-      "id": "footer_text",
-      "label": "Texto del footer",
-      "default": "Gracias por visitar nuestro sitio web."
-    }
-  ],
-  "blocks": [
-    {
-      "type": "link",
-      "name": "Acceso rápido",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Ícono"
-        },
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Texto del enlace",
-          "default": "Instagram"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "URL del enlace"
-        }
-      ]
-    }
-  ],
-  "max_blocks": 4,
-  "presets": [
-    {
-      "name": "Footer profesional",
-      "category": "Footer"
-    }
-  ]
-}
-{% endschema %}
