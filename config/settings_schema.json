@@ -4,19 +4,51 @@
       "settings": [
         {
           "type": "text",
-          "id": "store_message",
-          "label": "Mensaje de bienvenida",
-          "default": "Bienvenido a nuestra tienda"
+          "id": "store_tagline",
+          "label": "Lema de la tienda",
+          "default": "Las mejores soluciones textiles"
         }
       ]
     },
     {
-      "name": "Encabezado",
-      "settings": []
+      "name": "Footer",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "footer_logo",
+          "label": "Logo del pie de página"
+        },
+        {
+          "type": "text",
+          "id": "footer_text",
+          "label": "Texto del footer",
+          "default": "Gracias por visitar nuestro sitio web."
+        }
+      ]
     },
     {
-      "name": "Pie de página",
+      "name": "Social Links",
+      "blocks": [
+        {
+          "type": "social",
+          "name": "Red social",
+          "settings": [
+            {
+              "type": "url",
+              "id": "link",
+              "label": "URL"
+            },
+            {
+              "type": "text",
+              "id": "label",
+              "label": "Nombre"
+            }
+          ]
+        }
+      ],
+      "max_blocks": 4,
+      "type": "social_links",
       "settings": []
     }
   ]
-  
+    
