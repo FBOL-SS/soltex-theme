@@ -8,32 +8,16 @@
     </div>
 
     <div class="footer-links">
-      {% if section.settings.social_1_icon != blank %}
-        <a href="{{ section.settings.social_1_url }}" class="footer-link" target="_blank">
-          <div class="footer-card">
-            <img src="{{ section.settings.social_1_icon | img_url: '50x50' }}" alt="Icono 1" />
-            <span>{{ section.settings.social_1_label }}</span>
-          </div>
-        </a>
-      {% endif %}
-
-      {% if section.settings.social_2_icon != blank %}
-        <a href="{{ section.settings.social_2_url }}" class="footer-link" target="_blank">
-          <div class="footer-card">
-            <img src="{{ section.settings.social_2_icon | img_url: '50x50' }}" alt="Icono 2" />
-            <span>{{ section.settings.social_2_label }}</span>
-          </div>
-        </a>
-      {% endif %}
-
-      {% if section.settings.social_3_icon != blank %}
-        <a href="{{ section.settings.social_3_url }}" class="footer-link" target="_blank">
-          <div class="footer-card">
-            <img src="{{ section.settings.social_3_icon | img_url: '50x50' }}" alt="Icono 3" />
-            <span>{{ section.settings.social_3_label }}</span>
-          </div>
-        </a>
-      {% endif %}
+      {% for block in section.blocks %}
+        {% if block.settings.icon != blank %}
+          <a href="{{ block.settings.link }}" class="footer-link" target="_blank">
+            <div class="footer-card">
+              <img src="{{ block.settings.icon | img_url: '50x50' }}" alt="{{ block.settings.label }}" />
+              <span>{{ block.settings.label }}</span>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
 
@@ -122,54 +106,30 @@
       "id": "footer_text",
       "label": "Texto del footer",
       "default": "Gracias por visitar nuestro sitio web."
-    },
+    }
+  ],
+  "blocks": [
     {
-      "type": "image_picker",
-      "id": "social_1_icon",
-      "label": "Ícono 1"
-    },
-    {
-      "type": "text",
-      "id": "social_1_label",
-      "label": "Texto 1",
-      "default": "Instagram"
-    },
-    {
-      "type": "url",
-      "id": "social_1_url",
-      "label": "Enlace 1"
-    },
-    {
-      "type": "image_picker",
-      "id": "social_2_icon",
-      "label": "Ícono 2"
-    },
-    {
-      "type": "text",
-      "id": "social_2_label",
-      "label": "Texto 2",
-      "default": "WhatsApp"
-    },
-    {
-      "type": "url",
-      "id": "social_2_url",
-      "label": "Enlace 2"
-    },
-    {
-      "type": "image_picker",
-      "id": "social_3_icon",
-      "label": "Ícono 3"
-    },
-    {
-      "type": "text",
-      "id": "social_3_label",
-      "label": "Texto 3",
-      "default": "LinkedIn"
-    },
-    {
-      "type": "url",
-      "id": "social_3_url",
-      "label": "Enlace 3"
+      "type": "social_link",
+      "name": "Enlace de red social",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Ícono"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Etiqueta",
+          "default": "Red social"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace"
+        }
+      ]
     }
   ],
   "presets": [

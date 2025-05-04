@@ -10,18 +10,40 @@
       },
       "footer": {
         "type": "footer",
+        "blocks": {
+          "social_instagram": {
+            "type": "social_link",
+            "settings": {
+              "icon": "shopify://shop_images/instagram.png",
+              "label": "Instagram",
+              "link": "https://www.instagram.com/soltexlaguna/"
+            }
+          },
+          "social_facebook": {
+            "type": "social_link",
+            "settings": {
+              "icon": "shopify://shop_images/facebook_1.png",
+              "label": "Facebook",
+              "link": "https://www.facebook.com/share/1Z1tmF3tjz/?mibextid=wwXIfr"
+            }
+          },
+          "social_linkedin": {
+            "type": "social_link",
+            "settings": {
+              "icon": "shopify://shop_images/linkedin.png",
+              "label": "LinkedIn",
+              "link": "https://www.linkedin.com/company/soluciones-textiles-laguna/"
+            }
+          }
+        },
+        "block_order": [
+          "social_instagram",
+          "social_facebook",
+          "social_linkedin"
+        ],
         "settings": {
           "footer_logo": null,
           "footer_text": "Gracias por visitar nuestro sitio web.",
-          "social_1_icon": "shopify://shop_images/instagram.png",
-          "social_1_label": "Instagram",
-          "social_1_url": "https://www.instagram.com/soltexlaguna/",
-          "social_2_icon": "shopify://shop_images/facebook_1.png",
-          "social_2_label": "Facebook",
-          "social_2_url": "https://www.facebook.com/share/1Z1tmF3tjz/?mibextid=wwXIfr",
-          "social_3_icon": "shopify://shop_images/linkedin.png",
-          "social_3_label": "LinkedIn",
-          "social_3_url": "https://www.linkedin.com/company/soluciones-textiles-laguna/",
           "company_name": "soluciones textiles laguna",
           "address": "",
           "phone": "+52 871 123 4567",
