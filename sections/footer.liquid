@@ -1,77 +1,39 @@
-{% schema %}
-{
-  "name": "Pie de página",
-  ...
-}
-{% endschema %}
-{% schema %}
-{
-  "name": "Pie de página",
-  "tag": "footer",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "footer_logo",
-      "label": "Logo del footer"
-    },
-    {
-      "type": "text",
-      "id": "footer_text",
-      "label": "Texto del footer",
-      "default": "Gracias por visitar nuestro sitio web."
-    }
-  ],
-  "blocks": [
-    {
-      "type": "link",
-      "name": "Acceso rápido",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Ícono"
-        },
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Texto del enlace"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "URL del enlace"
-        }
-      ]
-    }
-  ],
-  "max_blocks": 4,
-  "presets": [
-    {
-      "name": "Footer profesional",
-      "category": "Footer"
-    }
-  ]
-}
-{% endschema %}
-
 <footer class="site-footer">
   <div class="footer-container">
-    {% if section.settings.footer_logo %}
-      <img src="{{ section.settings.footer_logo | img_url: 'medium' }}" alt="Logo" class="footer-logo" />
-    {% endif %}
-    <p>{{ section.settings.footer_text }}</p>
+    <div class="footer-branding">
+      {% if section.settings.footer_logo %}
+        <img src="{{ section.settings.footer_logo | img_url: 'medium' }}" alt="Logo" class="footer-logo" />
+      {% endif %}
+      <p>{{ section.settings.footer_text }}</p>
+    </div>
 
     <div class="footer-links">
-      {% for block in section.blocks %}
-        <a href="{{ block.settings.link }}" class="footer-link" target="_blank">
+      {% if section.settings.social_1_icon != blank %}
+        <a href="{{ section.settings.social_1_url }}" class="footer-link" target="_blank">
           <div class="footer-card">
-            {% if block.settings.icon %}
-              <img src="{{ block.settings.icon | img_url: '50x50' }}" alt="Icono" />
-            {% endif %}
-            <span>{{ block.settings.label }}</span>
+            <img src="{{ section.settings.social_1_icon | img_url: '50x50' }}" alt="Icono 1" />
+            <span>{{ section.settings.social_1_label }}</span>
           </div>
         </a>
-      {% endfor %}
+      {% endif %}
+
+      {% if section.settings.social_2_icon != blank %}
+        <a href="{{ section.settings.social_2_url }}" class="footer-link" target="_blank">
+          <div class="footer-card">
+            <img src="{{ section.settings.social_2_icon | img_url: '50x50' }}" alt="Icono 2" />
+            <span>{{ section.settings.social_2_label }}</span>
+          </div>
+        </a>
+      {% endif %}
+
+      {% if section.settings.social_3_icon != blank %}
+        <a href="{{ section.settings.social_3_url }}" class="footer-link" target="_blank">
+          <div class="footer-card">
+            <img src="{{ section.settings.social_3_icon | img_url: '50x50' }}" alt="Icono 3" />
+            <span>{{ section.settings.social_3_label }}</span>
+          </div>
+        </a>
+      {% endif %}
     </div>
   </div>
 
@@ -96,6 +58,10 @@
   max-width: 1200px;
   margin: 0 auto;
   align-items: center;
+}
+
+.footer-branding {
+  max-width: 400px;
 }
 
 .footer-logo {
@@ -141,3 +107,75 @@
   padding-top: 10px;
 }
 </style>
+
+{% schema %}
+{
+  "name": "Pie de página",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Logo del footer"
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Texto del footer",
+      "default": "Gracias por visitar nuestro sitio web."
+    },
+    {
+      "type": "image_picker",
+      "id": "social_1_icon",
+      "label": "Ícono 1"
+    },
+    {
+      "type": "text",
+      "id": "social_1_label",
+      "label": "Texto 1",
+      "default": "Instagram"
+    },
+    {
+      "type": "url",
+      "id": "social_1_url",
+      "label": "Enlace 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "social_2_icon",
+      "label": "Ícono 2"
+    },
+    {
+      "type": "text",
+      "id": "social_2_label",
+      "label": "Texto 2",
+      "default": "WhatsApp"
+    },
+    {
+      "type": "url",
+      "id": "social_2_url",
+      "label": "Enlace 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "social_3_icon",
+      "label": "Ícono 3"
+    },
+    {
+      "type": "text",
+      "id": "social_3_label",
+      "label": "Texto 3",
+      "default": "LinkedIn"
+    },
+    {
+      "type": "url",
+      "id": "social_3_url",
+      "label": "Enlace 3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Profesional"
+    }
+  ]
+}
+{% endschema %}
