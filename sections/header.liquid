@@ -12,19 +12,17 @@
       {% endif %}
     </div>
 
-    <button class="menu-toggle" aria-label="Abrir menú">
-      ☰
-    </button>
-
-    <nav class="header-navigation">
-      <ul class="nav-menu">
+    <nav class="header-navigation" id="main-menu">
+      <ul class="menu">
         {% for link in linklists[section.settings.menu].links %}
-          <li>
-            <a href="{{ link.url }}">{{ link.title }}</a>
-          </li>
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
         {% endfor %}
       </ul>
     </nav>
+
+    <button class="menu-toggle" aria-label="Abrir menú">
+      ☰
+    </button>
   </div>
 </header>
 
@@ -33,6 +31,8 @@
   background-color: #001F3F;
   padding: 20px 30px;
   color: white;
+  position: relative;
+  z-index: 10;
 }
 
 .header-container {
@@ -41,31 +41,10 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  position: relative;
 }
 
 .header-logo img {
   max-height: 50px;
-}
-
-.nav-menu {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-menu li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: color 0.3s;
-}
-
-.nav-menu li a:hover {
-  color: #FFDD00;
 }
 
 .menu-toggle {
@@ -77,33 +56,67 @@
   display: none;
 }
 
-/* Responsive */
+/* Desktop menu */
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.menu li a:hover {
+  color: #FFDD00;
+}
+
+/* Responsive menu */
 @media (max-width: 768px) {
-  .nav-menu {
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu {
     display: none;
     flex-direction: column;
     background-color: #001F3F;
     position: absolute;
-    top: 70px;
-    right: 20px;
+    top: 80px;
+    right: 30px;
     padding: 20px;
     border-radius: 8px;
-    z-index: 999;
+    width: 200px;
   }
 
-  .nav-menu.active {
+  .menu.active {
     display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
   }
 }
 </style>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    if (toggleBtn && menu) {
+      toggleBtn.addEventListener('click', () => {
+        menu.classList.toggle('active');
+      });
+    }
+  });
+</script>
+
 {% schema %}
 {
-  "name": "Header",
+  "name": "Encabezado",
   "settings": [
     {
       "type": "image_picker",
