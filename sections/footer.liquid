@@ -61,10 +61,10 @@
 }
 
 .footer-card {
-  background-color: white;
-  color: #001F3F;
-  padding: 10px 15px;
-  border-radius: 8px;
+  background-color: #003366; /* Fondo azul oscuro más suave */
+  color: white; /* Texto blanco para contraste */
+  padding: 12px 15px; /* Más padding para mejor espaciado */
+  border-radius: 10px; /* Bordes más redondeados */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -73,11 +73,14 @@
   height: 110px;
   font-weight: 600;
   font-size: 14px;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s; /* Añadir transición para sombra */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+  border: 1px solid #004d99; /* Borde sutil */
 }
 
 .footer-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px); /* Levantar al pasar el ratón */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al hover */
 }
 
 .footer-card img {
@@ -86,7 +89,7 @@
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   margin-top: 30px;
   padding-top: 10px;
 }
