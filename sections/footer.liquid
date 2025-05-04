@@ -11,7 +11,7 @@
       {% for block in section.blocks %}
         {% if block.settings.icon != blank %}
           <a href="{{ block.settings.link }}" class="footer-link" target="_blank">
-            <div class="footer-card">
+            <div class="footer-card {{ block.settings.label | downcase }}">
               <img src="{{ block.settings.icon | img_url: '50x50' }}" alt="{{ block.settings.label }}" />
               <span>{{ block.settings.label }}</span>
             </div>
@@ -55,37 +55,48 @@
 
 .footer-links {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .footer-card {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: #ffffff20; /* fondo semitransparente */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  transition: transform 0.2s, background-color 0.3s;
-}
-
-.footer-card img {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
+  text-decoration: none;
+  gap: 10px;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  transition: transform 0.3s ease;
 }
 
 .footer-card:hover {
-  transform: scale(1.1);
-  background-color: #ffffff40;
+  transform: translateY(-3px);
 }
 
-
 .footer-card img {
-  max-height: 40px;
-  margin-bottom: 8px;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 50%;
+  object-fit: contain;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Estilos opcionales por red social */
+.footer-card.facebook img {
+  background-color: #1877F2;
+}
+
+.footer-card.instagram img {
+  background: radial-gradient(circle at 30% 30%, #feda75, #d62976, #962fbf, #4f5bd5);
+}
+
+.footer-card.whatsapp img {
+  background-color: #25D366;
 }
 
 .footer-bottom {
