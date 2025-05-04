@@ -5,34 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ page_title }}</title>
-    
-    {{ content_for_header }}
+    <meta name="description" content="{{ page_description | escape }}">
+    <link rel="canonical" href="{{ canonical_url }}">
 
+    <!-- Precarga de recursos clave -->
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.shopify.com">
+    
+    <!-- Estilos principales -->
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'product.css' | asset_url | stylesheet_tag }}
     {{ 'brands-page.css' | asset_url | stylesheet_tag }}
+
+    <!-- Header scripts -->
+    {{ content_for_header }}
   </head>
   
   <body>
-
     {% section 'header' %}
-
     {{ content_for_layout }}
-
     {% section 'footer' %}
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
+    <!-- Script toggle menú responsivo -->
+    <script defer>
+      document.addEventListener('DOMContentLoaded', function() {
         const menuButton = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
-
         if (menuButton && navMenu) {
-          menuButton.addEventListener('click', function () {
+          menuButton.addEventListener('click', function() {
             navMenu.classList.toggle('active');
           });
         }
       });
     </script>
-    
   </body>
 </html>
