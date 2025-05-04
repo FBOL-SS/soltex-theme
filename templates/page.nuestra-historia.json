@@ -2,7 +2,7 @@
   "name": "Nuestra Historia",
   "sections": {
     "main": {
-      "type": "about-section"
+      "type": "nuestra-historia"
     }
   },
   "order": ["main"]
