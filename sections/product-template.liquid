@@ -1,41 +1,22 @@
-<section class="product-page">
-  <div class="product-container">
-    <div class="product-gallery">
-      {% if product.images.size > 0 %}
-        <div class="main-image">
-          <img id="main-product-image" src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}">
-        </div>
-        <div class="thumbnail-gallery">
-          {% for image in product.images %}
-            <img src="{{ image | image_url: width: 100 }}" alt="Thumbnail {{ forloop.index }}" onclick="document.getElementById('main-product-image').src='{{ image | image_url: width: 600 }}'">
-          {% endfor %}
-        </div>
-      {% endif %}
-    </div>
-
-    <div class="product-details">
-      <h1 class="product-title">{{ product.title }}</h1>
-      <div class="product-price">{{ product.price | money }}</div>
-
-      <form method="post" action="/cart/add">
-        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-        <button type="submit" class="add-to-cart-button">Agregar al carrito</button>
-      </form>
-
-      <div class="product-description">
-        {{ product.description }}
-      </div>
-
-      <div class="product-specifications">
-          <h3>ESPECIFICACIONES</h3>
-        <ul>
-          <li><strong>Modelo Compatible:</strong></li>
-          <li><strong>SKU:</strong> {{ product.variants.first.sku }}</li>
-          <li><strong>Marca:</strong> {{ product.vendor }}</li>
-          <li><strong>Calidad:</strong> {{ product.tags[0] }}</li>
-        </ul>
-      </div>
-
-    </div>
+{% if request.referer contains '/search' %}
+  <div class="back-to-search">
+    <a href="{{ request.referer }}">&larr; Volver a los resultados de búsqueda</a>
   </div>
-</section>
+{% endif %}
+
+<style>
+.back-to-search {
+  margin-bottom: 20px;
+  padding-left: 10px;
+}
+.back-to-search a {
+  font-size: 14px;
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+}
+.back-to-search a:hover {
+  text-decoration: underline;
+}
+</style>
