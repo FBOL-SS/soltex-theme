@@ -1,0 +1,107 @@
+<section class="about-page">
+  <div class="about-container">
+    <h1>Nuestra Historia</h1>
+    <p>{{ section.settings.intro_text }}</p>
+
+    <div class="about-start">
+      <h2>Cómo empezamos</h2>
+      <div class="about-start-flex">
+        <img src="{{ section.settings.start_image | img_url: 'large' }}" alt="Nuestros inicios" />
+        <p>{{ section.settings.start_text }}</p>
+      </div>
+    </div>
+
+    <div class="about-timeline">
+      <h2>Línea del tiempo</h2>
+      <ul>
+        {% for block in section.blocks %}
+          <li>
+            <strong>{{ block.settings.year }}:</strong> {{ block.settings.milestone }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="about-values">
+      <h2>Nuestros valores</h2>
+      <p>{{ section.settings.values_text }}</p>
+    </div>
+
+    <div class="about-map">
+      <h2>Expansión</h2>
+      <img src="{{ section.settings.map_image | img_url: 'master' }}" alt="Mapa de expansión" />
+    </div>
+
+    <div class="about-vision">
+      <h2>Visión a futuro</h2>
+      <p>{{ section.settings.vision_text }}</p>
+    </div>
+
+    <div class="about-cta">
+      <a href="/pages/contact" class="btn">Contáctanos</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Nuestra Historia - About Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "intro_text",
+      "label": "Texto introductorio",
+      "default": "Desde nuestros primeros pasos, hemos creído que la industria textil merece soluciones reales, humanas y confiables."
+    },
+    {
+      "type": "image_picker",
+      "id": "start_image",
+      "label": "Foto de nuestros inicios"
+    },
+    {
+      "type": "textarea",
+      "id": "start_text",
+      "label": "Texto sobre nuestros inicios"
+    },
+    {
+      "type": "textarea",
+      "id": "values_text",
+      "label": "Nuestros valores"
+    },
+    {
+      "type": "image_picker",
+      "id": "map_image",
+      "label": "Mapa de expansión"
+    },
+    {
+      "type": "textarea",
+      "id": "vision_text",
+      "label": "Visión a futuro"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "milestone",
+      "name": "Hito",
+      "settings": [
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Año"
+        },
+        {
+          "type": "text",
+          "id": "milestone",
+          "label": "Evento"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Nuestra Historia"
+    }
+  ]
+}
+{% endschema %}

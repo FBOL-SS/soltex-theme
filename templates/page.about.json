@@ -1,0 +1,9 @@
+{
+  "name": "Nuestra Historia",
+  "sections": {
+    "main": {
+      "type": "about-section"
+    }
+  },
+  "order": ["main"]
+}
