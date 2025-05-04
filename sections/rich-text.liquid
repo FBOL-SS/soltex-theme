@@ -1,0 +1,39 @@
+<section class="rich-text">
+  <div class="rich-text__wrapper" style="max-width: 800px; margin: auto; text-align: center; padding: 40px 20px;">
+    {% if section.settings.title != blank %}
+      <h2>{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.text != blank %}
+      <div class="rich-text__content">
+        {{ section.settings.text }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Texto enriquecido",
+  "tag": "section",
+  "class": "section-rich-text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "NUESTRA HISTORIA"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto",
+      "default": "<p>Aquí puedes escribir la historia de tu empresa, tus valores, logros, o cómo comenzó todo.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Texto enriquecido"
+    }
+  ]
+}
+{% endschema %}
