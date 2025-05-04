@@ -1,86 +1,154 @@
-<div class="volver-al-catalogo">
-  <a href="/pages/tienda">&larr; Volver al catálogo</a>
-</div>
-
-<div class="producto-detalle">
-  <h1>{{ product.title }}</h1>
-
-  <p class="precio">{{ product.price | money }}</p>
-
-  <form method="post" action="/cart/add">
-    <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-    <button type="submit" class="btn-agregar">Agregar al carrito</button>
-  </form>
-
-  <div class="descripcion">
-    {{ product.description }}
+<div class="product-page-container">
+  <div class="product-media">
+    {% if product.featured_image %}
+      <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" class="product-image" />
+    {% endif %}
   </div>
 
-  <div class="especificaciones">
-    <h2>ESPECIFICACIONES</h2>
-    <ul>
-      <li><strong>Modelo Compatible:</strong> {{ product.title }}</li>
-      <li><strong>SKU:</strong> {{ product.sku }}</li>
-      <li><strong>Marca:</strong> {{ product.vendor }}</li>
-      <li><strong>Calidad:</strong> 
-        {% assign calidad = product.tags | join: ", " | split: ", " | first %}
-        {{ calidad }}
-      </li>
-    </ul>
+  <div class="product-details">
+    <h1 class="product-title">{{ product.title }}</h1>
+    <p class="product-price">{{ product.price | money }}</p>
+
+    <!-- Botón Agregar al carrito -->
+    <form method="post" action="/cart/add">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+      <button type="submit" class="btn-product">Agregar al carrito</button>
+    </form>
+
+    <!-- Botón de cotización por WhatsApp -->
+    <a href="https://wa.me/5218711234567?text=Hola!%20Estoy%20interesado%20en%20cotizar%20el%20producto:%20{{ product.title | url_escape }}%20(SKU:%20{{ product.sku }})%20al%20mayoreo"
+       target="_blank"
+       class="btn-cotizar-whatsapp">
+       Solicitar cotización personalizada
+    </a>
+
+    <p class="product-description">{{ product.description }}</p>
+
+    <div class="product-specs">
+      <h3>ESPECIFICACIONES</h3>
+      <ul>
+        <li><strong>Modelo Compatible:</strong> {{ product.title }}</li>
+        <li><strong>SKU:</strong> {{ product.sku }}</li>
+        <li><strong>Marca:</strong> {{ product.vendor }}</li>
+        <li><strong>Calidad:</strong> 
+          {% if product.tags contains 'Original' %}
+            Original
+          {% elsif product.tags contains 'Strong H' %}
+            Strong H
+          {% elsif product.tags contains 'Genérico' %}
+            Genérico
+          {% else %}
+            -
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Botón de regreso -->
+    <a href="/pages/tienda" class="btn-volver-catalogo">← Volver al catálogo</a>
   </div>
 </div>
 
 <style>
-.volver-al-catalogo {
-  margin-bottom: 20px;
+.product-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto;
 }
-.volver-al-catalogo a {
-  display: inline-block;
-  color: #0056b3;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 14px;
+
+.product-media {
+  text-align: center;
 }
-.volver-al-catalogo a:hover {
-  text-decoration: underline;
-}
-.producto-detalle {
-  max-width: 700px;
-  margin: auto;
-  padding: 30px 15px;
-}
-.precio {
-  font-size: 24px;
-  color: #007bff;
-  font-weight: bold;
-}
-.btn-agregar {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #0056b3;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 6px;
-}
-.btn-agregar:hover {
-  background-color: #003e80;
-}
-.especificaciones {
-  margin-top: 30px;
-  background: #f6f6f6;
-  padding: 20px;
+
+.product-image {
+  max-width: 100%;
   border-radius: 8px;
 }
-.especificaciones h2 {
+
+.product-details {
+  text-align: center;
+}
+
+.product-title {
+  font-size: 28px;
+  font-weight: bold;
   margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 22px;
+  color: #0071e3;
+  margin-bottom: 20px;
+}
+
+.btn-product {
+  background-color: #0056b3;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-product:hover {
+  background-color: #003e82;
+}
+
+.btn-cotizar-whatsapp {
+  display: inline-block;
+  margin-top: 15px;
+  background-color: #25D366;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cotizar-whatsapp:hover {
+  background-color: #128C7E;
+}
+
+.product-description {
+  margin: 30px 0;
+  color: #444;
+}
+
+.product-specs {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.product-specs h3 {
+  margin-bottom: 15px;
   font-weight: bold;
 }
-.especificaciones ul {
+
+.product-specs ul {
   list-style: none;
   padding: 0;
 }
-.especificaciones li {
-  margin-bottom: 8px;
+
+.product-specs li {
+  margin-bottom: 10px;
+}
+
+.btn-volver-catalogo {
+  display: inline-block;
+  margin-top: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #0056b3;
+}
+
+.btn-volver-catalogo:hover {
+  text-decoration: underline;
 }
 </style>
