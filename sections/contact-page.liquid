@@ -1,144 +1,106 @@
-<div class="contact-wrapper">
-  <div class="contact-grid">
-    <div class="contact-info">
-      <h2>{{ section.settings.heading }}</h2>
-      <p>{{ section.settings.subtext }}</p>
-      <ul class="info-list">
-        <li><strong>📞 Teléfono:</strong> {{ section.settings.phone }}</li>
-        <li><strong>✉️ Email:</strong> <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></li>
-        <li><strong>📍 Dirección:</strong> {{ section.settings.address }}</li>
+<div class="contact-section">
+  <div class="contact-container">
+    
+    <div class="contact-info-box">
+      <h2>CONTÁCTANOS</h2>
+      <p>¿Tienes dudas? Llámanos, escríbenos o mándanos un WhatsApp. Estamos para ayudarte.</p>
+
+      <ul class="contact-info-list">
+        <li><strong>📞 Teléfono:</strong> <a href="tel:+528711234567">+52 871 123 4567</a></li>
+        <li><strong>📧 Email:</strong> <a href="mailto:info@sewingsolution.com.mx">info@sewingsolution.com.mx</a></li>
+        <li><strong>📍 Dirección:</strong> Calle Desierto 110, Torreón, Coahuila</li>
+        <li><strong>🕒 Horario:</strong> Lunes a Viernes de 8:00 a.m. a 6:00 p.m.</li>
       </ul>
-      <div class="contact-map">
-        {{ section.settings.map_embed_code }}
-      </div>
+
+      <a href="https://wa.me/528711234567" class="whatsapp-btn" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"> Escríbenos por WhatsApp
+      </a>
     </div>
-    <div class="contact-form">
-      <form method="post" action="/contact#contact_form" id="contact_form" accept-charset="UTF-8" class="form">
-        <input type="hidden" name="form_type" value="contact" />
-        <input type="hidden" name="utf8" value="✓" />
-        <input type="text" name="contact[name]" placeholder="Tu nombre" required />
-        <input type="email" name="contact[email]" placeholder="Tu correo" required />
-        <textarea name="contact[body]" rows="5" placeholder="Escribe tu mensaje" required></textarea>
+
+    <div class="contact-form-box">
+      {% form 'contact' %}
+        <input type="text" name="contact[name]" placeholder="Tu nombre" required>
+        <input type="email" name="contact[email]" placeholder="Tu correo" required>
+        <textarea name="contact[body]" placeholder="Escribe tu mensaje" rows="6" required></textarea>
         <button type="submit">Enviar</button>
-      </form>
+      {% endform %}
     </div>
+  </div>
+
+  <div class="map-box">
+    <iframe src="https://www.google.com/maps?q=Calle+Desierto+110,+Torreón,+Coahuila&output=embed" 
+      width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
   </div>
 </div>
 
 <style>
-.contact-wrapper {
+.contact-section {
   padding: 60px 20px;
+  background-color: #f7f7f7;
+}
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
   max-width: 1200px;
   margin: auto;
-  background: #fff;
-  border-radius: 12px;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 40px;
+  align-items: flex-start;
 }
-
-.contact-info h2 {
+.contact-info-box, .contact-form-box {
+  flex: 1 1 48%;
+}
+.contact-info-box h2 {
   font-size: 28px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: #002244;
 }
-
-.contact-info p {
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-.info-list {
+.contact-info-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 20px;
+  margin: 20px 0;
 }
-
-.info-list li {
-  margin-bottom: 10px;
-  font-size: 15px;
+.contact-info-list li {
+  margin-bottom: 12px;
+  font-size: 16px;
 }
-
-.contact-form input,
-.contact-form textarea {
+.contact-info-list a {
+  color: #002244;
+  text-decoration: none;
+}
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: #25D366;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 20px;
+}
+.whatsapp-btn img {
+  width: 20px;
+  margin-right: 10px;
+}
+.contact-form-box input,
+.contact-form-box textarea {
   width: 100%;
-  margin-bottom: 15px;
-  padding: 12px;
-  border: 1px solid #ddd;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 15px;
 }
-
-.contact-form button {
-  background-color: #002855;
-  color: white;
+.contact-form-box button {
+  background-color: #002244;
+  color: #fff;
+  padding: 14px 28px;
   border: none;
-  padding: 12px 24px;
-  font-size: 15px;
   border-radius: 6px;
+  font-weight: bold;
   cursor: pointer;
-  transition: 0.3s ease;
 }
-
-.contact-form button:hover {
-  background-color: #00509e;
-}
-
-.contact-map iframe {
-  border: 0;
-  width: 100%;
-  height: 250px;
-  border-radius: 8px;
+.map-box {
+  margin-top: 60px;
 }
 </style>
-
-{% schema %}
-{
-  "name": "Contacto",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Título",
-      "default": "Contáctanos"
-    },
-    {
-      "type": "text",
-      "id": "subtext",
-      "label": "Texto secundario",
-      "default": "¿Tienes dudas? Llámanos o escríbenos."
-    },
-    {
-      "type": "text",
-      "id": "phone",
-      "label": "Teléfono",
-      "default": "+52 871 123 4567"
-    },
-    {
-      "type": "text",
-      "id": "email",
-      "label": "Email",
-      "default": "info@sewingsolution.com.mx"
-    },
-    {
-      "type": "text",
-      "id": "address",
-      "label": "Dirección",
-      "default": "Calle Ejemplo 123, Torreón, Coahuila"
-    },
-    {
-      "type": "textarea",
-      "id": "map_embed_code",
-      "label": "Código de mapa (iframe)",
-      "default": "<iframe src='https://www.google.com/maps/embed?...' width='100%' height='300' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Contacto"
-    }
-  ]
-}
-{% endschema %}
