@@ -1,13 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
-{
+ {
   "current": {
     "sections": {
       "header": {
@@ -19,35 +10,18 @@
       },
       "footer": {
         "type": "footer",
-        "blocks": {
-          "social_38hbQ3": {
-            "type": "social",
-            "settings": {
-              "icon": "shopify://shop_images/instagram.png",
-              "link": "https://www.instagram.com/soltexlaguna/"
-            }
-          },
-          "social_a7P6C3": {
-            "type": "social",
-            "settings": {
-              "icon": "shopify://shop_images/facebook_1.png",
-              "link": "https://www.facebook.com/share/1Z1tmF3tjz/?mibextid=wwXIfr"
-            }
-          },
-          "social_6cpceE": {
-            "type": "social",
-            "settings": {
-              "icon": "shopify://shop_images/linkedin.png",
-              "link": "https://www.linkedin.com/company/soluciones-textiles-laguna/"
-            }
-          }
-        },
-        "block_order": [
-          "social_38hbQ3",
-          "social_a7P6C3",
-          "social_6cpceE"
-        ],
         "settings": {
+          "footer_logo": null,
+          "footer_text": "Gracias por visitar nuestro sitio web.",
+          "social_1_icon": "shopify://shop_images/instagram.png",
+          "social_1_label": "Instagram",
+          "social_1_url": "https://www.instagram.com/soltexlaguna/",
+          "social_2_icon": "shopify://shop_images/facebook_1.png",
+          "social_2_label": "Facebook",
+          "social_2_url": "https://www.facebook.com/share/1Z1tmF3tjz/?mibextid=wwXIfr",
+          "social_3_icon": "shopify://shop_images/linkedin.png",
+          "social_3_label": "LinkedIn",
+          "social_3_url": "https://www.linkedin.com/company/soluciones-textiles-laguna/",
           "company_name": "soluciones textiles laguna",
           "address": "",
           "phone": "+52 871 123 4567",
