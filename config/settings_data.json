@@ -1,4 +1,13 @@
- {
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
   "current": {
     "sections": {
       "header": {
@@ -11,43 +20,36 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "social_instagram": {
+          "social_link_dVQaPU": {
             "type": "social_link",
             "settings": {
-              "icon": "shopify://shop_images/instagram.png",
-              "label": "Instagram",
-              "link": "https://www.instagram.com/soltexlaguna/"
+              "icon": "shopify://shop_images/facebook.png",
+              "label": "",
+              "link": ""
             }
           },
-          "social_facebook": {
+          "social_link_bFeBeL": {
             "type": "social_link",
             "settings": {
-              "icon": "shopify://shop_images/facebook_1.png",
-              "label": "Facebook",
-              "link": "https://www.facebook.com/share/1Z1tmF3tjz/?mibextid=wwXIfr"
+              "label": "Red social",
+              "link": ""
             }
           },
-          "social_linkedin": {
+          "social_link_Bkqyb8": {
             "type": "social_link",
             "settings": {
-              "icon": "shopify://shop_images/linkedin.png",
-              "label": "LinkedIn",
-              "link": "https://www.linkedin.com/company/soluciones-textiles-laguna/"
+              "label": "Red social",
+              "link": ""
             }
           }
         },
         "block_order": [
-          "social_instagram",
-          "social_facebook",
-          "social_linkedin"
+          "social_link_dVQaPU",
+          "social_link_bFeBeL",
+          "social_link_Bkqyb8"
         ],
         "settings": {
-          "footer_logo": null,
-          "footer_text": "Gracias por visitar nuestro sitio web.",
-          "company_name": "soluciones textiles laguna",
-          "address": "",
-          "phone": "+52 871 123 4567",
-          "email": "info@sewingsolution.com.mx"
+          "footer_text": "Gracias por visitar nuestro sitio web."
         }
       }
     },
