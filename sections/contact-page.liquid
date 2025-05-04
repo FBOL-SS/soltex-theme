@@ -25,7 +25,15 @@
     <p><strong>📞 Teléfono:</strong> +52 871 123 4567</p>
     <p><strong>📧 Email:</strong> <a href="mailto:info@sewingsolution.com.mx">info@sewingsolution.com.mx</a></p>
     <p><strong>📍 Dirección:</strong> Calle Desierto 110, Gómez Palacio, Durango</p>
-    <p><strong>💬 WhatsApp:</strong> <a href="https://wa.me/528711234567" target="_blank">Chatea con nosotros</a></p>
+    <a href="https://wa.me/528711234567" class="whatsapp-button" target="_blank">💬 Escríbenos por WhatsApp</a>
+  </div>
+
+  <div class="contact-map">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.2743460081583!2d-103.4973900249719!3d25.563015177480736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fd9e195d5e35d%3A0xc0e3223e087cecef!2sCalle%20Desierto%20110%2C%20G%C3%B3mez%20Palacio%2C%20Dgo.!5e0!3m2!1ses-419!2smx!4v1714777444215" 
+      width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
   </div>
 </div>
 
@@ -88,11 +96,35 @@ textarea {
   font-size: 15px;
   line-height: 1.8;
   color: #333;
+  text-align: center;
 }
 
 .contact-info a {
   color: #0052a5;
   text-decoration: none;
+  display: inline-block;
+}
+
+.whatsapp-button {
+  margin-top: 15px;
+  display: inline-block;
+  background-color: #25D366;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.whatsapp-button:hover {
+  background-color: #1DA851;
+}
+
+.contact-map {
+  margin-top: 40px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .contact-success {
