@@ -1,0 +1,17 @@
+{
+  "name": "Contacto",
+  "sections": {
+    "main": {
+      "type": "contact-page",
+      "settings": {
+        "heading": "Contáctanos",
+        "subtext": "¿Tienes dudas? Llámanos o escríbenos.",
+        "phone": "+52 123 456 7890",
+        "email": "info@sewingsolution.com.mx",
+        "address": "Calle Ejemplo 123, Torreón, Coahuila",
+        "map_embed_code": "<iframe src='https://www.google.com/maps/embed?...' width='100%' height='300' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
+      }
+    }
+  },
+  "order": ["main"]
+}
