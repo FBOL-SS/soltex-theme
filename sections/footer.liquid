@@ -61,27 +61,27 @@
 }
 
 .footer-card {
-  background-color: #003366; /* Fondo azul oscuro más suave */
-  color: white; /* Texto blanco para contraste */
-  padding: 12px 15px; /* Más padding para mejor espaciado */
-  border-radius: 10px; /* Bordes más redondeados */
-  text-align: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ffffff20; /* fondo semitransparente */
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 110px;
-  height: 110px;
-  font-weight: 600;
-  font-size: 14px;
-  transition: transform 0.2s, box-shadow 0.2s; /* Añadir transición para sombra */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
-  border: 1px solid #004d99; /* Borde sutil */
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.footer-card img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
 }
 
 .footer-card:hover {
-  transform: translateY(-3px); /* Levantar al pasar el ratón */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al hover */
+  transform: scale(1.1);
+  background-color: #ffffff40;
 }
+
 
 .footer-card img {
   max-height: 40px;
