@@ -5,10 +5,18 @@
         {
           "type": "text",
           "id": "store_message",
-          "label": "Mensaje de tienda",
+          "label": "Mensaje de bienvenida",
           "default": "Bienvenido a nuestra tienda"
         }
       ]
+    },
+    {
+      "name": "Encabezado",
+      "settings": []
+    },
+    {
+      "name": "Pie de página",
+      "settings": []
     }
   ]
   
