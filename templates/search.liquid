@@ -1,148 +1,117 @@
 {% layout none %}
-<div class="search-header-wrapper">
-  <div class="search-header">
-    <form action="/search" method="get" role="search" class="search-form">
-      <input type="text" name="q" placeholder="Buscar producto..." value="{{ search.terms | escape }}">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Búsqueda</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .search-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .search-form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .search-form input[type="text"] {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .search-form button {
+      background-color: #002855;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: #002855;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .search-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .product-card {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      background: #fafafa;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+    .product-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      margin-bottom: 8px;
+    }
+    .product-card .sku {
+      font-size: 14px;
+      color: #555;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .product-card .price {
+      font-size: 16px;
+      color: #000;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="search-container">
+    <form class="search-form" action="/search" method="get">
+      <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Buscar productos..." />
       <button type="submit">Buscar</button>
     </form>
-    <a href="/pages/tienda" class="btn-volver">← Volver al catálogo</a>
+    <a href="/collections/all" class="back-link">&larr; Volver al catálogo</a>
+
+    {% if search.performed %}
+      <h2>RESULTADOS DE BÚSQUEDA PARA "{{ search.terms }}"</h2>
+      <div class="search-results">
+        {% for item in search.results %}
+          {% if item.object_type == 'product' %}
+            <div class="product-card">
+              <a href="{{ item.url }}">
+                <img src="{{ item.featured_image | image_url: width: 400 }}" alt="{{ item.title }}">
+              </a>
+              <h3>{{ item.title }}</h3>
+              {% if item.selected_or_first_available_variant.sku != blank %}
+                <a class="sku" href="{{ item.url }}">{{ item.selected_or_first_available_variant.sku }}</a>
+              {% endif %}
+              <p class="price">{{ item.price | money }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>Por favor, escribe algo en la barra de búsqueda.</p>
+    {% endif %}
   </div>
-</div>
-
-{% if search.results.size > 0 %}
-  <h2 class="search-title">RESULTADOS DE BÚSQUEDA PARA "{{ search.terms }}"</h2>
-  <div class="search-results-grid">
-    {% for item in search.results %}
-      {% if item.object_type == 'product' %}
-        <div class="search-item">
-          <a href="{{ item.url }}">
-            <img src="{{ item.featured_image | image_url: width: 300 }}" alt="{{ item.title }}">
-            <h3>{{ item.title }}</h3>
-          </a>
-          <p class="price">{{ item.price | money }}</p>
-          <a href="{{ item.url }}" class="btn-ver">Ver producto</a>
-        </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-{% else %}
-  <p class="no-results">No se encontraron resultados para "{{ search.terms }}".</p>
-  <a href="/pages/tienda" class="btn-volver">← Volver al catálogo</a>
-{% endif %}
-
-<style>
-.search-header-wrapper {
-  background: #f9f9f9;
-  padding: 25px 0 10px;
-}
-
-.search-header {
-  max-width: 1000px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  padding: 0 20px;
-}
-
-.search-form {
-  display: flex;
-  gap: 10px;
-  flex: 1;
-}
-
-.search-form input[type="text"] {
-  flex: 1;
-  padding: 10px 15px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
-.search-form button {
-  padding: 10px 15px;
-  background-color: #003e82;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.search-form button:hover {
-  background-color: #0056b3;
-}
-
-.btn-volver {
-  text-decoration: none;
-  color: #0056b3;
-  font-weight: bold;
-  padding: 10px 15px;
-}
-
-.search-title {
-  text-align: center;
-  margin: 40px 0 20px;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.search-results-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  padding: 0 20px 60px;
-  max-width: 1300px;
-  margin: auto;
-}
-
-.search-item {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-.search-item img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: contain;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.search-item h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #000;
-}
-
-.search-item .price {
-  font-size: 16px;
-  color: #444;
-  margin-bottom: 10px;
-}
-
-.btn-ver {
-  background-color: #0056b3;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 6px;
-  display: inline-block;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.btn-ver:hover {
-  background-color: #003e82;
-}
-
-.no-results {
-  text-align: center;
-  margin: 60px 0 20px;
-  font-size: 18px;
-}
-</style>
+</body>
+</html>
