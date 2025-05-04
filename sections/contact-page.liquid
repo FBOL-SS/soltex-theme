@@ -1,0 +1,138 @@
+<section class="contact-page">
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subtext }}</p>
+      <ul class="info-list">
+        <li><strong>Teléfono:</strong> {{ section.settings.phone }}</li>
+        <li><strong>Email:</strong> <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></li>
+        <li><strong>Dirección:</strong> {{ section.settings.address }}</li>
+      </ul>
+    </div>
+
+    <div class="contact-form">
+      {% form 'contact' %}
+        {% if form.posted_successfully? %}
+          <p class="success">Gracias por tu mensaje. Nos pondremos en contacto pronto.</p>
+        {% endif %}
+
+        <input type="text" name="contact[name]" placeholder="Tu nombre" required>
+        <input type="email" name="contact[email]" placeholder="Tu correo" required>
+        <textarea name="contact[body]" placeholder="Escribe tu mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      {% endform %}
+    </div>
+  </div>
+
+  {% if section.settings.map_embed_code != blank %}
+    <div class="map-container">
+      {{ section.settings.map_embed_code }}
+    </div>
+  {% endif %}
+</section>
+
+<style>
+  .contact-page {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .contact-info,
+  .contact-form {
+    flex: 1 1 45%;
+  }
+
+  .info-list {
+    list-style: none;
+    padding: 0;
+    line-height: 1.8;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+  .contact-form button {
+    background-color: #002147;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .map-container {
+    margin-top: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 768px) {
+    .contact-wrapper {
+      flex-direction: column;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Página de Contacto",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Contáctanos"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Texto introductorio",
+      "default": "¿Tienes alguna duda o necesitas ayuda? Llámanos o escríbenos."
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Teléfono",
+      "default": "+52 123 456 7890"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Correo electrónico",
+      "default": "info@sewingsolution.com.mx"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Dirección",
+      "default": "Calle Ejemplo 123, Torreón, Coahuila"
+    },
+    {
+      "type": "textarea",
+      "id": "map_embed_code",
+      "label": "Código de Mapa (iframe de Google Maps)",
+      "default": "<iframe src='https://www.google.com/maps/embed?...' width='100%' height='300' style='border:0;' allowfullscreen='' loading='lazy'></iframe>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sección de contacto"
+    }
+  ]
+}
+{% endschema %}
