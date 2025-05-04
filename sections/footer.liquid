@@ -1,6 +1,26 @@
 <footer class="site-footer">
-  <div class="footer-wrapper">
-    <p>© 2025 Soluciones Textiles Laguna. Todos los derechos reservados.</p>
+  <div class="footer-container">
+    <div class="footer-branding">
+      {% if section.settings.footer_logo %}
+        <img src="{{ section.settings.footer_logo | img_url: 'medium' }}" alt="Logo" class="footer-logo" />
+      {% endif %}
+      <p>{{ section.settings.footer_text }}</p>
+    </div>
+
+    <div class="footer-links">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link }}" class="footer-link" target="_blank">
+          <div class="footer-card">
+            <img src="{{ block.settings.icon | img_url: '50x50' }}" alt="Icono" />
+            <span>{{ block.settings.label }}</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. Todos los derechos reservados.</p>
   </div>
 </footer>
 
@@ -8,19 +28,113 @@
 .site-footer {
   background-color: #001F3F;
   color: white;
-  text-align: center;
-  padding: 30px 20px;
+  padding: 40px 20px 20px;
   font-size: 14px;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.footer-branding {
+  max-width: 400px;
+}
+
+.footer-logo {
+  max-height: 60px;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-card {
+  background-color: white;
+  color: #001F3F;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 110px;
+  height: 110px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 0.2s;
+}
+
+.footer-card:hover {
+  transform: translateY(-3px);
+}
+
+.footer-card img {
+  max-height: 40px;
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 30px;
+  padding-top: 10px;
 }
 </style>
 
 {% schema %}
 {
-  "name": "Footer",
-  "settings": [],
+  "name": "Pie de página",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Logo del footer"
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Texto del footer",
+      "default": "Gracias por visitar nuestro sitio web."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Acceso rápido",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Ícono"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Texto del enlace",
+          "default": "Instagram"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "URL del enlace"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
   "presets": [
     {
-      "name": "Footer básico"
+      "name": "Footer profesional",
+      "category": "Footer"
     }
   ]
 }
