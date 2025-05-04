@@ -1,132 +1,141 @@
-{% schema %}
-{
-  "name": "Footer",
-  "settings": [
-    {
-      "type": "text",
-      "id": "company_name",
-      "label": "Nombre de la empresa",
-      "default": "Soltex"
-    },
-    {
-      "type": "text",
-      "id": "address",
-      "label": "Dirección",
-      "default": "Calle Ficticia #123, Torreón, Coahuila"
-    },
-    {
-      "type": "text",
-      "id": "phone",
-      "label": "Teléfono",
-      "default": "+52 871 123 4567"
-    },
-    {
-      "type": "text",
-      "id": "email",
-      "label": "Correo electrónico",
-      "default": "info@soltex.com"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "social",
-      "name": "Red Social",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Ícono de red social"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
-        }
-      ]
-    }
-  ],
-  "max_blocks": 6,
-  "presets": [
-    {
-      "name": "Footer",
-      "category": "Pie de página"
-    }
-  ]
-}
-{% endschema %}
-
-<footer class="footer">
+<footer class="site-footer">
   <div class="footer-container">
-    <div class="footer-info">
-      <h2>{{ section.settings.company_name }}</h2>
-      <p>{{ section.settings.address }}</p>
-      <p><a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a></p>
-      <p><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></p>
+    <div class="footer-branding">
+      {% if section.settings.footer_logo %}
+        <img src="{{ section.settings.footer_logo | img_url: 'medium' }}" alt="Logo" class="footer-logo" />
+      {% endif %}
+      <p>{{ section.settings.footer_text }}</p>
     </div>
 
-    <div class="footer-socials">
+    <div class="footer-links">
       {% for block in section.blocks %}
-        {% if block.settings.icon != blank and block.settings.link != blank %}
-          <a href="{{ block.settings.link }}" target="_blank" class="social-icon">
-            <img src="{{ block.settings.icon | image_url: width: 60 }}" alt="Red social" />
-          </a>
-        {% endif %}
+        <a href="{{ block.settings.link }}" class="footer-link" target="_blank">
+          <div class="footer-card">
+            <img src="{{ block.settings.icon | img_url: '50x50' }}" alt="Icono" />
+            <span>{{ block.settings.label }}</span>
+          </div>
+        </a>
       {% endfor %}
     </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. Todos los derechos reservados.</p>
   </div>
 </footer>
 
 <style>
-.footer {
+.site-footer {
   background-color: #001F3F;
-  color: #fff;
-  padding: 60px 20px;
+  color: white;
+  padding: 40px 20px 20px;
+  font-size: 14px;
   text-align: center;
 }
 
 .footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
+  align-items: center;
 }
 
-.footer-info h2 {
-  font-size: 24px;
-  margin-bottom: 15px;
-  text-transform: uppercase;
+.footer-branding {
+  max-width: 400px;
 }
 
-.footer-info p {
-  margin: 5px 0;
-  font-size: 16px;
+.footer-logo {
+  max-height: 60px;
+  margin-bottom: 10px;
 }
 
-.footer-info a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer-info a:hover {
-  text-decoration: underline;
-}
-
-.footer-socials {
-  margin-top: 30px;
+.footer-links {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
   gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.social-icon img {
-  width: 40px;
-  height: 40px;
-  transition: transform 0.3s ease;
-  border-radius: 6px;
-  padding: 4px;
-  background-color: transparent;
+.footer-card {
+  background-color: white;
+  color: #001F3F;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 110px;
+  height: 110px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 0.2s;
 }
 
-.social-icon img:hover {
-  transform: scale(1.1);
+.footer-card:hover {
+  transform: translateY(-3px);
+}
+
+.footer-card img {
+  max-height: 40px;
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 30px;
+  padding-top: 10px;
 }
 </style>
+
+{% schema %}
+{
+  "name": "Pie de página",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Logo del footer"
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Texto del footer",
+      "default": "Gracias por visitar nuestro sitio web."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Acceso rápido",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Ícono"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Texto del enlace",
+          "default": "Instagram"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "URL del enlace"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Footer profesional",
+      "category": "Footer"
+    }
+  ]
+}
+{% endschema %}
