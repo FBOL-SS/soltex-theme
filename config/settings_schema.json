@@ -23,23 +23,8 @@
           "id": "footer_text",
           "label": "Texto del footer",
           "default": "Gracias por visitar nuestro sitio web."
-        },
-        {
-          "type": "url",
-          "id": "instagram_url",
-          "label": "Instagram"
-        },
-        {
-          "type": "url",
-          "id": "linkedin_url",
-          "label": "LinkedIn"
-        },
-        {
-          "type": "url",
-          "id": "whatsapp_url",
-          "label": "WhatsApp"
         }
       ]
     }
   ]
-      
+  
