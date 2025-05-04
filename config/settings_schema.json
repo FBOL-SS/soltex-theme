@@ -6,7 +6,7 @@
           "type": "text",
           "id": "store_tagline",
           "label": "Lema de la tienda",
-          "default": "Las mejores soluciones textiles"
+          "default": "Soluciones textiles industriales"
         }
       ]
     },
@@ -16,39 +16,30 @@
         {
           "type": "image_picker",
           "id": "footer_logo",
-          "label": "Logo del pie de página"
+          "label": "Logo del footer"
         },
         {
           "type": "text",
           "id": "footer_text",
           "label": "Texto del footer",
           "default": "Gracias por visitar nuestro sitio web."
+        },
+        {
+          "type": "url",
+          "id": "instagram_url",
+          "label": "Instagram"
+        },
+        {
+          "type": "url",
+          "id": "linkedin_url",
+          "label": "LinkedIn"
+        },
+        {
+          "type": "url",
+          "id": "whatsapp_url",
+          "label": "WhatsApp"
         }
       ]
-    },
-    {
-      "name": "Social Links",
-      "blocks": [
-        {
-          "type": "social",
-          "name": "Red social",
-          "settings": [
-            {
-              "type": "url",
-              "id": "link",
-              "label": "URL"
-            },
-            {
-              "type": "text",
-              "id": "label",
-              "label": "Nombre"
-            }
-          ]
-        }
-      ],
-      "max_blocks": 4,
-      "type": "social_links",
-      "settings": []
     }
   ]
-    
+      
