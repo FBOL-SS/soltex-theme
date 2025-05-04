@@ -1,0 +1,71 @@
+<section class="nuestra-historia-section">
+  <div class="historia-container">
+    <h1 class="historia-titulo">{{ section.settings.titulo }}</h1>
+    <div class="historia-contenido">
+      {{ section.settings.contenido }}
+    </div>
+    {% if section.settings.imagen %}
+      <div class="historia-imagen">
+        <img src="{{ section.settings.imagen | image_url: width: 1200 }}" alt="Nuestra historia">
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.nuestra-historia-section {
+  padding: 60px 20px;
+  background-color: #f5f5f5;
+  color: #111;
+  text-align: center;
+}
+.historia-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.historia-titulo {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+.historia-contenido {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  white-space: pre-line;
+}
+.historia-imagen img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+</style>
+
+{% schema %}
+{
+  "name": "Nuestra Historia",
+  "settings": [
+    {
+      "type": "text",
+      "id": "titulo",
+      "label": "Título",
+      "default": "Nuestra Historia"
+    },
+    {
+      "type": "textarea",
+      "id": "contenido",
+      "label": "Contenido",
+      "default": "Aquí puedes escribir la historia de tu empresa, tus valores, logros, o cómo comenzó todo."
+    },
+    {
+      "type": "image_picker",
+      "id": "imagen",
+      "label": "Imagen destacada"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nuestra Historia"
+    }
+  ]
+}
+{% endschema %}
