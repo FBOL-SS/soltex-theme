@@ -1,90 +1,90 @@
+<section class="carousel-section">
+  <div class="page-width">
+    <h2 class="carousel-heading">{{ section.settings.title }}</h2>
+    <div class="carousel-wrapper">
+      {% for block in section.blocks %}
+        <div class="carousel-item">
+          <img src="{{ block.settings.image | img_url: '800x800' }}" alt="{{ block.settings.alt_text | escape }}" loading="lazy">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+.carousel-section {
+  padding: 50px 0;
+  background: #ffffff;
+  text-align: center;
+}
+
+.carousel-heading {
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.carousel-wrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px 0;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: white;
+  overflow: hidden;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+</style>
+
 {% schema %}
 {
-  "name": "Carrusel de Imágenes",
-  "max_blocks": 10,
+  "name": "Carrusel de evolución",
   "settings": [
     {
       "type": "text",
-      "id": "titulo",
-      "label": "Título del carrusel",
-      "default": "Nuestra evolución"
+      "id": "title",
+      "label": "Título",
+      "default": "Nuestra Evolución"
     }
   ],
   "blocks": [
     {
-      "type": "imagen",
-      "name": "Imagen del carrusel",
+      "type": "slide",
+      "name": "Imagen",
       "settings": [
         {
           "type": "image_picker",
-          "id": "imagen",
+          "id": "image",
           "label": "Imagen"
         },
         {
           "type": "text",
-          "id": "descripcion",
-          "label": "Descripción opcional"
+          "id": "alt_text",
+          "label": "Texto alternativo"
         }
       ]
     }
   ],
+  "max_blocks": 10,
   "presets": [
     {
-      "name": "Carrusel de Imágenes"
+      "name": "Carrusel Evolución",
+      "category": "Contenido"
     }
   ]
 }
 {% endschema %}
-
-<div class="carrusel-wrapper">
-  <h2>{{ section.settings.titulo }}</h2>
-  <div class="carrusel-contenedor">
-    {% for block in section.blocks %}
-      <div class="carrusel-slide">
-        {% if block.settings.imagen %}
-          <img src="{{ block.settings.imagen | img_url: '1024x' }}" alt="Imagen {{ forloop.index }}">
-        {% endif %}
-        {% if block.settings.descripcion != blank %}
-          <p>{{ block.settings.descripcion }}</p>
-        {% endif %}
-      </div>
-    {% endfor %}
-  </div>
-</div>
-
-<style>
-.carrusel-wrapper {
-  text-align: center;
-  padding: 40px 20px;
-}
-.carrusel-wrapper h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-.carrusel-contenedor {
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
-}
-.carrusel-slide {
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  width: 300px;
-  border-radius: 8px;
-  background: white;
-  padding: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-.carrusel-slide img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-}
-.carrusel-slide p {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #333;
-}
-</style>
