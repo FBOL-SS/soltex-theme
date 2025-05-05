@@ -58,10 +58,45 @@
       "settings": {
         "title": "Nuestra Evolución"
       }
+    },
+    "timeline_block_74pNfA": {
+      "type": "timeline-block",
+      "blocks": {
+        "hito_AeBDHk": {
+          "type": "hito",
+          "settings": {
+            "year": "2023",
+            "description": "Descripción breve del evento importante.",
+            "image": "shopify://shop_images/20231027_112823.jpg"
+          }
+        },
+        "hito_gAqce3": {
+          "type": "hito",
+          "settings": {
+            "year": "2023",
+            "description": "Descripción breve del evento importante."
+          }
+        },
+        "hito_pfxp8D": {
+          "type": "hito",
+          "settings": {
+            "year": "2023",
+            "description": "Descripción breve del evento importante."
+          }
+        }
+      },
+      "block_order": [
+        "hito_AeBDHk",
+        "hito_gAqce3",
+        "hito_pfxp8D"
+      ],
+      "name": "Línea del tiempo",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "carrusel_imagenes_KpeGKB"
+    "carrusel_imagenes_KpeGKB",
+    "timeline_block_74pNfA"
   ]
 }
