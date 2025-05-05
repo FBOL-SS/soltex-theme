@@ -15,9 +15,53 @@
         "title": "NUESTRA HISTORIA",
         "text": "<p>Aquí puedes escribir la historia de tu empresa, tus valores, logros, o cómo comenzó todo.</p>"
       }
+    },
+    "carrusel_imagenes_KpeGKB": {
+      "type": "carrusel-imagenes",
+      "blocks": {
+        "slide_ijFgrp": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/IMAGEMACHINE.jpg",
+            "alt_text": ""
+          }
+        },
+        "slide_VzYKdH": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/AdobeStock_248525679.jpg",
+            "alt_text": ""
+          }
+        },
+        "slide_qGeLQM": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/AdobeStock_1169355084.jpg",
+            "alt_text": ""
+          }
+        },
+        "slide_Vd8eYG": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/AdobeStock_366013539.jpg",
+            "alt_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_ijFgrp",
+        "slide_VzYKdH",
+        "slide_qGeLQM",
+        "slide_Vd8eYG"
+      ],
+      "name": "Carrusel Evolución",
+      "settings": {
+        "title": "Nuestra Evolución"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "carrusel_imagenes_KpeGKB"
   ]
 }
