@@ -1,51 +1,57 @@
-<div class="timeline-section">
-  {% for block in section.blocks %}
-    <div class="timeline-item">
-      {% if block.settings.image %}
-        <img src="{{ block.settings.image | img_url: 'medium' }}" alt="Imagen del hito {{ block.settings.year }}" class="timeline-img">
-      {% endif %}
-      <div class="timeline-text">
-        <h3>{{ block.settings.year }}</h3>
-        <p>{{ block.settings.description }}</p>
+<section class="timeline-section">
+  <div class="timeline-container">
+    {% for block in section.blocks %}
+      <div class="timeline-item">
+        {% if block.settings.image %}
+          <div class="timeline-image">
+            <img src="{{ block.settings.image | img_url: '480x' }}" alt="{{ block.settings.year }}">
+          </div>
+        {% endif %}
+        <div class="timeline-content">
+          <h3>{{ block.settings.year }}</h3>
+          <p>{{ block.settings.description }}</p>
+        </div>
       </div>
-    </div>
-  {% endfor %}
-</div>
+    {% endfor %}
+  </div>
+</section>
 
 <style>
 .timeline-section {
+  padding: 60px 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.timeline-container {
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: 0 auto;
 }
 
 .timeline-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
 }
 
-.timeline-img {
-  width: 160px;
-  height: auto;
-  border-radius: 8px;
+.timeline-image img {
+  max-width: 100%;
+  max-height: 250px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
 }
 
-.timeline-text {
-  flex: 1;
-}
-
-.timeline-text h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
+.timeline-content h3 {
+  font-size: 24px;
   color: #001F3F;
+  margin-bottom: 8px;
 }
 
-.timeline-text p {
+.timeline-content p {
   font-size: 16px;
   color: #333;
 }
@@ -54,22 +60,21 @@
 {% schema %}
 {
   "name": "Línea del tiempo",
-  "max_blocks": 10,
   "blocks": [
     {
-      "type": "milestone",
+      "type": "hito",
       "name": "Hito",
       "settings": [
         {
           "type": "text",
           "id": "year",
           "label": "Año",
-          "default": "2020"
+          "default": "2023"
         },
         {
           "type": "textarea",
           "id": "description",
-          "label": "Descripción del hito",
+          "label": "Descripción del evento",
           "default": "Descripción breve del evento importante."
         },
         {
@@ -80,6 +85,7 @@
       ]
     }
   ],
+  "max_blocks": 10,
   "presets": [
     {
       "name": "Línea del tiempo"
