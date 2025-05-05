@@ -1,0 +1,90 @@
+{% schema %}
+{
+  "name": "Carrusel de Imágenes",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "text",
+      "id": "titulo",
+      "label": "Título del carrusel",
+      "default": "Nuestra evolución"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "imagen",
+      "name": "Imagen del carrusel",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "imagen",
+          "label": "Imagen"
+        },
+        {
+          "type": "text",
+          "id": "descripcion",
+          "label": "Descripción opcional"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Carrusel de Imágenes"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="carrusel-wrapper">
+  <h2>{{ section.settings.titulo }}</h2>
+  <div class="carrusel-contenedor">
+    {% for block in section.blocks %}
+      <div class="carrusel-slide">
+        {% if block.settings.imagen %}
+          <img src="{{ block.settings.imagen | img_url: '1024x' }}" alt="Imagen {{ forloop.index }}">
+        {% endif %}
+        {% if block.settings.descripcion != blank %}
+          <p>{{ block.settings.descripcion }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.carrusel-wrapper {
+  text-align: center;
+  padding: 40px 20px;
+}
+.carrusel-wrapper h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.carrusel-contenedor {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+}
+.carrusel-slide {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  width: 300px;
+  border-radius: 8px;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.carrusel-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.carrusel-slide p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+</style>
