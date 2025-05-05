@@ -1,0 +1,89 @@
+<div class="timeline-section">
+  {% for block in section.blocks %}
+    <div class="timeline-item">
+      {% if block.settings.image %}
+        <img src="{{ block.settings.image | img_url: 'medium' }}" alt="Imagen del hito {{ block.settings.year }}" class="timeline-img">
+      {% endif %}
+      <div class="timeline-text">
+        <h3>{{ block.settings.year }}</h3>
+        <p>{{ block.settings.description }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<style>
+.timeline-section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.timeline-img {
+  width: 160px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.timeline-text {
+  flex: 1;
+}
+
+.timeline-text h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #001F3F;
+}
+
+.timeline-text p {
+  font-size: 16px;
+  color: #333;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Línea del tiempo",
+  "max_blocks": 10,
+  "blocks": [
+    {
+      "type": "milestone",
+      "name": "Hito",
+      "settings": [
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Año",
+          "default": "2020"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descripción del hito",
+          "default": "Descripción breve del evento importante."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen del hito"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Línea del tiempo"
+    }
+  ]
+}
+{% endschema %}
