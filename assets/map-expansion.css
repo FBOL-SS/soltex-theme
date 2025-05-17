@@ -1,0 +1,15 @@
+
+.map-expansion {
+    text-align: center;
+    margin: 40px 0;
+}
+.map-points {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.map-points li {
+    font-weight: bold;
+}

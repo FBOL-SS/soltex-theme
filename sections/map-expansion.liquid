@@ -1,0 +1,28 @@
+
+{% schema %}
+{
+  "name": "Mapa de Expansión",
+  "settings": [
+    { "type": "image_picker", "id": "map_image", "label": "Imagen del Mapa (SVG recomendado)" }
+  ],
+  "blocks": [
+    {
+      "type": "punto",
+      "name": "Punto de Expansión",
+      "settings": [
+        { "type": "text", "id": "location_name", "label": "Ubicación" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Mapa de Expansión" }]
+}
+{% endschema %}
+
+<div class="map-expansion">
+  <img src="{{ section.settings.map_image | img_url: 'master' }}" alt="Mapa de Expansión">
+  <ul class="map-points">
+    {% for block in section.blocks %}
+      <li>{{ block.settings.location_name }}</li>
+    {% endfor %}
+  </ul>
+</div>
