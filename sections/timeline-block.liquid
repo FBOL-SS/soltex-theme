@@ -1,0 +1,95 @@
+<section class="timeline-section">
+  <div class="timeline-container">
+    {% for block in section.blocks %}
+      <div class="timeline-item">
+        {% if block.settings.image %}
+          <div class="timeline-image">
+            <img src="{{ block.settings.image | img_url: '480x' }}" alt="{{ block.settings.year }}">
+          </div>
+        {% endif %}
+        <div class="timeline-content">
+          <h3>{{ block.settings.year }}</h3>
+          <p>{{ block.settings.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+.timeline-section {
+  padding: 60px 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.timeline-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline-image img {
+  max-width: 100%;
+  max-height: 250px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+}
+
+.timeline-content h3 {
+  font-size: 24px;
+  color: #001F3F;
+  margin-bottom: 8px;
+}
+
+.timeline-content p {
+  font-size: 16px;
+  color: #333;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Línea del tiempo",
+  "blocks": [
+    {
+      "type": "hito",
+      "name": "Hito",
+      "settings": [
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Año",
+          "default": "2023"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descripción del evento",
+          "default": "Descripción breve del evento importante."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen del hito"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Línea del tiempo"
+    }
+  ]
+}
+{% endschema %}

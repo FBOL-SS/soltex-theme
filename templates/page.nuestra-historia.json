@@ -15,9 +15,88 @@
         "title": "NUESTRA HISTORIA",
         "text": "<p>Aquí puedes escribir la historia de tu empresa, tus valores, logros, o cómo comenzó todo.</p>"
       }
+    },
+    "carrusel_imagenes_KpeGKB": {
+      "type": "carrusel-imagenes",
+      "blocks": {
+        "slide_ijFgrp": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/IMAGEMACHINE.jpg",
+            "alt_text": ""
+          }
+        },
+        "slide_VzYKdH": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/AdobeStock_248525679.jpg",
+            "alt_text": ""
+          }
+        },
+        "slide_qGeLQM": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/AdobeStock_1169355084.jpg",
+            "alt_text": ""
+          }
+        },
+        "slide_Vd8eYG": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/AdobeStock_366013539.jpg",
+            "alt_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_ijFgrp",
+        "slide_VzYKdH",
+        "slide_qGeLQM",
+        "slide_Vd8eYG"
+      ],
+      "name": "Carrusel Evolución",
+      "settings": {
+        "title": "Nuestra Evolución"
+      }
+    },
+    "timeline_block_74pNfA": {
+      "type": "timeline-block",
+      "blocks": {
+        "hito_AeBDHk": {
+          "type": "hito",
+          "settings": {
+            "year": "2023",
+            "description": "Descripción breve del evento importante.",
+            "image": "shopify://shop_images/20231027_112823.jpg"
+          }
+        },
+        "hito_gAqce3": {
+          "type": "hito",
+          "settings": {
+            "year": "2023",
+            "description": "Descripción breve del evento importante."
+          }
+        },
+        "hito_pfxp8D": {
+          "type": "hito",
+          "settings": {
+            "year": "2023",
+            "description": "Descripción breve del evento importante."
+          }
+        }
+      },
+      "block_order": [
+        "hito_AeBDHk",
+        "hito_gAqce3",
+        "hito_pfxp8D"
+      ],
+      "name": "Línea del tiempo",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "carrusel_imagenes_KpeGKB",
+    "timeline_block_74pNfA"
   ]
 }

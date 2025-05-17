@@ -23,7 +23,7 @@
           "social_link_dVQaPU": {
             "type": "social_link",
             "settings": {
-              "icon": "shopify://shop_images/facebook_1.png",
+              "icon": "shopify://shop_images/facebook.png",
               "label": "",
               "link": ""
             }
@@ -31,14 +31,16 @@
           "social_link_bFeBeL": {
             "type": "social_link",
             "settings": {
-              "label": "Red social",
+              "icon": "shopify://shop_images/instagram_1.png",
+              "label": "",
               "link": ""
             }
           },
           "social_link_Bkqyb8": {
             "type": "social_link",
             "settings": {
-              "label": "Red social",
+              "icon": "shopify://shop_images/linkedin.png",
+              "label": "",
               "link": ""
             }
           }
@@ -49,6 +51,7 @@
           "social_link_Bkqyb8"
         ],
         "settings": {
+          "footer_logo": "shopify://shop_images/logo_soltex.svg",
           "footer_text": "Gracias por visitar nuestro sitio web."
         }
       }
