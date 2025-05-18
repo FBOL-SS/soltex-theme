@@ -1,14 +1,15 @@
 
-<!-- 🔍 Filtros Avanzados -->
+<!-- 🔍 Filtros Avanzados Mejorados -->
 <div class="advanced-filters">
-    <h3 class="main-title">Filtrar por</h3>
-    <form id="advanced-filter-form">
+    <h3 class="main-title" style="text-align:center; font-size:2em; color:#004AAD;">FILTRAR POR</h3>
+    <form id="advanced-filter-form" style="max-width: 600px; margin: 0 auto; text-align:left;">
         <div class="filter-group">
             <h4>Marca</h4>
             <select id="filter-brand">
                 <option value="">Todas</option>
-                {% for product in collections.all.products %}
-                    <option value="{{ product.vendor }}">{{ product.vendor }}</option>
+                {% assign brands = collections.all.products | map: 'vendor' | uniq %}
+                {% for brand in brands %}
+                    <option value="{{ brand }}">{{ brand }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -17,46 +18,51 @@
             <h4>Calidad</h4>
             <select id="filter-quality">
                 <option value="">Todas</option>
-                {% for product in collections.all.products %}
-                    {% for tag in product.tags %}
-                        {% if tag contains 'Calidad_' %}
-                            <option value="{{ tag | remove: 'Calidad_' }}">{{ tag | remove: 'Calidad_' }}</option>
-                        {% endif %}
-                    {% endfor %}
+                {% assign all_tags = collections.all.products | map: 'tags' | join: ',' | split: ',' | uniq %}
+                {% for tag in all_tags %}
+                    {% if tag contains 'Calidad_' %}
+                        <option value="{{ tag | remove: 'Calidad_' }}">{{ tag | remove: 'Calidad_' }}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
         </div>
 
         <div class="filter-group">
             <h4>Precio</h4>
-            <input type="number" id="price-min" placeholder="Desde..." />
-            <input type="number" id="price-max" placeholder="Hasta..." />
+            <input type="number" id="price-min" placeholder="Desde..." style="width: 45%;" />
+            <input type="number" id="price-max" placeholder="Hasta..." style="width: 45%;" />
         </div>
 
         <div class="filter-group">
             <label><input type="checkbox" id="filter-availability" /> Solo disponibles</label>
         </div>
 
-        <button type="submit" class="filter-apply-btn">Aplicar filtros</button>
+        <button type="submit" class="filter-apply-btn" style="background:#004AAD; color:#fff; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;">Aplicar filtros</button>
     </form>
 </div>
 
 <!-- 🛍️ Listado de Productos -->
 <div class="products-grid all-products-grid" id="product-list">
-    {% for product in collections.all.products %}
-        <div class="product-card" 
-             data-brand="{{ product.vendor }}" 
-             data-tags="{{ product.tags | join: ',' }}" 
-             data-price="{{ product.price | money_without_currency }}" 
-             data-available="{{ product.available }}">
+    {% paginate collections.all.products by 1000 %}
+        {% for product in collections.all.products %}
+            <div class="product-card" 
+                 data-brand="{{ product.vendor }}" 
+                 data-tags="{{ product.tags | join: ',' }}" 
+                 data-price="{{ product.price | money_without_currency }}" 
+                 data-available="{{ product.available }}">
 
-            <a href="{{ product.url }}">
-                <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" />
-                <h3 class="product-title">{{ product.title }}</h3>
-                <p class="product-price">{{ product.price | money }}</p>
-            </a>
-        </div>
-    {% endfor %}
+                <a href="{{ product.url }}">
+                    {% if product.featured_image %}
+                        <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" />
+                    {% else %}
+                        <img src="https://cdn.shopify.com/s/files/1/0674/8985/7688/files/no-image.png" alt="Sin imagen" />
+                    {% endif %}
+                    <h3 class="product-title">{{ product.title }}</h3>
+                    <p class="product-price">{{ product.price | money }}</p>
+                </a>
+            </div>
+        {% endfor %}
+    {% endpaginate %}
 </div>
 
 <script>
