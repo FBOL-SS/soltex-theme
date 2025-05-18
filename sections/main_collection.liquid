@@ -1,130 +1,90 @@
-{% if section.settings.collection != blank %}
-  {% assign current_collection = collections[section.settings.collection] %}
 
-  <!-- 🔍 Search Bar -->
-  <div class="search-bar-container">
-    <form action="/search" method="get" role="search" class="search-form">
-      <input
-        type="search"
-        name="q"
-        placeholder="Buscar productos..."
-        aria-label="Buscar productos"
-        class="search-input"
-      />
-      <button type="submit" class="search-button">Buscar</button>
-    </form>
-  </div>
-
-  {% if current_collection.products_count > 0 %}
-    <div class="products-grid">
-      {% for product in current_collection.products %}
-        <div class="product-item">
-          <a href="{{ product.url }}">
-            <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" class="product-image" />
-            <h3 class="product-title">{{ product.title }}</h3>
-            <p class="product-price">{{ product.price | money }}</p>
-          </a>
+<!-- 🔍 Filtros Avanzados -->
+<div class="advanced-filters">
+    <h3 class="filter-title">Filtrar por</h3>
+    <form id="advanced-filter-form">
+        <div class="filter-group">
+            <h4>Marca</h4>
+            <select id="filter-brand">
+                <option value="">Todas</option>
+                {% for product in collections.all.products %}
+                    <option value="{{ product.vendor }}">{{ product.vendor }}</option>
+                {% endfor %}
+            </select>
         </div>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p>No hay productos en esta colección todavía.</p>
-  {% endif %}
-{% else %}
-  <p>No se ha seleccionado ninguna colección.</p>
-{% endif %}
 
-<style>
-.search-bar-container {
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto 40px auto;
-  padding: 0 20px;
-}
+        <div class="filter-group">
+            <h4>Calidad</h4>
+            <select id="filter-quality">
+                <option value="">Todas</option>
+                {% for product in collections.all.products %}
+                    {% for tag in product.tags %}
+                        {% if tag contains 'Calidad_' %}
+                            <option value="{{ tag | remove: 'Calidad_' }}">{{ tag | remove: 'Calidad_' }}</option>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </select>
+        </div>
 
-.search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+        <div class="filter-group">
+            <h4>Precio</h4>
+            <input type="number" id="price-min" placeholder="Desde..." />
+            <input type="number" id="price-max" placeholder="Hasta..." />
+        </div>
 
-.search-input {
-  flex-grow: 1;
-  padding: 12px 16px;
-  border-radius: 8px 0 0 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  outline: none;
-}
+        <div class="filter-group">
+            <label><input type="checkbox" id="filter-availability" /> Solo disponibles</label>
+        </div>
 
-.search-button {
-  padding: 12px 24px;
-  background-color: #002147;
-  color: #ffffff;
-  border: none;
-  border-radius: 0 8px 8px 0;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.2s ease;
-}
+        <button type="submit" class="filter-apply-btn">Aplicar filtros</button>
+    </form>
+</div>
 
-.search-button:hover {
-  background-color: #003366;
-}
+<!-- 🛍️ Listado de Productos -->
+<div class="products-grid" id="product-list">
+    {% for product in collections.all.products %}
+        <div class="product-item" 
+             data-brand="{{ product.vendor }}" 
+             data-tags="{{ product.tags | join: ',' }}" 
+             data-price="{{ product.price | money_without_currency }}" 
+             data-available="{{ product.available }}">
+            <a href="{{ product.url }}">
+                <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" class="product-image" />
+                <h3 class="product-title">{{ product.title }}</h3>
+                <p class="product-price">{{ product.price | money }}</p>
+            </a>
+        </div>
+    {% endfor %}
+</div>
 
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  padding: 40px 20px;
-}
+<script>
+    const form = document.getElementById('advanced-filter-form');
+    const products = document.querySelectorAll('.product-item');
 
-.product-item {
-  background: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-.product-item:hover {
-  transform: translateY(-5px);
-}
+        const brand = document.getElementById('filter-brand').value.toLowerCase();
+        const quality = document.getElementById('filter-quality').value.toLowerCase();
+        const priceMin = parseFloat(document.getElementById('price-min').value) || 0;
+        const priceMax = parseFloat(document.getElementById('price-max').value) || Infinity;
+        const availability = document.getElementById('filter-availability').checked;
 
-.product-image {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 15px;
-  border-radius: 5px;
-}
+        products.forEach((product) => {
+            const productBrand = product.getAttribute('data-brand').toLowerCase();
+            const productTags = product.getAttribute('data-tags').toLowerCase();
+            const productPrice = parseFloat(product.getAttribute('data-price').replace(',', '')) || 0;
+            const productAvailable = product.getAttribute('data-available') === 'true';
 
-.product-title {
-  font-size: 18px;
-  margin-bottom: 5px;
-  font-weight: 600;
-}
+            let isVisible = true;
 
-.product-price {
-  font-size: 16px;
-  color: #333;
-}
-</style>
+            if (brand && productBrand !== brand) isVisible = false;
+            if (quality && !productTags.includes('calidad_' + quality)) isVisible = false;
+            if (productPrice < priceMin || productPrice > priceMax) isVisible = false;
+            if (availability && !productAvailable) isVisible = false;
 
-{% schema %}
-{
-  "name": "Productos del Catálogo",
-  "settings": [
-    {
-      "type": "collection",
-      "id": "collection",
-      "label": "Colección de productos"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Productos del Catálogo"
-    }
-  ]
-}
-{% endschema %}
+            product.style.display = isVisible ? 'block' : 'none';
+        });
+    });
+</script>
