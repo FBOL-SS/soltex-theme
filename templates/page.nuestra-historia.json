@@ -143,6 +143,22 @@
       ],
       "name": "Valores de la Empresa",
       "settings": {}
+    },
+    "impact_phrase_M3C3aj": {
+      "type": "impact-phrase",
+      "name": "Frase de Impacto",
+      "settings": {
+        "impact_phrase": "",
+        "background_color": "#F5F5F5"
+      }
+    },
+    "final_cta_Udafny": {
+      "type": "final-cta",
+      "name": "Llamado a la Acción",
+      "settings": {
+        "cta_text": "Conoce Nuestros Productos",
+        "cta_url": "shopify://collections/all"
+      }
     }
   },
   "order": [
@@ -150,6 +166,8 @@
     "carrusel_imagenes_KpeGKB",
     "timeline_block_74pNfA",
     "map_expansion_kHKyyT",
-    "company_values_ynPkCF"
+    "company_values_ynPkCF",
+    "impact_phrase_M3C3aj",
+    "final_cta_Udafny"
   ]
 }
