@@ -95,6 +95,52 @@
     },
     "map_expansion_kHKyyT": {
       "type": "map-expansion",
+      "blocks": {
+        "punto_hKciMx": {
+          "type": "punto",
+          "settings": {
+            "location_name": "Torreón, México."
+          }
+        },
+        "punto_HMFBQt": {
+          "type": "punto",
+          "settings": {
+            "location_name": "Mérida, México."
+          }
+        },
+        "punto_4K8WRc": {
+          "type": "punto",
+          "settings": {
+            "location_name": "Tehuacán, Puebla, México."
+          }
+        },
+        "punto_CfnRQP": {
+          "type": "punto",
+          "settings": {
+            "location_name": "Ciudas Arce, El Salvador."
+          }
+        },
+        "punto_wtWeEq": {
+          "type": "punto",
+          "settings": {
+            "location_name": "San Pedro Sula, Honduras."
+          }
+        },
+        "punto_Maka4r": {
+          "type": "punto",
+          "settings": {
+            "location_name": "Managua, Nicaragua."
+          }
+        }
+      },
+      "block_order": [
+        "punto_hKciMx",
+        "punto_HMFBQt",
+        "punto_4K8WRc",
+        "punto_CfnRQP",
+        "punto_wtWeEq",
+        "punto_Maka4r"
+      ],
       "custom_css": [
         ".map-expansion img {width: 100%; height: auto; display: block; object-fit: cover;}"
       ],
@@ -149,7 +195,7 @@
       "name": "Frase de Impacto",
       "settings": {
         "impact_phrase": "",
-        "background_color": "#F5F5F5"
+        "background_color": "#f5f5f5"
       }
     },
     "final_cta_Udafny": {
