@@ -2,16 +2,17 @@
 .map-points {
     list-style: none;
     padding-left: 0;
-    text-align: left;
-    margin: 0 auto;
-    max-width: 300px;
+    text-align: center;
+    margin: 40px auto;
+    max-width: 600px;
     font-weight: bold;
 }
 
 .map-points li {
     position: relative;
-    padding-left: 60px;
-    margin-bottom: 20px;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    font-size: 1.2em;
 }
 
 .map-points li::before {
@@ -19,8 +20,24 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 48px;
-    height: 48px;
+    width: 24px;
+    height: 24px;
     background: url('https://cdn.shopify.com/s/files/1/0674/8985/7688/files/25530.png?v=1747587584') no-repeat center center;
     background-size: contain;
+}
+
+@media (max-width: 768px) {
+    .map-points {
+        max-width: 90%;
+    }
+
+    .map-points li {
+        padding-left: 30px;
+        font-size: 1em;
+    }
+
+    .map-points li::before {
+        width: 20px;
+        height: 20px;
+    }
 }
