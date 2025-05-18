@@ -194,7 +194,7 @@
       "type": "impact-phrase",
       "name": "Frase de Impacto",
       "settings": {
-        "impact_phrase": "",
+        "impact_phrase": "\"Transformamos la industria textil, territorio por territorio.\"",
         "background_color": "#f5f5f5"
       }
     },
