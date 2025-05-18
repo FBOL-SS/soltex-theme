@@ -21,15 +21,14 @@
     },
     "product_filter_sidebar_89QPQ9": {
       "type": "product-filter-sidebar",
+      "disabled": true,
       "name": "Filtros del Marketplace",
       "settings": {}
     },
     "main_collection_VJmpN7": {
       "type": "main_collection",
       "name": "Productos del Catálogo",
-      "settings": {
-        "collection": "general"
-      }
+      "settings": {}
     }
   },
   "order": [
