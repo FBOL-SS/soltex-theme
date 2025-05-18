@@ -27,7 +27,15 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'product.css' | asset_url | stylesheet_tag }}
     {{ 'brands-page.css' | asset_url | stylesheet_tag }}
-  </head>
+  
+{% if template == 'page.nuestra-historia' %}
+  {{ 'map-expansion.css' | asset_url | stylesheet_tag }}
+  {{ 'company-values.css' | asset_url | stylesheet_tag }}
+  {{ 'impact-phrase.css' | asset_url | stylesheet_tag }}
+  {{ 'final-cta.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
+</head>
   
   <body>
     {% section 'header' %}
@@ -51,5 +59,13 @@
         }
       });
     </script>
-  </body>
+  
+{% if template == 'page.nuestra-historia' %}
+  {{ 'map-expansion.js' | asset_url | script_tag }}
+  {{ 'company-values.js' | asset_url | script_tag }}
+  {{ 'impact-phrase.js' | asset_url | script_tag }}
+  {{ 'final-cta.js' | asset_url | script_tag }}
+{% endif %}
+
+</body>
 </html>

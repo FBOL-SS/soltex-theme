@@ -1,0 +1,15 @@
+
+{% schema %}
+{
+  "name": "Frase de Impacto",
+  "settings": [
+    { "type": "textarea", "id": "impact_phrase", "label": "Frase de Impacto" },
+    { "type": "color", "id": "background_color", "label": "Color de Fondo", "default": "#F5F5F5" }
+  ],
+  "presets": [{ "name": "Frase de Impacto" }]
+}
+{% endschema %}
+
+<div class="impact-phrase" style="background-color: {{ section.settings.background_color }};">
+  <h2>{{ section.settings.impact_phrase }}</h2>
+</div>

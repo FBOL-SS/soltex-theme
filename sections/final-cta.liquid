@@ -1,0 +1,15 @@
+
+{% schema %}
+{
+  "name": "Llamado a la Acción",
+  "settings": [
+    { "type": "text", "id": "cta_text", "label": "Texto del Botón", "default": "Conoce Nuestros Productos" },
+    { "type": "url", "id": "cta_url", "label": "URL de Redirección" }
+  ],
+  "presets": [{ "name": "Llamado a la Acción" }]
+}
+{% endschema %}
+
+<div class="final-cta">
+  <a href="{{ section.settings.cta_url }}" class="btn-primary">{{ section.settings.cta_text }}</a>
+</div>

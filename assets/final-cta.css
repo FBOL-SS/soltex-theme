@@ -1,0 +1,16 @@
+
+.final-cta {
+    text-align: center;
+    margin: 60px 0;
+}
+.final-cta .btn-primary {
+    background-color: #004AAD;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+.final-cta .btn-primary:hover {
+    background-color: #003A8C;
+}
