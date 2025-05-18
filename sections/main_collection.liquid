@@ -44,15 +44,20 @@
 <!-- 🛍️ Listado de Productos -->
 <div class="products-grid" id="product-list">
     {% for product in collections.all.products %}
-        <div class="product-item" 
+        <div class="product-item card" 
              data-brand="{{ product.vendor }}" 
              data-tags="{{ product.tags | join: ',' }}" 
              data-price="{{ product.price | money_without_currency }}" 
              data-available="{{ product.available }}">
-            <a href="{{ product.url }}">
-                <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" class="product-image" />
-                <h3 class="product-title">{{ product.title }}</h3>
-                <p class="product-price">{{ product.price | money }}</p>
+             
+            <a href="{{ product.url }}" class="card-link">
+                <div class="card-image">
+                    <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" />
+                </div>
+                <div class="card-content">
+                    <h3 class="product-title">{{ product.title }}</h3>
+                    <p class="product-price">{{ product.price | money }}</p>
+                </div>
             </a>
         </div>
     {% endfor %}
