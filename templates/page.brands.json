@@ -33,7 +33,7 @@
           "settings": {
             "brand_logo": "shopify://shop_images/logo_juki.png",
             "brand_name": "",
-            "brand_link": ""
+            "brand_link": "shopify://collections/juki"
           }
         },
         "brand_RtTcga": {
