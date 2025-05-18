@@ -1,0 +1,31 @@
+
+{% schema %}
+{
+  "name": "Valores de la Empresa",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "valor",
+      "name": "Valor",
+      "settings": [
+        { "type": "text", "id": "value_title", "label": "Título del Valor" },
+        { "type": "text", "id": "value_description", "label": "Descripción Corta" },
+        { "type": "image_picker", "id": "icon", "label": "Ícono" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Valores de la Empresa" }]
+}
+{% endschema %}
+
+<div class="company-values">
+  {% for block in section.blocks %}
+    <div class="value-card">
+      {% if block.settings.icon != blank %}
+        <img src="{{ block.settings.icon | img_url: 'small' }}" alt="Ícono">
+      {% endif %}
+      <h4>{{ block.settings.value_title }}</h4>
+      <p>{{ block.settings.value_description }}</p>
+    </div>
+  {% endfor %}
+</div>
