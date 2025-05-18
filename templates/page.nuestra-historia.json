@@ -188,10 +188,15 @@
         "valor_rpKQ7A"
       ],
       "name": "Valores de la Empresa",
-      "settings": {}
+      "settings": {
+        "section_title": "Nuestros Valores"
+      }
     },
     "impact_phrase_M3C3aj": {
       "type": "impact-phrase",
+      "custom_css": [
+        "h2{text-align: center}"
+      ],
       "name": "Frase de Impacto",
       "settings": {
         "impact_phrase": "\"Transformamos la industria textil, territorio por territorio.\"",
