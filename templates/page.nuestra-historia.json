@@ -92,11 +92,22 @@
       ],
       "name": "Línea del tiempo",
       "settings": {}
+    },
+    "map_expansion_kHKyyT": {
+      "type": "map-expansion",
+      "custom_css": [
+        ".map-expansion img {width: 100%; height: auto; display: block; object-fit: cover;}"
+      ],
+      "name": "Mapa de Expansión",
+      "settings": {
+        "map_image": "shopify://shop_images/Untitled_2025-5-17.png"
+      }
     }
   },
   "order": [
     "main",
     "carrusel_imagenes_KpeGKB",
-    "timeline_block_74pNfA"
+    "timeline_block_74pNfA",
+    "map_expansion_kHKyyT"
   ]
 }
