@@ -195,7 +195,7 @@
     "impact_phrase_M3C3aj": {
       "type": "impact-phrase",
       "custom_css": [
-        "h2{text-align: center}"
+        "h2 {text-align: center;}"
       ],
       "name": "Frase de Impacto",
       "settings": {
@@ -208,7 +208,7 @@
       "name": "Llamado a la Acción",
       "settings": {
         "cta_text": "Conoce Nuestros Productos",
-        "cta_url": "shopify://collections/all"
+        "cta_url": "shopify://pages/tienda"
       }
     }
   },
