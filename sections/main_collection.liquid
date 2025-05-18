@@ -42,22 +42,18 @@
 </div>
 
 <!-- 🛍️ Listado de Productos -->
-<div class="products-grid" id="product-list">
+<div class="products-grid all-products-grid" id="product-list">
     {% for product in collections.all.products %}
-        <div class="product-item card" 
+        <div class="product-card" 
              data-brand="{{ product.vendor }}" 
              data-tags="{{ product.tags | join: ',' }}" 
              data-price="{{ product.price | money_without_currency }}" 
              data-available="{{ product.available }}">
-             
-            <a href="{{ product.url }}" class="card-link">
-                <div class="card-image">
-                    <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" />
-                </div>
-                <div class="card-content">
-                    <h3 class="product-title">{{ product.title }}</h3>
-                    <p class="product-price">{{ product.price | money }}</p>
-                </div>
+
+            <a href="{{ product.url }}">
+                <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" />
+                <h3 class="product-title">{{ product.title }}</h3>
+                <p class="product-price">{{ product.price | money }}</p>
             </a>
         </div>
     {% endfor %}
@@ -65,7 +61,7 @@
 
 <script>
     const form = document.getElementById('advanced-filter-form');
-    const products = document.querySelectorAll('.product-item');
+    const products = document.querySelectorAll('.product-card');
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
