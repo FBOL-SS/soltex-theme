@@ -102,12 +102,18 @@
       "settings": {
         "map_image": "shopify://shop_images/Untitled_2025-5-17.png"
       }
+    },
+    "company_values_ynPkCF": {
+      "type": "company-values",
+      "name": "Valores de la Empresa",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "carrusel_imagenes_KpeGKB",
     "timeline_block_74pNfA",
-    "map_expansion_kHKyyT"
+    "map_expansion_kHKyyT",
+    "company_values_ynPkCF"
   ]
 }
