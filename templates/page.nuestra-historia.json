@@ -105,6 +105,42 @@
     },
     "company_values_ynPkCF": {
       "type": "company-values",
+      "blocks": {
+        "valor_iF7mRi": {
+          "type": "valor",
+          "settings": {
+            "value_title": "",
+            "value_description": ""
+          }
+        },
+        "valor_Lym7ti": {
+          "type": "valor",
+          "settings": {
+            "value_title": "",
+            "value_description": ""
+          }
+        },
+        "valor_68N43f": {
+          "type": "valor",
+          "settings": {
+            "value_title": "",
+            "value_description": ""
+          }
+        },
+        "valor_rpKQ7A": {
+          "type": "valor",
+          "settings": {
+            "value_title": "",
+            "value_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "valor_iF7mRi",
+        "valor_Lym7ti",
+        "valor_68N43f",
+        "valor_rpKQ7A"
+      ],
       "name": "Valores de la Empresa",
       "settings": {}
     }
