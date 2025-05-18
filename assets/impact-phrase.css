@@ -1,7 +1,15 @@
-
 .impact-phrase {
     text-align: center;
-    padding: 60px 20px;
-    font-size: 2em;
+    padding: 80px 20px;
+    font-size: 2.8em;
     font-weight: bold;
+    line-height: 1.3;
+    color: #222;
+}
+
+@media (max-width: 768px) {
+    .impact-phrase {
+        font-size: 1.8em;
+        padding: 60px 15px;
+    }
 }
