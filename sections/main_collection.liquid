@@ -1,97 +1,96 @@
 
-<!-- 🔍 Filtros Avanzados Mejorados -->
-<div class="advanced-filters">
-    <h3 class="main-title" style="text-align:center; font-size:2em; color:#004AAD;">FILTRAR POR</h3>
-    <form id="advanced-filter-form" style="max-width: 600px; margin: 0 auto; text-align:left;">
+<!-- 🔍 FILTROS AVANZADOS MODERNOS -->
+<section class="marketplace-wrapper">
+  <div class="marketplace-container">
+    <div class="marketplace-filters">
+      <h2>Filtrar por</h2>
+      <form id="advanced-filter-form">
         <div class="filter-group">
-            <h4>Marca</h4>
-            <select id="filter-brand">
-                <option value="">Todas</option>
-                {% assign brands = collections.all.products | map: 'vendor' | uniq %}
-                {% for brand in brands %}
-                    <option value="{{ brand }}">{{ brand }}</option>
-                {% endfor %}
-            </select>
+          <label for="filter-brand">Marca</label>
+          <select id="filter-brand">
+            <option value="">Todas</option>
+            {% assign brands = collections.all.products | map: 'vendor' | uniq %}
+            {% for brand in brands %}
+              <option value="{{ brand }}">{{ brand }}</option>
+            {% endfor %}
+          </select>
         </div>
-
         <div class="filter-group">
-            <h4>Calidad</h4>
-            <select id="filter-quality">
-                <option value="">Todas</option>
-                {% assign all_tags = collections.all.products | map: 'tags' | join: ',' | split: ',' | uniq %}
-                {% for tag in all_tags %}
-                    {% if tag contains 'Calidad_' %}
-                        <option value="{{ tag | remove: 'Calidad_' }}">{{ tag | remove: 'Calidad_' }}</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
+          <label for="filter-quality">Calidad</label>
+          <select id="filter-quality">
+            <option value="">Todas</option>
+            {% assign tags = collections.all.products | map: 'tags' | join: ',' | split: ',' | uniq %}
+            {% for tag in tags %}
+              {% if tag contains 'Calidad_' %}
+                <option value="{{ tag | remove: 'Calidad_' }}">{{ tag | remove: 'Calidad_' }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
         </div>
-
+        <div class="filter-group price">
+          <label>Precio</label>
+          <input type="number" id="price-min" placeholder="Desde" />
+          <input type="number" id="price-max" placeholder="Hasta" />
+        </div>
         <div class="filter-group">
-            <h4>Precio</h4>
-            <input type="number" id="price-min" placeholder="Desde..." style="width: 45%;" />
-            <input type="number" id="price-max" placeholder="Hasta..." style="width: 45%;" />
+          <label><input type="checkbox" id="filter-availability" /> Solo disponibles</label>
         </div>
+        <button type="submit" class="filter-btn">Aplicar filtros</button>
+      </form>
+    </div>
 
-        <div class="filter-group">
-            <label><input type="checkbox" id="filter-availability" /> Solo disponibles</label>
-        </div>
-
-        <button type="submit" class="filter-apply-btn" style="background:#004AAD; color:#fff; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;">Aplicar filtros</button>
-    </form>
-</div>
-
-<!-- 🛍️ Listado de Productos -->
-<div class="products-grid all-products-grid" id="product-list">
-    {% paginate collections.all.products by 1000 %}
+    <!-- 🛍️ PRODUCTOS EN TARJETAS -->
+    <div class="products-grid all-products-grid" id="product-list">
+      {% paginate collections.all.products by 1000 %}
         {% for product in collections.all.products %}
-            <div class="product-card" 
-                 data-brand="{{ product.vendor }}" 
-                 data-tags="{{ product.tags | join: ',' }}" 
-                 data-price="{{ product.price | money_without_currency }}" 
-                 data-available="{{ product.available }}">
-
-                <a href="{{ product.url }}">
-                    {% if product.featured_image %}
-                        <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" />
-                    {% else %}
-                        <img src="https://cdn.shopify.com/s/files/1/0674/8985/7688/files/no-image.png" alt="Sin imagen" />
-                    {% endif %}
-                    <h3 class="product-title">{{ product.title }}</h3>
-                    <p class="product-price">{{ product.price | money }}</p>
-                </a>
-            </div>
+          <div class="product-card"
+              data-brand="{{ product.vendor }}"
+              data-tags="{{ product.tags | join: ',' }}"
+              data-price="{{ product.price | money_without_currency }}"
+              data-available="{{ product.available }}">
+            <a href="{{ product.url }}">
+              <div class="card-image">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}">
+                {% else %}
+                  <img src="https://cdn.shopify.com/s/files/1/0674/8985/7688/files/no-image.png" alt="Sin imagen">
+                {% endif %}
+              </div>
+              <div class="card-content">
+                <h3>{{ product.title }}</h3>
+                <p class="product-price">{{ product.price | money }}</p>
+              </div>
+            </a>
+          </div>
         {% endfor %}
-    {% endpaginate %}
-</div>
+      {% endpaginate %}
+    </div>
+  </div>
+</section>
 
 <script>
-    const form = document.getElementById('advanced-filter-form');
-    const products = document.querySelectorAll('.product-card');
+document.getElementById('advanced-filter-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const brand = document.getElementById('filter-brand').value.toLowerCase();
+  const quality = document.getElementById('filter-quality').value.toLowerCase();
+  const priceMin = parseFloat(document.getElementById('price-min').value) || 0;
+  const priceMax = parseFloat(document.getElementById('price-max').value) || Infinity;
+  const availability = document.getElementById('filter-availability').checked;
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
+  document.querySelectorAll('.product-card').forEach(card => {
+    const tags = card.dataset.tags.toLowerCase();
+    const vendor = card.dataset.brand.toLowerCase();
+    const price = parseFloat(card.dataset.price.replace(',', '')) || 0;
+    const available = card.dataset.available === 'true';
 
-        const brand = document.getElementById('filter-brand').value.toLowerCase();
-        const quality = document.getElementById('filter-quality').value.toLowerCase();
-        const priceMin = parseFloat(document.getElementById('price-min').value) || 0;
-        const priceMax = parseFloat(document.getElementById('price-max').value) || Infinity;
-        const availability = document.getElementById('filter-availability').checked;
+    let show = true;
+    if (brand && vendor !== brand) show = false;
+    if (quality && !tags.includes('calidad_' + quality)) show = false;
+    if (price < priceMin || price > priceMax) show = false;
+    if (availability && !available) show = false;
 
-        products.forEach((product) => {
-            const productBrand = product.getAttribute('data-brand').toLowerCase();
-            const productTags = product.getAttribute('data-tags').toLowerCase();
-            const productPrice = parseFloat(product.getAttribute('data-price').replace(',', '')) || 0;
-            const productAvailable = product.getAttribute('data-available') === 'true';
-
-            let isVisible = true;
-
-            if (brand && productBrand !== brand) isVisible = false;
-            if (quality && !productTags.includes('calidad_' + quality)) isVisible = false;
-            if (productPrice < priceMin || productPrice > priceMax) isVisible = false;
-            if (availability && !productAvailable) isVisible = false;
-
-            product.style.display = isVisible ? 'block' : 'none';
-        });
-    });
+    card.style.display = show ? "block" : "none";
+  });
+});
 </script>
+
